@@ -14,9 +14,9 @@ Người phát triển:
 --------------------------------
 Phase 1A: t2 24/09 - hết t4
 front dùng bootstrap 4
-- tuấn anh: promo, menu
-- xuân: store manage, order
+- Tuấn Anh: promo, menu
+- Xuân: store manage, order
 back: node
-- routing, connect DB và tạo các bảng mysql, mongo
-- login dùng mysql nhận vào username và password đổ ra info của user = json  (tối thứ 5 deliver)
-- api về order món ăn, định nghĩa object order
+- Long: routing, connect DB và tạo các bảng mysql, mongo  (tối thứ 5 deliver)
+- Hà: login dùng mysql nhận vào username và password đổ ra info của user = json 
+- Tiến: api về order món ăn, định nghĩa object order
