@@ -12,10 +12,10 @@
 4. Lê Lương Tuấn Anh
 5. Nguyễn Văn Long
 --------------------------------
-Phase 1A: t2 24/09 - hết t4
+Phase 1A: t2 24/09 - hết t4  
 #front dùng bootstrap 4
 - tuấn anh: promo, menu
-- xuân: store manage, order
+- xuân: store manage, order  
 #back: node
 - routing, connect DB và tạo các bảng mysql, mongo
 - login dùng mysql nhận vào username và password đổ ra info của user = json  (tối thứ 5 deliver)
