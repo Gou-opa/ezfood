@@ -1,4 +1,4 @@
-#Hệ thống quản lý nhà hàng EasyFood
+﻿#Hệ thống quản lý nhà hàng EasyFood
 --------------------------------
 ###Vấn Đề:
 -Thời đại 4.0 thời đại của vạn vật kết nối, AI và Bigdata phần mềm (đặc biệt là website) chất lượng là mũi tên để thấy được trái tim của khách hàng . Tuy nhiên nhiều hộ kinh doanh nhà hàng vs doanh nghiệp chưa ứng dụng công nghệ đồng bộ trong quản lý, hiệu quả quản lý thấp, khó chạy các chương trình khách hàng trên tập dữ liệu rời rạc, ko chuẩn hóa.Dẫn đến khó khăn trong cả việc quản lý và bán hàng lẫn trải nghiệm người dùng .Ứng dụng Easy Food được phát triển để giải quyết vấn đề này .Từ quản lý dữ liệu kho , công nhân cho đến người dùng đều được lưu trữ và đồng bộ .
@@ -11,4 +11,12 @@
 3. Phùng Đình Xuân
 4. Lê Lương Tuấn Anh
 5. Nguyễn Văn Long
-
+--------------------------------
+Phase 1A: t2 24/09 - hết t4
+front dùng bootstrap 4
+- tuấn anh: promo, menu
+- xuân: store manage, order
+back: node
+- routing, connect DB và tạo các bảng mysql, mongo
+- login dùng mysql nhận vào username và password đổ ra info của user = json  (tối thứ 5 deliver)
+- api về order món ăn, định nghĩa object order
