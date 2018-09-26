@@ -1,5 +1,5 @@
 var mongo_handler = require('./../database/mongo_handler');
-var BF = mongo_handler.BF;
+var BFO = mongo_handler.BF.order;
 var objorder = {
     dishname: "Lợn quay",
     quantity: 2,
@@ -10,6 +10,6 @@ var objorder = {
         decoration: ""
     }
 };
-var BFAPI = BF.order.add(objorder);
+var BFAPI = BFO.order.add(objorder);
 
 // file nay se duoc dung de gọi api xu ly order
