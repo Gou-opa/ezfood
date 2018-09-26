@@ -10,3 +10,12 @@
  - Phùng Đình Xuân
  - Lê Lương Tuấn Anh
  - Nguyễn Văn Long
+ --------------------------------
+##### Phase 1A: t2 24/09 - hết t4
+###### Front dùng bootstrap 4
+ - Tuấn Anh: promo, menu 
+ - Xuân: store manage, order
+##### Back: node
+ - Long: routing, connect DB và tạo các bảng mysql, mongo  (tối thứ 5 deliver)
+ - Hà: login dùng mysql nhận vào username và password đổ ra info của user = json 
+ - Tiến: api về order món ăn, định nghĩa object order
