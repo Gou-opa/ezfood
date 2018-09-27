@@ -15,7 +15,17 @@
 ###### Front dùng bootstrap 4
  - Tuấn Anh: promo, menu 
  - Xuân: store manage, order
-##### Back: node
- - Long: routing, connect DB và tạo các bảng mysql, mongo  (tối thứ 5 deliver)
- - Hà: login dùng mysql nhận vào username và password đổ ra info của user = json 
+###### Back: node
+ - Long: routing, connect DB và tạo các bảng mysql, mongo  (tối thứ 5 deliver) (done)
+ - Hà: login dùng mysql nhận vào username và password đổ ra info của user = json
  - Tiến: api về order món ăn, định nghĩa object order
+
+-------------------------------
+##### phase 1B: t5 27/09 - hết t7
+###### Front
+ - Merge 2 prototype giao diện
+ - Làm thêm giao diện dashboard
+ - Long: Học JS và cùng team front thêm UX vào UI
+###### Back:
+ - Hà: viết phương thức xử lý form sign up, login
+ - Tiến: Viết API DB xuất history order mongo cho MySQL; support viết nốt login signup
