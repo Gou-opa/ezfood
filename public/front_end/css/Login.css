@@ -1,0 +1,102 @@
+﻿body {
+    padding:0px;
+    margin:0px;
+    display:flex;
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+}
+*{
+    font-family:Arial;
+    font-size: 13px;
+}
+#background-image { /*style hinh nen*/
+    height: 100%;
+    width: 60%;
+    background-color: #0094ff;
+    background-image: url('/images/tu-vung-tieng-anh-trong-nha-hang.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 68% 0%;
+}
+#login-content {        /*style noi dung log in*/
+    height: 100%;
+    width: 40%;
+    min-width: 495px;
+    background: #FAC253;
+    border-radius: 5px;
+}
+#login-header {             /*phan header cua login*/
+    padding-left: 10px;
+    height: 60px;
+    background-color:#D5260B ;
+    border-radius: 5px;
+}
+    #userName{
+        margin-top: 5px;
+    }
+    #login-header #account {
+        display:flex;
+    }
+    #login-header input {
+        height: 20px;
+        width: 120px;
+        margin: 10px;
+        margin-top: 2px
+    }
+    #login-header a {
+        margin-top: -3px;
+        padding-left:30px;
+    }
+    #login-header .text-header {
+        height: 20px;
+        margin-top: 5px;
+        line-height:20px;
+        font-weight:bold;
+    }
+    #login-header #password {
+        height: 20px;
+        margin-top: 5px;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    #userName, #password {
+        display: flex;
+        padding-left:20px;
+    }
+#login-body {           /*phan sign up*/
+    height: calc(100% - 60px);
+    width: 100%;
+}
+    #login-body #title-sign-up{
+        height:30px;
+        width:100%;
+        text-align:center;
+        font-size:25px;
+        padding-top:100px;
+        font-weight:bold;
+    }
+    #account-info{
+        margin-top: 15%;
+        padding-left: 3%;
+    }
+    #login-body .text{
+        font-weight: bold;
+        width: 80px;
+    }
+    #account-info div{
+        padding-top: 10%;
+    }
+    #firstName-sign-up-input{
+        margin-left: 28px;
+    }
+    #userName-sign-up-input{
+        width: 375px;
+    }
+    #pass-sign-up-input{
+        margin-left: 38px;
+        width: 375px;
+    }
+
+
+
