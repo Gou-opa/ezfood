@@ -9,10 +9,10 @@
     font-family: Arial;
     font-size: 13px;
 }
-.sm-header{
-    height:48px;
-    width:100%;
-    padding:5px;
+.sm-header {
+    height: 48px;
+    width: 100%;
+    padding: 5px;
 }
     .sm-header .nav-item {
         padding-right:5px;
@@ -28,6 +28,7 @@
     #left-menu {
         height: 100%;
         width: 100px;
+        display:none;
     }
         #left-menu #avatar-image {
             width: 100%;
@@ -42,47 +43,46 @@
             height: 40px;
         }
 
-
-    #main-menu {
-        height: 100%;
-        background: #93d3f8;
-        width: calc(60% - 60px);
-        padding:15px;
+    .sm-content-menu{
+        width:100%;
+        padding:30px;
     }
-        #main-menu .btn-lg {
-            margin:5px;
-        }
-        #main-menu .card {
-            width: 100%;
+
+
+#main-menu {
+    padding: 15px;
+    box-shadow: -3px 5px 6px #888888;
+}
+            #main-menu .btn-lg {
+                margin:5px;
+            }
+            #main-menu .card {
+                width: 100%;
+                box-shadow: -3px 5px 6px #888888;
+            }
+            #main-menu .food-row {
+                margin-bottom:10px;
+            }
+
+
+        #right-menu {
             box-shadow: -3px 5px 6px #888888;
         }
-        #main-menu .food-row {
-            margin-bottom:10px;
-        }
-
-
-    #right-menu {
-        height: 100%;
-        background: #93d3f8;
-        width: calc(40% - 40px);
-        box-shadow: -3px 5px 6px #888888;
-    }
-        #right-menu .sm-right-header{
-            text-align:center;
-        }
-        #right-menu .sm-r-title{
-            font-weight:bold;
-            font-size:16px;
-        }
-        #right-menu .sm-right-order{
-            height:45%;
-        }
-        #right-menu .sm-line-rights {
-            margin-left:15%;
-            width: 70%;
-            height: 3px;
-            background-color: #59B0FA;
-        }
-        #right-menu #sm-pay{
-            margin-left:30%;
-        }
+            #right-menu .sm-right-header{
+                text-align:center;
+            }
+            #right-menu .sm-r-title{
+                font-weight:bold;
+                font-size:16px;
+            }
+            #right-menu .sm-right-order{
+                height:45%;
+            }
+            #right-menu .sm-line-rights {
+                margin-left:15%;
+                width: 70%;
+                height: 3px;
+            }
+            #right-menu #sm-pay{
+                margin-left:30%;
+            }
