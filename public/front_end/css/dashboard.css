@@ -1,0 +1,45 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+* {
+    font-family: Arial;
+    font-size: 13px;
+}
+.db-header {
+    height: 48px;
+    width: 100%;
+    padding: 5px;
+}
+    .db-header .nav-item {
+        padding-right:5px;
+    }
+
+
+.db-body {
+    width: 100vw;
+    height: calc(100vh - 58px);
+    padding:20px;
+}
+
+    .db-body .db-2-table-left {
+        box-shadow:5px 5px 5px #282828;
+    }
+
+        .db-body .db-table-left-1 {
+            display:block;
+            margin: 10px;
+            height:calc(50% - 20px);
+        }
+        .db-body .db-table-left-2 {
+            display:block;
+            margin: 10px;
+            height: calc(50% - 20px);
+        }
+    .db-body .db-table-right {
+        box-shadow: 5px 5px 5px #282828;
+        margin-left:20px;
+    }
