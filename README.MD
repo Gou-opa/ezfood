@@ -29,3 +29,7 @@
 ###### Back:
  - Hà: viết phương thức xử lý form sign up, login
  - Tiến: Viết API DB xuất history order mongo cho MySQL; support viết nốt login signup
+
+-------------------------------
+##### phase 1C: t7 29/09
+###### merge branch Front_end va Back_end vào master
