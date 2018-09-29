@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/Login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="lg-main row" style="margin: 0px">
+        <div id="login-content" class="col-lg-5 col-12 bg-white">
+            <ul class="nav nav-pills mb-3 bg-danger" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active btn-lg bg-danger text-white" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-lg bg-danger text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Đăng ký</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <h2 class="text-center">Đăng nhập</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên đăng nhập</label>
+                            <input type="text" id="Username-si" class="form-control" placeholder="Tên đăng nhập">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <input type="password" class="form-control" id="Password-si" placeholder="Mật khẩu">
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-lg">Đăng nhập</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <h2 class="text-center">Đăng ký</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên tài khoản</label>
+                            <input type="text" id="Username-su" class="form-control" placeholder="Tên đăng nhập">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Địa chỉ email</label>
+                            <input type="email" id="email-su" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Mật khẩu</label>
+                            <input type="password" class="form-control" id="Password-su" placeholder="Mật khẩu">
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-lg">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
