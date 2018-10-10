@@ -12,6 +12,7 @@ var url = 'mongodb://127.0.0.1:27017/ezfood';
 mongoose.url = url;
 
 mongoose.connect(url);
+mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function(){
@@ -24,5 +25,6 @@ var BF = {
     "storage": BF_S
 }
 db.BF=BF;
+db.schema = require('./orderpool_schema');
 //make a gateway for calling BF APIs
 module.exports = db;
