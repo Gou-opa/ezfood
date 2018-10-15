@@ -1,8 +1,13 @@
-.leftContent nav{
-    
+.mn-content{
+    height: calc(100vh - 100px);
+}
+.leftContent {
+    height: 100%;
 }
     .leftContent .tab-content{
         box-shadow: 0px 0px 10px #282828;
+        height: calc(100% - 76px);
+        
     }
     .leftContent .table-order{
         margin: 10px;
@@ -19,3 +24,43 @@
         background-color: #ff706a;
         margin: 0px 10px;
     }
+
+
+.rightContent{
+    height: 100%;
+}
+
+    .rightContent input{
+        width: 100%;
+    }
+    .rightContent .tab-content{
+        box-shadow: 0px 0px 10px #282828;
+    }
+    .rightContent .pay{
+        color: #ffffff;
+        background-color: #443F3F;
+        height: 50px;
+        border-radius: 10px;
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        background-image: url("../images/icon-thanh-toan.png");
+        background-size: 50px;
+        background-repeat: no-repeat;
+        background-position-x:100% ;
+    }
+    .rightContent .btn-danger{
+        background-color: #ff706a;
+        margin: 0px 10px;
+    }
+    .rightContent .tab-content{
+        height: calc( 100% - 76px);
+    }
+        .rightContent .tab-content .main-table{
+            height: calc(100% - 91px);
+            overflow:auto ;
+        }
+        .tab-pane, .menu-content{
+            height: 100%;
+        }
