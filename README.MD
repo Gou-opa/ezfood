@@ -33,3 +33,29 @@
 -------------------------------
 ##### phase 1C: t7 29/09
 ###### merge branch Front_end va Back_end vào master
+
+
+## RESTull APIs
+|Description                         | METHOD            |PAYLOAD            |
+|------------------------------------|-------------------|-------------------|
+Register & Login page
+|Register                            | POST              |{email : string,`  |
+|                                    |                   | password : string,|
+|                                    |                   | name : string }   |
+|Login                               | POST              |{email : string,`  |
+|                                    |                   | password : string}|
+Menu Page 
+|get menu (nav_filter)               |GET                |data : JSON_data_menu|
+|order_dish                          |POST               |data : JSON_data_one_dish|
+|get bill_view                       |GET                |data : JSON_data_order_list|
+|delete onedish                      |DELETE             |data : order_item|
+|update one dish to bill_view        |PUT                |{data : string} |
+|Send to manager                     |POST               |data : JSON_data_order_list |
+Manager Page
+|get table manager menu              |GET                |data : JSON_data_table_manager|
+|pick/unpick table                   |POST               |                              |
+|pick table to payment               |GET                |data : JSON_data_table_order_list|
+|delete dish                         |DELETE             |data : order_item |
+|payment                             |POST               |data : total_money|
+
+
