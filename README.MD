@@ -1,4 +1,5 @@
 # Hệ thống quản lý nhà hàng EasyFood
+### [Link tài liệu](https://docs.google.com/document/d/1n3-VIzdjiQkjYaNPRA3-Pe50zXvZwsuXCLKxOHHFIL4/edit?usp=sharing)
 #### Vấn đề thực tế và giải pháp thực tiễn:
  - Thời đại 4.0 thời đại của vạn vật kết nối, AI và Bigdata phần mềm (đặc biệt là website) chất lượng là mũi tên để thấy được trái tim của khách hàng . Tuy nhiên nhiều hộ kinh doanh nhà hàng vs doanh nghiệp chưa ứng dụng công nghệ đồng bộ trong quản lý, hiệu quả quản lý thấp, khó chạy các chương trình khách hàng trên tập dữ liệu rời rạc, ko chuẩn hóa.Dẫn đến khó khăn trong cả việc quản lý và bán hàng lẫn trải nghiệm người dùng .Ứng dụng Easy Food được phát triển để giải quyết vấn đề này .Từ quản lý dữ liệu kho , công nhân cho đến người dùng đều được lưu trữ và đồng bộ .
  - Ứng dụng là giải pháp thực tiễn để quản lý mô hình kinh doanh các cửa hàng và chuỗi cửa hàng ăn uống với mọi quy mô, từ cửa hàng gia đình cho đến các chuỗi cửa hàng lớn như KFC, MC Donald, …. 
