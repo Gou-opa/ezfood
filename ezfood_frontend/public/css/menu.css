@@ -1,5 +1,11 @@
 *{margin: 0; padding: 0;}
 
+ul#left_ul {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #8080804d;
+}
+
 /* right tab */
 .tab_right {
     padding: 10px;
@@ -98,7 +104,7 @@ label#total-money {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab a {
     background-color: inherit;
     float: left;
     border: none;
@@ -107,19 +113,21 @@ label#total-money {
     padding: 14px 16px;
     transition: all 400ms;
     font-size: 17px;
+    color: black;
 }
-.tablinks {
+.tab a {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
 /* Create an active/current tablink class */
-.tab button.active {
+.tab a.active {
     background-color: #ff706a;
+    color: white;
 }
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
+    display: grid;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
@@ -133,13 +141,11 @@ label#total-money {
     position: relative;
     border-radius: 4%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
 }
 
 .tabcontent .order_one_dish:hover .about_dish{
     opacity: 0.7;
     transition: all 300ms;
-   
     transform: translate3d(10px, 10px, -200px);
 }
 .tabcontent .order_one_dish:hover img.one_dash_img {

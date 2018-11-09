@@ -362,19 +362,7 @@
    -ms-transform: translate(50%, -50%) rotate(0deg);
 }
 
-body {
-   background-image: url(../images/Food.jpg);
-   background-position: center;
-   background-size: cover;
-   background-repeat: no-repeat;
-   min-height: 100vh;
-   font-family: 'Roboto', sans-serif;
-}
 
-body,
-html {
-   overflow: hidden;
-}
 
 .materialContainer {
    width: 100%;

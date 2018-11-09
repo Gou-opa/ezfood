@@ -89,7 +89,7 @@ label#total-money {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab a {
     background-color: inherit;
     float: left;
     border: none;
@@ -98,6 +98,7 @@ label#total-money {
     padding: 14px 10px;
     transition: all 400ms;
     font-size: 17px;
+    color: black;
 }
 .tablinks {
     border-top-left-radius: 30px;
@@ -110,7 +111,7 @@ label#total-money {
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
+    display: grid;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;

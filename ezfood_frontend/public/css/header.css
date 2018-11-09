@@ -2,7 +2,7 @@
 *{margin: 0px; padding: 0px}
 
 body {
-    background-color: antiquewhite;
+    background-color: #ececec;
     font-family: sans-serif;
 }
 
@@ -46,6 +46,7 @@ i.fa.fa-sort-desc {
     cursor: pointer;
     position: relative;
     top: -13px;
+    left: 5px;
 }
 
 h1{
@@ -81,7 +82,7 @@ h1{
     content: '';
     position: absolute;
     top: -20px;
-    right: 1rem;
+    right: 0.6em;
     width: 0;
     height: 0;
     border-style: solid;
