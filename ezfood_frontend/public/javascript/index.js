@@ -31,23 +31,27 @@ $(function() {
    });
 
    $(".button").click(function(e) {
-      var pX = e.pageX,
-         pY = e.pageY,
-         oX = parseInt($(this).offset().left),
-         oY = parseInt($(this).offset().top);
+      if($('#error').html()==''){
+        var pX = e.pageX,
+        pY = e.pageY,
+        oX = parseInt($(this).offset().left),
+        oY = parseInt($(this).offset().top);
 
-      $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-      $('.x-' + oX + '.y-' + oY + '').animate({
-         "width": "500px",
-         "height": "500px",
-         "top": "-250px",
-         "left": "-250px",
+        $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
+        $('.x-' + oX + '.y-' + oY + '').animate({
+            "width": "500px",
+            "height": "500px",
+            "top": "-250px",
+            "left": "-250px",
 
-      }, 600);
-      $("button", this).addClass('active');
+        }, 600);
+        $("button", this).addClass('active');
+      }
    })
 
    $(".alt-2").click(function() {
+      $("#reError").html("");
+      $("#error").html("");
       if (!$(this).hasClass('material-button')) {
          $(".shape").css({
             "width": "100%",
@@ -116,4 +120,69 @@ $(function() {
 
    });
 
+});
+function nameKeyUp(e) {
+    if (e.keyCode == 13) $("#pass").focus();
+}
+
+function renameKeyUp(e) {
+    $("#loi_hoten").html("");
+    if (e.keyCode == 13) $("#regpass").focus();
+}
+
+function repassKeyUp(e) {
+    if (e.keyCode == 13) $("#reregpass").focus();
+}
+function signInCheck(){
+    //xoa cac thong bao loi
+    $("#error").html("");   
+    //kiem tra loi
+    if ($("#name").val() == "" &&  $("#pass").val() == "" ) {
+        $("#error").html("Chưa nhập tên đăng nhập và mật khẩu.");
+    }
+    
+    if ($("#name").val() == "" &&  $("#pass").val() != "" ) {
+        $("#error").html("Chưa nhập tên đăng nhập.");
+    }
+    
+    if ($("#name").val() != "" &&  $("#pass").val() == "" ) {
+        $("#error").html("Chưa nhập mật khẩu.");
+    }
+}
+function signUpCheck(){
+    //xoa cac thong bao loi
+    $("#reError").html("");   
+    //kiem tra loi
+    if ($("#regname").val() == "" &&  $("#regpass").val() == "" ) {
+        $("#reError").html("Chưa nhập tên đăng nhập và mật khẩu.");
+    }
+    
+    if ($("#regname").val() == "" &&  $("#regpass").val() != "" ) {
+        $("#reError").html("Chưa nhập tên đăng nhập.");
+    }
+    
+    if ($("#regname").val() != "" &&  $("#regpass").val() == "" ) {
+        $("#reError").html("Chưa nhập mật khẩu.");
+    }
+    if ($("#regname").val() != "" &&  $("#regpass").val() != "" && $("#reregpass").val() == "") {
+        $("#reError").html("Chưa nhập lại mật khẩu.");
+    }
+    if ($("#regname").val() != "" &&  $("#regpass").val() != "" && $("#reregpass").val() != $("#regpass").val()) {
+        $("#reError").html("Hai mật khẩu không giống nhau.");
+    }
+    if ($("#regname").val() != "" &&  $("#regpass").val() != "" && $("#reregpass").val() == $("#regpass").val()) {
+        $("#reError").html("");
+        alert('Bạn đã đăng ký thành công!')
+        $(".alt-2").click();
+    }
+}
+$(document).ready(function(){  
+    //chuyen dong khi an enter  
+    $("#name").focus();
+    $("#name").keyup(nameKeyUp);
+    $("#rename").keyup(renameKeyUp);
+    $("#repass").keyup(repassKeyUp);
+    //xu ly su kien bam nut dang nhap/dang ky
+    $("#signIn").click(signInCheck);
+    $("#signUp").click(signUpCheck);
 });

@@ -375,6 +375,23 @@
    -ms-transform: translate(-50%, -50%);
 }
 
+#error{
+    top: 6%;
+    position: absolute;
+    color: #FF706A;
+    text-align: center;
+}
+#reError{
+    top: 6%;
+    position: absolute;
+    color: white;
+    text-align: center;
+    z-index: 100;
+}
+body{
+    background-image: url('../images/Food.jpg')
+}
+
 *,
 *:after,
 *::before {
