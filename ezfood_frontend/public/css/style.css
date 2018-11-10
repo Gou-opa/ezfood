@@ -389,12 +389,7 @@
     z-index: 100;
 }
 body{
-    background-image: url(../images/Food.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
+    background: #DEDDDD;
 }
 
 *,
