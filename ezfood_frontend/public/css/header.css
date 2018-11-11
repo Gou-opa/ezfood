@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800|Slabo+13px&subset=latin-ext,vietnamese');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 *{margin: 0px; padding: 0px}
 
 body {
@@ -14,7 +14,7 @@ p.dropdown-title {
 #nav_menu {
     margin-bottom: 25px;
     display: flex;
-    background-color: #ff706a;
+    background: linear-gradient(50deg,#ef3447,#ef3649bf);
     color: white;
     padding: 10px 22px;
     box-shadow: 2px 2px 14px grey;
@@ -26,6 +26,7 @@ p.dropdown-title {
     margin: 0px;
 }
 #nav_menu .nav_list .nav_item {
+    font-family: 'Montserrat', sans-serif;
     margin: 0 0.5rem;
 }
 #nav_avatar {
@@ -75,6 +76,7 @@ h1{
 }
 
 #nav_menu .dropdown-avatar.active{
+    z-index: 1;
     display: block;
     transform: scaleY(1);
 }
@@ -107,17 +109,17 @@ li.dropdown-content:hover{
 
 #left_menu {
     position: absolute;
-    background : white;
+    background: #ef3649;
     width: 100px;
     top: 58px;
     left: -100px;
     height: 90vh;
-    box-shadow: 0px 2px 14px rgb(218, 216, 216);
     border-radius: 3px;
     transition: 200ms;
 }
 
 #left_menu.active {
+    font-family: 'Montserrat', sans-serif;
     left: 0px;
     transition: 200ms;
     z-index: 1;
@@ -131,5 +133,6 @@ li.dropdown-content:hover{
 }
 #left_menu .menu_list li a {
     text-decoration: none;
-    color:black;
+    color: #ffffff;
+    font-weight: bold;
 }
