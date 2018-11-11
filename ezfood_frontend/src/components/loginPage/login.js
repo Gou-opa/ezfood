@@ -24,10 +24,13 @@ class Loggin extends Component {
 
     onLogin = (e) => {
         e.preventDefault();
-        this.setState ({
-            isLogin : true
-        })
-    }
+        if(this.state.txtUsername != '' && this.state.txtPassword !=''){
+            this.setState ({
+                isLogin : true
+            })
+        }
+        
+    }    
     render() {
 
         var { txtUsername, txtPassword } = this.state;
@@ -57,8 +60,9 @@ class Loggin extends Component {
                         <span className="spin" />
                     </div>
                     <div className="button login">
-                        <button type="submit">Đăng nhập</button>
+                        <button id="signIn" type="submit">Đăng nhập</button>
                     </div>
+                    <div className="error" id="error" />
                     <a href="true" className="pass-forgot">Quên mật khẩu?</a>
                 </form>
 
@@ -82,8 +86,9 @@ class Loggin extends Component {
                         <span className="spin" />
                     </div>
                     <div className="button">
-                        <button><span>Đăng ký</span></button>
+                        <button id="signUp"><span>Đăng ký</span></button>
                     </div>
+                    <div className="error" id="reError" />
                 </div>
             </div>
 
