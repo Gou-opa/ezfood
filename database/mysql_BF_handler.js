@@ -1,4 +1,4 @@
-var db = require('./mysql_handler');
+var db = require('./mysql_handler').bi_db;
 
 db.history = {
     query: function(query){
