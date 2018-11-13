@@ -5,7 +5,6 @@ var router = express.Router();
 var tablepool = require('../database/tablepool_schema');
 var levelpool = require('../database/levelpool_schema');
 var catalogpool = require('../database/catalog_schema');
-var menu = require('../database/dishpool_schema');
 var userpool = require('../database/userpool_schema');
 var orderpool = require('../database/orderpool_schema');
 
@@ -16,18 +15,7 @@ router.get('/', function(req, res) {
 router.get('/dashboard', function(req, res){
   res.send('dashboard');
 });
-router.post("/dish", function(req,res){
-  var dishform = req.body;
-  console.log("adding dish " + dishform);
-  menu.create(dishform, function(err,result){
-    if(err) throw err;
-    else {
-      console.log("1 dish added to menu");
-      console.log(result);
-    }
-  });
-  res.status(200).json({});
-});
+
 router.get('/menu', function(req, res){
   catalogpool.aggregate([{
     $lookup: {
@@ -45,10 +33,7 @@ router.get('/menu', function(req, res){
 router.get('/menu/trend', function(req, res){
   res.send('Foods trend');
 })
-router.get('/order', function(req, res){
-  
-  res.json({});
-})
+
 // "floor": [
 //   {
 //     "level": 1,
@@ -109,31 +94,12 @@ router.post("/table/pick", function(req,res){
   
 });
 
-router.post("/table/add", function(req,res){
-  var tableform = req.body;
-  console.log("adding table " + tableform);
-  tablepool.create(tableform, function(err,result){
-    if(err) throw err;
-    else {
-      console.log("1 table added");
-      console.log(result);
-    }
-  });
-  res.status(200).json({});
-});
-router.post("/level", function(req,res){
-  var levelform = req.body;
-  console.log("building level " + levelform);
-  levelpool.create(levelform, function(err,result){
-    if(err) throw err;
-    else {
-      console.log("1 level added");
-      console.log(result);
-    }
-  });
-  res.status(200).json({});
-});
 
+
+router.get('/order', function(req, res){
+  
+  res.json({});
+})
 router.get('/profile', function(req, res){
   res.send('profile');
 })
