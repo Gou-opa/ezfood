@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var menu = require('../database/dishpool_schema');
+var tablepool = require('../database/tablepool_schema');
+var levelpool = require('../database/levelpool_schema');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -45,5 +48,40 @@ router.get('/acction_history/serve', function(req, res, next){
 router.get('/acction_history/issue', function(req, res, next){
   res.send('acction_history issue');
 })
-
+router.post("/dish", function(req,res){
+  var dishform = req.body;
+  console.log("adding dish " + dishform);
+  menu.create(dishform, function(err,result){
+    if(err) throw err;
+    else {
+      console.log("1 dish added to menu");
+      console.log(result);
+    }
+  });
+  res.status(200).json({});
+});
+router.post("/table/add", function(req,res){
+  var tableform = req.body;
+  console.log("adding table " + tableform);
+  tablepool.create(tableform, function(err,result){
+    if(err) throw err;
+    else {
+      console.log("1 table added");
+      console.log(result);
+    }
+  });
+  res.status(200).json({});
+});
+router.post("/level", function(req,res){
+  var levelform = req.body;
+  console.log("building level " + levelform);
+  levelpool.create(levelform, function(err,result){
+    if(err) throw err;
+    else {
+      console.log("1 level added");
+      console.log(result);
+    }
+  });
+  res.status(200).json({});
+});
 module.exports = router;

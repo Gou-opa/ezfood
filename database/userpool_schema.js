@@ -2,11 +2,10 @@ var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
     uid: Number,
+    "username": String,
+    "password": String,
     "name": String,
-    username: String,
-    password: String,
-    name: String,
-    currentorder: Number
+    "currentorder": Number
 });
 
 userSchema.statics.findbyname = function(dishname){

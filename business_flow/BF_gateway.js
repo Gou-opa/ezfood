@@ -1,4 +1,4 @@
-var mongodb = require('./../database/mongo_handler');
+var mongodb = require('../database/mongoose_handler');
 var BFO = mongodb.BF.order;
 var objorder = {
     dishname: "Lợn hấp lá chanh",
