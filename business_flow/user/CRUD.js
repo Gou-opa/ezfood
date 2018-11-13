@@ -12,7 +12,7 @@ var user_api = {
             else console.log("User counted "+ res);
         });
     },
-    insertOne: function(objuser){
+    createUser: function(objuser){
         console.log("inserting...");
         pool.create(objuser, function(err,res){
             if(err) throw err;
@@ -49,16 +49,7 @@ var user_api = {
             }
         });  
     },
-    findOne: function(find_object_query){
-        pool.findOne(find_object_query, function(err,res){
-            if(err) throw err;
-            else {
-                console.log("In ra ket qua "+JSON.stringify(res));
-                //transporter = res.toObject();
-            }
-        });    
-        
-    },
+    
     deleteOne: function(find_object_query){
         pool.deleteOne(find_object_query, function(err,res){
             if(err) throw err;
@@ -94,5 +85,6 @@ var user_api = {
     text: "user said welcome to crud"
 };
 console.log("user said welcome to crud");
+
 
 module.exports = user_api;
