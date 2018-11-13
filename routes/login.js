@@ -6,11 +6,13 @@ router.get('/', function(req, res, next) {
   res.send('Welcome to login page');
 });
 
-router.use('/storekeeper', require('./storekeeper'))
-router.use('/customer', require('./customer'))
-router.use('/waiter', require('./waiter'))
-router.use('/manager', require('./manager'))
-router.use('/admin', require('./admin'))
 
+router.post('/', function(req,res){
+    var req.body
+});
+
+router.post('/register',function(req,res){
+
+});
 
 module.exports = router;
