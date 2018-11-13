@@ -1,0 +1,156 @@
+*{margin: 0px ;padding: 0px}
+.od_tables{
+    margin-top: 2%;
+}
+table.table.od_table_left{
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px grey;
+}
+
+td p {
+    margin: 1px;
+}
+
+.od_table_left td {padding: 5px;}
+
+span.badge.badge-secondary {
+    width: 30%;
+}
+
+span.badge.badge-danger {
+    width: 60%;
+}
+
+
+img {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+}
+
+button.btn.btn-secondary {
+    margin: 1% 1% 1% 0px;
+}
+
+h2{
+    margin-top: 3%;
+}
+
+/* phan cach 2 trang */
+
+.container.st_button {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+body {font-family: "Lato", sans-serif;}
+.st_table_1.col-sm-12 {
+    transition: all 0.3s;
+}
+
+.st_table_1.col-9.offset-3.col-sm-10.offset-sm-2.col-md-11.offset-md-1 {
+    transition: all 0.3s;
+}
+
+.tat {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #dad6d6;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10%;
+}
+
+i.fa.fa-chevron-left {font-size: 15px; color:grey}
+
+.left_menu.ra {
+    left: 0px;
+}
+
+.left_menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.left_menu ul li {
+    padding: 4px 10%;
+}
+.left_menu ul li:hover {
+    background: rgb(234, 234, 234);
+}
+
+
+ul.menu_list {
+    list-style: none;
+}
+
+.left_menu {
+    position: fixed;
+    top: 0px;
+    background: white;
+    height: 100%;
+    width: 15%;
+    border: 1px solid #d4c9c9;
+    left: -15%;
+    transition: all 0.3s;
+    z-index: 1;
+    box-shadow: 1px 0px 9px 0px #ada1a1;
+}
+
+.table-responsive.text-nowrap {
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px grey;
+}
+
+thead {
+    background: #383848;
+    color: white;
+    box-shadow: 1px 1px 19px #0a0a0a;
+}
+
+.container.st_table {
+    margin: 0 auto;
+}
+
+
+nav.navbar.navbar-expand-lg.navbar-light {
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 1px 1px 13px 0px grey;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top|fixed-bottom|sticky-top {
+    background-color: #137B68;
+}
+
+@media only screen and (max-width: 576px) {
+    .left_menu{
+        width: 30%;
+        left: -30%;
+    }
+
+}
+@media only screen and (min-width: 576px) {
+    .left_menu{
+        width: 25%;
+        left: -25%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .left_menu{
+        width: 20%;
+        left: -20%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .left_menu{
+        width: 15%;
+        left: -15%;
+    }
+}
+

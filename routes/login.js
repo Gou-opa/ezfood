@@ -7,12 +7,13 @@ router.get('/', function(req, res, next) {
 });
 
 
+
 router.post('/', function(req,res){
     var req.body
 });
 
 router.post('/register',function(req,res){
 
-});
+
 
 module.exports = router;
