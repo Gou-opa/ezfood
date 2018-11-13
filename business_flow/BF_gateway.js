@@ -61,4 +61,4 @@ var objlist =
 //BFO.deleteMany({dishname:"Lợn hấp lá chanh"});
 //BFO.paid("5babc7a12cefa02d082c7edc");
 // file nay se duoc dung de gọi api xu ly order\
-var bi_mysql = require('./../database/mysql_handler.js').bi_db;
+//var bi_mysql = require('./../database/mysql_handler.js').bi_db;

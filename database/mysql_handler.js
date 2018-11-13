@@ -6,7 +6,7 @@ var AWS_mysql_user_config = {
     database: "ezfood"
 };
 var Bi_Server_user_config = {
-    host: "192.168.1.5",
+    host: "127.0.0.1",
     user: "btl",
     password: "webky1nam3",
     database: "ezfood"

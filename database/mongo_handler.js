@@ -7,7 +7,7 @@ var BF_O = require('./../business_flow/order/CRUD');
 var BF_H = require('./../business_flow/history/CRUD');
 var BF_S = require('./../business_flow/storage/CRUD');
 var BF_R = require('./../business_flow/report/CRUD');
-
+var BF_U = require('./../business_flow/user/CRUD');
 var url = 'mongodb://127.0.0.1:27017/ezfood';
 mongoose.url = url;
 
@@ -22,9 +22,17 @@ var BF = {
     "order": BF_O,
     "history": BF_H,
     "report": BF_R,
-    "storage": BF_S
+    "storage": BF_S,
+    "user" : BF_U
 }
-db.BF=BF;
-db.schema = require('./orderpool_schema');
+db.BF = BF;
+db.schema = {
+    "orderschema": require('./orderpool_schema'),
+    "userschema": require('./userpool_schema')
+}
+
 //make a gateway for calling BF APIs
+console.log("mongohandler said welcome to mongoHandler");
+db.text = "welcome to mongoHandler";
+console.log("mongohandler said: "+db.BF.user.text);
 module.exports = db;
