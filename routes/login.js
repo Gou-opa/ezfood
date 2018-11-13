@@ -16,9 +16,9 @@ router.post('/', function(req,res){
 
 router.post('/register',function(req,res){
   var form = req.body;
-  db.insertOne(form, function(err, res){
+  db.insertOne(form, function(err, result){
     if(err) throw err;
-    else res.redirect('/login');
+    else result.redirect('/login');
   });
 });
 
