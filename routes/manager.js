@@ -3,7 +3,7 @@ var router = express.Router();
 var menu = require('../database/dishpool_schema');
 var tablepool = require('../database/tablepool_schema');
 var levelpool = require('../database/levelpool_schema');
-
+var orderpool = require('../database/orderpool_schema');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('Welcome to manager page');
@@ -36,11 +36,18 @@ router.get('/employee/customer', function(req, res, next){
 router.get('/employee/user', function(req, res, next){
   res.send('Manage lower class user');  
 })
-router.get('/acction_history', function(req, res, next){
+router.get('/delete_all_table', function(req, res, next){
+  tablepool.deleteMany({},function(err, result){
+    console.log(JSON.stringify(result));
+  });
   res.send('acction_history');
 })
-router.get('/acction_history/order', function(req, res, next){
-  res.send('acction_history order');
+router.get('/delete_all_order', function(req, res, next){
+  
+  orderpool.deleteMany({},function(err, result){
+    console.log(JSON.stringify(result));
+  });
+  res.send('acction_history');
 })
 router.get('/acction_history/serve', function(req, res, next){
   res.send('acction_history serve');
@@ -68,9 +75,10 @@ router.post("/table/add", function(req,res){
     else {
       console.log("1 table added");
       console.log(result);
+      res.status(200).json({});
     }
   });
-  res.status(200).json({});
+  
 });
 router.post("/level", function(req,res){
   var levelform = req.body;

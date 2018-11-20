@@ -6,7 +6,10 @@ var tableSchema = new mongoose.Schema({
     tid: String,
     num: Number,
     capacity: Number,
-    uid: String
+    ispick : {
+    	is : Boolean,
+    	uid: String
+    }
      
 });
 

@@ -32,6 +32,8 @@ app.use('/',
 	require('./routes/manager'))
 .use('/admin', 
 	require('./routes/admin'))
+.use('/images',
+	require('./routes/images'))
 .use('*', 
 	require('./routes/else'));
 
