@@ -4,8 +4,7 @@ import ManagerPage from './pages/ManagerPage/ManagerPage';
 import MenuPage from './pages/MenuPage/MenuPage';
 import Loggin from './components/login/login';
 import Register from './components/register/register';
-import Dashbroad from './components/dashboard/dashboard';
-import DashbroadPage from './pages/DashboardPage/DashboardPage';
+import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
 
 const routes = [
     {
@@ -30,13 +29,13 @@ const routes = [
     },
     {
         path : '/manager',
-        exact : false,
+        exact : true,
         main : ()=> <ManagerPage />
     },
     {
         path : '/dashboard',
         exact : false,
-        main : ()=> <DashbroadPage />
+        main : ()=> <DashBoardPage />
     },
     {
         path : '',

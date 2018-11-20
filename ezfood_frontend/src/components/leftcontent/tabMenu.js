@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-class Tab extends Component {
+class TabMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,7 +10,7 @@ class Tab extends Component {
     setActiveTab =(name) => {
         this.props.onReceiveTabActive(name);
     }
-
+    
     render() {
         // console.log(this.props.navTab);
         var tabname = this.props.navTab.map((tab, index)=>{
@@ -29,4 +29,4 @@ class Tab extends Component {
     }
 }
 
-export default Tab;
+export default TabMenu;

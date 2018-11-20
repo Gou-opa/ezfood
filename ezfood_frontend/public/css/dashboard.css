@@ -1,47 +1,28 @@
-﻿.container-dashboard{
-    background: #c4c4c4;
+﻿
+.row{
+    padding: 30px 60px 0px 30px;
 }
-.dashboard-box{
-    background: #ffffff;
-    font-size: 1.2em;
-    margin: 3vw;
-    width: 20%;
-    height: 25vh;
-    border-radius: 5%;
-    box-shadow: 3px 5px 5px #4d4d4d;
+div.card{
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 12px; 
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
-.dashboard-box .da-box-header{
-    text-align: center;
-}
-.row-dashboard{
-    display: flex;
-}
-.table-box{
-    background: #ffffff;
-    margin: 20px auto;
-    width: 80vw;
-    max-height: 70vh;
-    border-radius: 3%;
-
-
-}
-.container-dashboard tbody tr:nth-child(even) {background: #FFF}
-.container-dashboard tbody tr:nth-child(odd) {background: #CCC}
-.table-box .box-header{
-    font-size: 1.5em;
-    text-align: center;
+.card .card-header:first-child{
     font-weight: bold;
+    font-size: 1em;
+    padding: 15px 15px 0;
+    border: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px
 }
-.table-box .table-footer{
-    text-align: center;
-    color: #4d4d4d;
+div.card-footer {
+    padding: 0 15px 15px;
+    background-color: transparent;
+    color: #66615b;
+    border: 0;
+    border-top: 0px solid rgba(0,0,0,.125);;
 }
-.table-box table{
-    border-collapse:collapse;
-    margin: auto;
-}
-.table-box th,td{
-    border: 1px solid black;
-    text-align: center;
-    
+
+.col-lg-6, .col-lg-2{
+    margin-right: -10px;
 }

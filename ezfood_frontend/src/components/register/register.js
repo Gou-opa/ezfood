@@ -6,11 +6,10 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            display: '',
+            name: '',
             username: '',
             password: '',
             isSignup :false,
-            cout : 5
         }
     }
 
@@ -25,22 +24,20 @@ class Register extends Component {
 
     onHandleSubmit(event) {
         event.preventDefault();
-        var {display, username, password} = this.state;
+        var {name, username, password} = this.state;
         console.log(this.state);
-        var x = this.state.cout;
-        callApi(`users/${x+1}.json`, 'POST', {
-            display : display,
+        callApi(`login/register`, 'POST', {
+            name : name,
             username : username,
             password : password
         }).then(res => {
             this.setState ({
                 isSignup : true,
-                cout : x +1
             })
         })
     }
     render() {
-      var {display, username, password} = this.state;
+      var {name, username, password} = this.state;
       if(this.state.isSignup === true) {
         return <Redirect to= '/login'/>
     }
@@ -51,9 +48,9 @@ class Register extends Component {
                     <div className="input">
                         <input type="text"
                             placeholder="Họ và Tên"
-                            name="display"
+                            name="name"
                             id="regname"
-                            value ={display}
+                            value ={name}
                             onChange={this.onHandleChange.bind(this)}
                         />
                         <span className="spin" />

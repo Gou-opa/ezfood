@@ -9,7 +9,7 @@ const menus = [
     },
     {
         name : 'Manager',
-        to : '/manager/tang1',
+        to : '/manager',
         exact :true
     },
     {
@@ -80,7 +80,7 @@ class Header extends Component {
                             <ul className={avatarActive}>
                                 <p className="dropdown-title">Your Profile</p>
                                 <li className="dropdown-content">Setting</li>
-                                <li className="dropdown-content"><Link to ="/">Log out</Link></li>
+                                <li className="dropdown-content"><Link to ="/" onClick ={() =>{localStorage.clear()}}>Log out</Link></li>
                             </ul>
                         </li>
                     </ul>

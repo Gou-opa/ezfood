@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect ,Link} from 'react-router-dom';
 import callApi from '../../service/APIservice'
+// import callApiAo from '../../service/APIao'
 class Loggin extends Component {
     constructor(props)  {
         super(props)
@@ -11,14 +12,14 @@ class Loggin extends Component {
             check : []
         }
     }
-    componentDidMount() {
-        callApi('users.json', 'GET', null).then(res => {
-            this.setState({
-                check : res.data
-            })
-         })
-    
-    }
+    // componentDidMount() {
+    //     callApiAo('users', 'GET', null).then(res => {
+    //         this.setState({
+    //             check : res.data
+    //         })
+    //      })
+    // }
+
     onChange=(e)=> {
         var target = e.target;
         var name = target.name;
@@ -31,28 +32,38 @@ class Loggin extends Component {
     onLogin = (e) => {
         e.preventDefault();
         var {txtUsername, txtPassword} = this.state;
-        var users = this.state.check;
-        var temp = false;
-        for(let i =0; i< users.length; i++) {
-            if(users[i].username === txtUsername && users[i].password === txtPassword && users[i].username !== '' && users[i].password !== '' ) {
-                temp = true;
-            }
-        }
-
-        if(temp === false) {
-            alert("Tai khoan khong chinh xac !");
+        if(txtPassword === '' || txtUsername === '')  {
+            alert('Moi ban nhap tai khoan va mat khau !')
         } else {
-            this.setState ({
-                isLogin : true
-            })
+            callApi('login', 'POST', {
+                username : txtUsername,
+                password : txtPassword
+            }).then(res => {
+                if(res.status === 200 ) {
+                    localStorage.setItem('uid', res.data.uid);
+                    this.setState({
+                        isLogin :true
+                    })
+                } else if(res.status === 299){
+                    alert('Tài khoản hoặc mật khẩu không chính xác !')
+                }
+             })
+
+        //    this.setState({
+        //        isLogin : true
+        //    })
+
+
         }
-        
+       
+      
     }
 
     render() {
+        console.log(this.state.check)
         var { txtUsername, txtPassword } = this.state;
         if(this.state.isLogin === true) {
-            return <Redirect to= '/menu'/>
+            return <Redirect to= '/manager'/>
         } 
         return (
             <div id="login_style">

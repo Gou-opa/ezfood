@@ -1,12 +1,11 @@
 import axios from 'axios';
-import * as Config from '../constants/config';
-
 export default function callApi(endpoint, method, body) {
     return   axios({
         method : method,
-        url : `${Config.API_URL}/${endpoint}`,
+        url : `http://chitbi.ddns.net:4004/${endpoint}`,
         data : body
     }).catch(err => {
         console.log(err);
     })
 }
+
