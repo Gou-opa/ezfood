@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/header.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav id="nav_menu">
+        <ul class="nav_list">
+            <li class="nav_item" id="nav_side">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </li>
+            <li class="nav_item" id="nav_logo">
+                EZ FOOD
+            </li>
+
+            <li class="nav_item" id="nav_avatar">
+                <img src="../images/guest_biopic-holland_1.jpg" alt="">
+                <i class="fas fa-2x fa-sort-down" aria-hidden="true" id="icon"></i>
+                <ul class="dropdown-avatar">
+                    <p class="dropdown-title">Your Profile</p>
+                    <li class="dropdown-content">Setting</li>
+                    <li class="dropdown-content">Log out</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- left menu -->
+    <div id="left_menu">
+        <ul class="menu_list">
+            <li><a href="dashboard.html">Dashbroad</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="manager.html">Manager</a></li>
+        </ul>
+    </div>
+    <!-- end nav -->
+    <div class="container-fruid">
+        <!-- begin report -->
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Bàn sử dụng</h4>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="text-align: left" ;> Đang sử dụng: 26</h4>
+                        <h4 style="text-align: left" ;> còn trống: 12</h4>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fas fa-table"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Doanh thu</h4>
+                    </div>
+                    <div class="card-body">
+                        <h3 style="text-align: left" ;> 1.200.000đ</h3>
+                    </div>
+                    <div class="card-footer">
+                        <i class="far fa-calendar-alt"></i>
+                        Hôm nay
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Báo Cáo</h4>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart" height="60px"></canvas>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fas fa-info-circle"></i>
+                        Doanh thu tuần này
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- begin left column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Yêu Cầu</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Thời gian</th>
+                                    <th scope="col">Bàn</th>
+                                    <th scope="col">Món</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Lựa chọn</th>
+                                    <th scope="col">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">10 phút</th>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15 phút</th>
+                                    <td>1a2</td>
+                                    <td>Phở</td>
+                                    <td>2</td>
+                                    <td>Không hành</td>
+                                    <td>Nấu xong</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12 phút</th>
+                                    <td>1a3</td>
+                                    <td>Tôm hùm</td>
+                                    <td>2</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10 phút</th>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15 phút</th>
+                                    <td>1a2</td>
+                                    <td>Phở</td>
+                                    <td>2</td>
+                                    <td>Không hành</td>
+                                    <td>Nấu xong</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12 phút</th>
+                                    <td>1a3</td>
+                                    <td>Tôm hùm</td>
+                                    <td>2</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">10 phút</th>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">15 phút</th>
+                                    <td>1a2</td>
+                                    <td>Phở</td>
+                                    <td>2</td>
+                                    <td>Không hành</td>
+                                    <td>Nấu xong</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">12 phút</th>
+                                    <td>1a3</td>
+                                    <td>Tôm hùm</td>
+                                    <td>2</td>
+                                    <td>không</td>
+                                    <td>Đang nấu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- end cardbody-->
+                </div>
+                <div class="card" style="margin-top: 10px;">
+                    <div class="card-header">
+                        <h4>Lịch sử đặt món</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Khách hàng</th>
+                                    <th scope="col">Thời gian gọi món</th>
+                                    <th scope="col">Bàn</th>
+                                    <th scope="col">Món</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Lựa chọn</th>
+                                    <th scope="col">Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tuấn Anh</th>
+                                    <td>15 phút</td>
+                                    <td>1a1</td>
+                                    <td>Tôm hùm</td>
+                                    <td>1</td>
+                                    <td>không</td>
+                                    <td>1 000 000 </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fas fa-history"></i>
+                        Lịch sử gần đây
+                    </div>
+                </div>
+            </div>
+            <!-- end left column -->
+            <!-- begin right column -->
+            <div class="col-lg-6">
+                <div class="card" style="border-radius: 12px; box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);">
+                    <div class="card-header">
+                        <h4>Nguyên Liệu</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nguyên liệu</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Cần thêm</th>
+                                    <th scope="col">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Tôm hùm</th>
+                                    <td>3kg</td>
+                                    <td>1kg</td>
+                                    <td>Đã nhập</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt bò</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt gà</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tôm hùm</th>
+                                    <td>3kg</td>
+                                    <td>1kg</td>
+                                    <td>Đã nhập</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt bò</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt gà</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tôm hùm</th>
+                                    <td>3kg</td>
+                                    <td>1kg</td>
+                                    <td>Đã nhập</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt bò</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt gà</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tôm hùm</th>
+                                    <td>3kg</td>
+                                    <td>1kg</td>
+                                    <td>Đã nhập</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt bò</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt gà</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tôm hùm</th>
+                                    <td>3kg</td>
+                                    <td>1kg</td>
+                                    <td>Đã nhập</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt bò</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thịt gà</th>
+                                    <td>2kg</td>
+                                    <td>2kg</td>
+                                    <td>Đang vận chuyển</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fas fa-fire"></i>
+                        Lịch sử nhập xuất nguyên liệu
+                    </div>
+                </div>
+            </div>
+            <!-- end left column -->
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="../javascript/dashbroad.js"></script>
+    <script src="../javascript/header.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
