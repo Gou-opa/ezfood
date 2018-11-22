@@ -6,11 +6,19 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            display: '',
             username: '',
             password: '',
             isSignup :false,
+            cout : 5
         }
+    }
+
+    checkInfo = () => {
+        if(this.state.username == '' || this.state.password == '' || this.state.display == ''){
+            return false;
+        }
+        else return true;
     }
 
     onHandleChange(event) {
@@ -24,20 +32,27 @@ class Register extends Component {
 
     onHandleSubmit(event) {
         event.preventDefault();
-        var {name, username, password} = this.state;
+        var {display, username, password} = this.state;
         console.log(this.state);
-        callApi(`login/register`, 'POST', {
-            name : name,
-            username : username,
-            password : password
-        }).then(res => {
-            this.setState ({
-                isSignup : true,
+        var x = this.state.cout;
+        if (this.checkInfo() == true) {
+            callApi(`users/${x+1}.json`, 'POST', {
+                display : display,
+                username : username,
+                password : password
+            }).then(res => {
+                this.setState ({
+                    isSignup : true,
+                    cout : x +1
+                })
             })
-        })
+        }
+        else{            
+                alert('Vui Lòng nhập đầy đủ thông tin tài khoản !');
+        }
     }
     render() {
-      var {name, username, password} = this.state;
+      var {display, username, password} = this.state;
       if(this.state.isSignup === true) {
         return <Redirect to= '/login'/>
     }
@@ -48,9 +63,9 @@ class Register extends Component {
                     <div className="input">
                         <input type="text"
                             placeholder="Họ và Tên"
-                            name="name"
+                            name="display"
                             id="regname"
-                            value ={name}
+                            value ={display}
                             onChange={this.onHandleChange.bind(this)}
                         />
                         <span className="spin" />
