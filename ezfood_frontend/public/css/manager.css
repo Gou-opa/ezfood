@@ -90,6 +90,7 @@ label#total-money {
 
 /* Style the buttons inside the tab */
 .tab a {
+    text-decoration: none !important;
     background-color: inherit;
     float: left;
     border: none;

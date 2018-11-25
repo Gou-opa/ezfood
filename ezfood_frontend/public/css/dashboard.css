@@ -1,5 +1,8 @@
-﻿.row {
-    padding: 10px 30px 0px 30px;
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+.row {
+    padding: 10px 50px 0px 50px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 div.card {
@@ -40,6 +43,7 @@ div.card-footer {
     ;
 }
 .card-footer:last-child {
+    font-size: smaller;
     border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
     text-align: left;
 }
