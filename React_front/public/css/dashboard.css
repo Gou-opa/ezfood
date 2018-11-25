@@ -1,13 +1,33 @@
-﻿
-.row{
-    padding: 30px 60px 0px 30px;
-}
-div.card{
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+.row {
+    padding: 10px 50px 0px 50px;
     font-family: 'Montserrat', sans-serif;
-    border-radius: 12px; 
-    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
-.card .card-header:first-child{
+
+div.card {
+    border: 0px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .15);
+}
+
+div.card-body>table {
+    width: 100%;
+}
+
+div.card-body>h3,
+h4 {
+    text-align: left;
+}
+
+#cardyeucau div.card {
+    margin-top: 10px;
+}
+
+.card .card-header:first-child {
+    background-color: rgba(0,0,0,0);
+    text-align: left;
     font-weight: bold;
     font-size: 1em;
     padding: 15px 15px 0;
@@ -15,14 +35,33 @@ div.card{
     border-top-left-radius: 12px;
     border-top-right-radius: 12px
 }
+
 div.card-footer {
     padding: 0 15px 15px;
     background-color: transparent;
     color: #66615b;
     border: 0;
-    border-top: 0px solid rgba(0,0,0,.125);;
+    border-top: 0px solid rgba(0, 0, 0, .125);
+    ;
+}
+.card-footer:last-child {
+    font-size: smaller;
+    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+    text-align: left;
 }
 
-.col-lg-6, .col-lg-2{
+.col-lg-6,
+.col-lg-2 {
     margin-right: -10px;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #404040;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: .4px;
+    background: #eee;
+    padding-top: 30px;
 }

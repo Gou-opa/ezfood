@@ -4,11 +4,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
+    "chart.js": "^2.7.3",
+    "react": "^16.6.3",
+    "react-bootstrap-table": "^4.3.1",
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-router-tabs": "^1.2.0",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "react-table": "^6.8.6",
+    "reactstrap": "^6.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,12 +24,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy" : "http://chitbi.ddns.net:4004"
+  "proxy": "http://chitbi.ddns.net:4004"
 }

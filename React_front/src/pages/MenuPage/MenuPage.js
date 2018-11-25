@@ -84,6 +84,7 @@ class MenuPage extends Component {
     }
     render() {
         var {data,dishpicked} = this.state;
+        console.log(this.state);
         return (
             <div>
                 <Header />
