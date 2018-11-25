@@ -59,4 +59,12 @@ Manager Page
 |delete dish                         |DELETE             |data : order_item |
 |payment                             |POST               |data : total_money|
 
+| Dashbroad      |     |                                                         |
+|----------------|-----|---------------------------------------------------------|
+| Bàn            | GET | { tableused: , tableavailabe: }                         |
+| Doanh thu      | GET | { saleToday: }                                          |
+| Doanh thu tuần | GET | { mon: , tue: , wed: , thu: ,fri: ,sat: , sun: }        |
+| Lịch sử        | GET | {id:  ,time:  ,amountMoney: }                           |
+| Yêu Cầu        | GET | {time: , table: , dish: , amount: , option: , status: } |
+| Nguyên Liệu    | GET | {resources: , amount: , need: , status: }               |
 
