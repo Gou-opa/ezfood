@@ -25,7 +25,7 @@ class Chart extends Component{
               {
                 label:'Doanh thu',
                 data: [35, 10, 35, 42, 36, 66, 69],
-                backgroundColor: "#ef3447",
+                backgroundColor: "#ff6491",
                 borderColor: '#ffc107',
               }
             ]

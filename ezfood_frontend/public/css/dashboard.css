@@ -6,6 +6,7 @@
 }
 
 div.card {
+    border: 0px;
     font-family: 'Montserrat', sans-serif;
     border-radius: 12px;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .15);
@@ -25,6 +26,7 @@ h4 {
 }
 
 .card .card-header:first-child {
+    background-color: rgba(0,0,0,0);
     text-align: left;
     font-weight: bold;
     font-size: 1em;
