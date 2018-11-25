@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800|Slabo+13px&subset=latin-ext,vietnamese');
+*{margin: 0px; padding: 0px}
+
+body {
+    background-color: #ececec;
+    font-family: sans-serif;
+}
+
+p.dropdown-title {
+    margin: 8px;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+#nav_menu {
+    margin-bottom: 25px;
+    display: flex;
+    background-color: #ff706a;
+    color: white;
+    padding: 10px 22px;
+    box-shadow: 2px 2px 14px grey;
+}
+#nav_menu .nav_list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0px;
+}
+#nav_menu .nav_list .nav_item {
+    margin: 0 0.5rem;
+}
+#nav_avatar {
+    position: absolute;
+    right: 2rem;
+}
+#nav_logo {
+    font-size: 30px;
+    font-family: initial;
+    font-weight: bold;
+}
+i.fa.fa-bars {
+    font-size: 30px;
+    cursor: pointer;
+}
+i.fa.fa-sort-desc {
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    top: -13px;
+    left: 5px;
+}
+
+h1{
+    margin: 0px;
+}
+#nav_avatar img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+#nav_menu .dropdown-avatar {
+    position: absolute;
+    top :120%;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+    transition: 200ms;
+    background: white;
+    color: black;
+    width: 120px;
+    right: -1rem;
+    list-style: none;
+    box-shadow: 0 4px 10px rgb(216, 206, 206);
+    text-align: center
+}
+
+#nav_menu .dropdown-avatar.active{
+    display: block;
+    transform: scaleY(1);
+}
+#nav_menu .dropdown-avatar::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 0.6em;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent;
+    border-bottom-color: white;
+}
+li.dropdown-content {
+    padding: 4px 12px;
+}
+li.dropdown-content a {
+    color: black;
+}
+li.dropdown-content:hover{
+    background-color: #ffc1078a;
+    cursor: pointer;
+}
+
+#menu .dropdown-avatar p.dropdown-title {
+    margin-top: 6px;
+    border-bottom: 1px solid rgb(177, 172, 172);
+}
+
+/* start left_menu */
+
+#left_menu {
+    position: absolute;
+    background : white;
+    width: 100px;
+    top: 58px;
+    left: -100px;
+    height: 90vh;
+    box-shadow: 0px 2px 14px rgb(218, 216, 216);
+    border-radius: 3px;
+    transition: 200ms;
+}
+
+#left_menu.active {
+    left: 0px;
+    transition: 200ms;
+    z-index: 1;
+}
+#left_menu .menu_list li {
+    padding: 10px;
+    border-bottom: 1px solid #80808042;
+}
+#left_menu .menu_list li:hover {
+    background-color: #ffc1078a;
+}
+#left_menu .menu_list li a {
+    text-decoration: none;
+    color:black;
+}
