@@ -4,6 +4,11 @@ import {Col, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstra
 class TableNumber extends Component{
 
     render(){
+        var data = [{ 
+                tableused: 35,
+                tableavailabe: 15
+        }]
+
         return(
             <Col lg="2" sm="12">
                 <Card className="card">
@@ -11,10 +16,13 @@ class TableNumber extends Component{
                         <CardTitle>Số lượng bàn</CardTitle>
                     </CardHeader>
                     <CardBody>
+                        <h3 className="font-light"> {data.map( x => x.tableused )} </h3>
+                        <p className="text-muted"> Bàn đang phục vụ</p>
+                        <hr/>
+                        <h3 className="font-light"> {data.map( x => x.tableavailabe )}</h3>
+                        <p className="text-muted"> Bàn còn trống</p>
                     </CardBody>
-                    <CardFooter>
-                        <i className="fa fa-table"></i>
-                    </CardFooter>
+                    
                 </Card>  
             </Col>
         );

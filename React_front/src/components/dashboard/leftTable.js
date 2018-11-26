@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import History from "./history";
 import Demand from "./demand";
-import {Col, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
+import {Col } from 'reactstrap';
 
 
 class LeftTable extends Component{

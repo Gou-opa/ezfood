@@ -6,7 +6,6 @@ import Loggin from './components/login/login';
 import Register from './components/register/register';
 import DashbroadPage from './pages/DashboardPage/DashboardPage';
 
-
 const routes = [
     {
         path : '/',
