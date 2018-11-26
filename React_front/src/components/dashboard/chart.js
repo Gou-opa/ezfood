@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ChartLine from './chartLine';
 import {Col, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
-
+import posed from 'react-pose'
 
 class Chart extends Component{
 
@@ -34,15 +34,26 @@ class Chart extends Component{
     }
 
     render(){
+        const Box = posed.div({
+            focusable: true,
+            hoverable: true,
+            pressable: true,
+            init: { scale: 1 },
+            hover: { scale: 1.1 },
+            press: { scale: 1.05}
+        })
+
         return(
             <Col lg="7" md="12" sm="12">
                 <Card>
                     <CardHeader >
                         <CardTitle>Báo cáo</CardTitle>
                     </CardHeader>
+                    <Box>
                     <CardBody >
                         <ChartLine chartData={this.state.chartData} legendPosition="top" />
                     </CardBody>
+                    </Box>
                     <CardFooter >
                         <i className="fa fa-info-circle"></i> Doanh thu tuần này
                     </CardFooter>
