@@ -5,6 +5,7 @@ import MenuPage from './pages/MenuPage/MenuPage';
 import Loggin from './components/login/login';
 import Register from './components/register/register';
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
+import EditMenu from './pages/EditMenu/EditMenu';
 
 const routes = [
     {
@@ -36,6 +37,11 @@ const routes = [
         path : '/dashboard',
         exact : false,
         main : ()=> <DashBoardPage />
+    },
+    {
+        path : '/editmenu',
+        exact : false,
+        main : ()=> <EditMenu />
     },
     {
         path : '',
