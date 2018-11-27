@@ -1,9 +1,8 @@
 .editMenuAdd{
-    width: 40vw;
-    height: 65vh;
     margin: auto;
     box-shadow: 0px 0px 5px #000000;
     padding-top: 5vh;
+    float: top;
 }
 .editMenuAdd .rightContentEdit{
     display: inline-block;
@@ -15,12 +14,15 @@
 .editMenuAdd .leftContentEdit{
   display: inline-block;
   float: left;
-  width: 55%;
+  width: 53%;
 
 }
 .editMenuAdd .typeDishRadio{
     text-align: left;
 
+}
+.editMenuAdd .typeDishRadio:hover{
+  cursor:default;
 }
 .editMenuAdd .radioInput{
   margin: 5px;
@@ -29,11 +31,14 @@
   width: 15vw;
   height: 2em;
   margin: 5px;
+  border-radius: 5px;
 }
 .editMenuAdd .priceDishAdd{
   width: 15vw;
   height: 1.5em;
   margin: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 .editMenuAdd h3{
     margin-left: 15px;
@@ -42,6 +47,7 @@
 
 .editMenuAdd .imgPreview
   {
+    background: #ECECEC;
     text-align: center;
     margin: 5px 15px;
     height: 12rem;
@@ -61,6 +67,7 @@
   {
     width: 100%;
     margin-top: 20px;
+    
   }
   
 .editMenuAdd .submitButton

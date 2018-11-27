@@ -53,7 +53,7 @@ class EditContent extends Component {
         }
     
         return (
-          <div className="editMenuAdd">
+          <div className="editMenuAdd tab_right">
             <div className="leftContentEdit">
                 <form onSubmit={(e)=>this._handleSubmit(e)}>
                 <input className="fileInput" 
