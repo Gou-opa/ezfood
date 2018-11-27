@@ -11,11 +11,12 @@ class Table extends Component {
         }
     }
 
-    onPickTable = (id) => {
-
+    onPickTable = (id, num) => {
+        localStorage.setItem('numOftable',num )
         callApi('waiter/table/pick', 'POST', {
             uid : localStorage.getItem('uid'),
-            tid : id
+            tid : id,
+            is : true
         }).then(res => {
             console.log(res.data);
             if(res.status === 200 ) {
@@ -31,6 +32,7 @@ class Table extends Component {
     }
 
     render() {
+        console.log(this.props.table)
         if(this.state.isPick === true) {
             return <Redirect to= '/menu'/>
         } 
@@ -46,8 +48,7 @@ class Table extends Component {
                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
-                    <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table._id)}>{displayPick}</button>
-                    <button className="ban_payment">Payment</button>
+                    <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table._id, table.num)}>{displayPick}</button>
                 </div>
             </div>
         );

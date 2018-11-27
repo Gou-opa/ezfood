@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TabManager from './tabManager';
-import TabContentManager from '../tabcontent/tabcontentManager';
+import TabPickTable from './tabPickTable';
+import TabContentPickTable from '../tabcontent/tabcontentPickTable';
 
-class LeftContentManager extends Component {
+class LeftContentPickTable extends Component {
 
     constructor(props) {
         super(props);
@@ -32,11 +32,11 @@ class LeftContentManager extends Component {
     //    var {tablePicked} = this.props
         return (
             <div className="left_tap">
-                <TabManager navTab = {navTab} tabdefault={this.state.tabdefault} onReceiveTabActive={this.onActiveTab}/>
-                <TabContentManager tabdefault = {this.state.tabdefault} data= {tables}/>
+                <TabPickTable navTab = {navTab} tabdefault={this.state.tabdefault} onReceiveTabActive={this.onActiveTab}/>
+                <TabContentPickTable tabdefault = {this.state.tabdefault} data= {tables}/>
             </div>
         );
     }
 }
 
-export default LeftContentManager;
+export default LeftContentPickTable;

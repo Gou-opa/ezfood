@@ -49,3 +49,10 @@
     #login-content .btn-lg {
                 margin:5px;
             }
+
+@media (max-width : 800px) {
+    #login_style {
+        width: 90%;
+    }
+    
+}

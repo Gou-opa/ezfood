@@ -60,10 +60,10 @@ class Loggin extends Component {
     }
 
     render() {
-        console.log(this.state.check)
+        // console.log(this.state.check)
         var { txtUsername, txtPassword } = this.state;
         if(this.state.isLogin === true) {
-            return <Redirect to= '/manager'/>
+            return <Redirect to= '/picktable'/>
         } 
         return (
             <div id="login_style">

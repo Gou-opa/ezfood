@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Table from '../table/table';
 
-
-class TabContentManager extends Component {
+class TabContentPickTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,4 +46,4 @@ class TabContentManager extends Component {
     }
 }
 
-export default TabContentManager;
+export default TabContentPickTable;

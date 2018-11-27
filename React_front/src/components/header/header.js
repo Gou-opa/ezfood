@@ -8,6 +8,11 @@ const menus = [
         exact :true
     },
     {
+        name : 'Pick Table',
+        to : '/picktable',
+        exact :true
+    },
+    {
         name : 'Manager',
         to : '/manager',
         exact :true

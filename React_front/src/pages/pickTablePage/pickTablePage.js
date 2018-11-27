@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import callApi from '../../service/APIservice'
 import Header from '../../components/header/header';
 import {Redirect} from 'react-router-dom'
-import OrderListManager from '../../components/orderlist/orderlistmanager';
-import LeftContentManager from './LeftContentManager';
-class ManagerPage extends Component {
+import LeftContentPickTable from '../../components/leftcontent/leftcontenPickTable';
+import QuangCao from './quancao';
+class PickTablePage extends Component {
     componentWillMount() {
         if(localStorage.getItem('uid') === null) {
             return;
@@ -34,8 +34,8 @@ class ManagerPage extends Component {
             <div>
                 <Header />
                 <div id = "wrap">
-                <LeftContentManager data= {data} tablePicked={tablePicked}/>
-                <OrderListManager />
+                <LeftContentPickTable data= {data} tablePicked={tablePicked}/>
+                <QuangCao />
                 </div>
             </div>
 
@@ -43,4 +43,4 @@ class ManagerPage extends Component {
     }
 }
 
-export default ManagerPage;
+export default PickTablePage;

@@ -13,7 +13,6 @@ class LeftContentMenu extends Component {
     }
 
     onActiveTab(params) {
-      
         this.setState({
             tabdefault : params
         });

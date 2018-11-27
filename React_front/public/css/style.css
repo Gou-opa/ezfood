@@ -1,5 +1,6 @@
 .box {
     position: relative;
+    left: 5%;
     top: 2em;
     opacity: 1;
     float: left;
@@ -171,3 +172,26 @@
     list-style-type: none;
     outline: none;
  }
+ @media (max-width : 800px) {
+    .box {
+        top: 0;
+    }
+    div#login_style, div#register_style{
+        width: 80%;
+        margin: 3rem auto;
+    }
+}
+
+@media (max-width : 1024px) {
+    div#login_style, div#register_style{
+        width: 60%;
+        margin: 3rem auto;
+    }
+}
+
+@media (max-width : 600px) {
+    div#login_style, div#register_style{
+        width: 100%;
+        margin: 3rem auto;
+    }
+}
