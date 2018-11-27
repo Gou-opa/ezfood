@@ -4,14 +4,26 @@ var menu = require('../database/dishpool_schema');
 var tablepool = require('../database/tablepool_schema');
 var levelpool = require('../database/levelpool_schema');
 var orderpool = require('../database/orderpool_schema');
+var userpool = require('../database/userpool_schema');
+var historypool = require('../database/historypool_schema');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('Welcome to manager page');
 });
 
-router.get('/dashboard', function(req, res, next){
-  res.send('manager dashboard');
-})
+router.get('/table', function(req, res, next){
+  res.json(
+    [
+      { 
+        "booked": 15
+      },
+      {
+        "empty": 30
+      }
+    ]
+    
+  );
+});
 router.get('/orderwait', function(req, res, next){
   res.send('order waiting');
 })
@@ -54,10 +66,10 @@ router.get('/acction_history/serve', function(req, res, next){
 })
 router.get('/acction_history/issue', function(req, res, next){
   res.send('acction_history issue');
-})
+});
 router.post("/dish", function(req,res){
   var dishform = req.body;
-  console.log("adding dish " + dishform);
+  console.log("adding dish " + JSON.stringify(dishform));
   menu.create(dishform, function(err,result){
     if(err) throw err;
     else {
@@ -78,7 +90,6 @@ router.post("/table/add", function(req,res){
       res.status(200).json({});
     }
   });
-  
 });
 router.post("/level", function(req,res){
   var levelform = req.body;
@@ -92,4 +103,101 @@ router.post("/level", function(req,res){
   });
   res.status(200).json({});
 });
+
+router.get("/order/preview/:id" , function(req, res){
+  var oid = req.params.id;
+  orderpool.findById(oid, function(err, order){
+    if(err) console.log("order not found");
+    else {
+      console.log("found");
+      res.json(order);
+    }
+      
+  });
+})
+/*
+             
+              
+              
+              
+              
+*/
+router.post('/paid', function(req, res){
+  var table = req.body.tid;
+  
+  var histo = {};
+  console.log("Thanh toan "+ table);
+  tablepool.findOne({"tid": table}, function(err,tableinfo){
+    
+                       
+    if(err) console.log("table not found");
+    else if(JSON.stringify(tableinfo) == "null") console.log("sai tid");
+    else {
+      //console.log(tableinfo);
+      
+      histo.user = {"uid" : tableinfo.ispick.uid} ;
+      histo.table = {
+        "level" : tableinfo.level,
+        "num": tableinfo.num,
+        "capacity": tableinfo.capacity,
+        "tid": tableinfo.tid
+      };
+      histo.discount = {
+        "discount_id": "",
+        "value": 10,
+        "discount_type": 1 // 0 la not defined, 1 la percent, 2 la $
+      };
+      
+      tablepool.updateOne({"tid": table}, {$set :{"ispick": {"is":false, "uid":"", "oid": ""} }}, function(err, output){
+        var orderid_on_table = tableinfo.ispick.oid;
+        orderpool.findById(orderid_on_table, function(err, order){
+          if(err) res.status(409).json({});
+          else {
+            console.log(order);
+            histo.dishes = order.dishes;
+            histo.create_time = order.create;
+            
+            histo.estimate = 0;
+            for(var i = 0; i< histo.dishes.length; i++){
+              histo.estimate += histo.dishes[i].quantity * histo.dishes[i].dish.price;
+            }
+            console.log("server count the monney = "+ histo.estimate);
+            
+              if (histo.discount.type ==1) histo.billed = histo.estimate*(100-histo.discount.value)/100;
+              else if(histo.discount.type == 2) histo.billed = histo.estimate - histo.discount.value ;
+              else histo.billed = histo.estimate;
+
+              userpool.findById(histo.user.uid, function(err, userfound){
+                if(err) console.log("notfound user");
+                else {
+                  console.log("user la: "+ userfound);
+                  histo.user.name = userfound.name;
+                  console.log("history la: " + JSON.stringify(histo));
+                  
+                  orderpool.findByIdAndDelete(orderid_on_table, function(err, outp){
+                    if(err) console.log("cant delete order");
+                    else {
+                      historypool.create(histo, function(err, success){
+                        if(err) console.log("cant save history "+err);
+                        else res.status(200).json(
+                          {
+                            "server_estimate": histo.estimate,
+                            "billed":histo.billed
+                          });
+                      });
+                    }
+                  });
+                };
+              });
+            
+          };
+        });
+      });
+      
+    };
+
+  });
+});
+      
+ 
 module.exports = router;

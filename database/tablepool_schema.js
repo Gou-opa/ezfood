@@ -8,7 +8,8 @@ var tableSchema = new mongoose.Schema({
     capacity: Number,
     ispick : {
     	is : Boolean,
-    	uid: String
+        uid: String,
+        oid: String
     }
      
 });
