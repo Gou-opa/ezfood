@@ -1,22 +1,47 @@
 import React, { Component } from 'react';
+import callApi from '../../service/APIservice';
+import { Redirect ,Link} from 'react-router-dom';
 
 class EditContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            filename: "",
             file: '',
-            imagePreviewUrl: '',
-            dishName: '',
-            disPrice: 0,
+            url: '',
+            name: '',
+            price: 0,
             isAdded: false,
-            typeDish: '1'
+            type: 1,
+            unit:''
         };
       }
     
       _handleSubmit(e) {
         e.preventDefault();
-        // TODO: do something with -> this.state.file
-        
+        var{type,name,price,unit,filename} =this.state;
+        console.log(this.state);
+        if(this.checkInfo() == true ){
+          callApi(`manager/dish`, 'POST', {
+            type : type,
+            name : name,
+            price : price,
+            unit: unit,
+            filename: filename
+          }).then(res => {
+              console.log(res);
+              if(res.status == 200){
+                alert('thêm món thành công');
+              }
+          })
+          callApi(`manager/dish`, 'POST', this.state.file).then(res => {
+              console.log(res);
+              
+          })
+        }
+        else{
+          alert("Vui lòng nhập đầy đủ thông tin món ăn!");
+        }
       }
     
       _handleImageChange(e) {
@@ -27,13 +52,23 @@ class EditContent extends Component {
     
         reader.onloadend = () => {
           this.setState({
+            filename: file.name,
             file: file,
-            imagePreviewUrl: reader.result
+            url: reader.result
           });
         }
     
         reader.readAsDataURL(file)
       }
+      checkInfo = () =>{
+        if(this.state.price == '' || this.state.name == '' ||  this.state.type =='' || this.state.unit ==''){
+          return false;
+        }
+        else{
+          
+          return true;
+        }
+      } 
       onHandleChange(event) {
             var target = event.target;
             var name = target.name;
@@ -42,12 +77,12 @@ class EditContent extends Component {
                 [name]: value
             });
         }
-    
+        
       render() {
-        let {imagePreviewUrl} = this.state;
+        let {url} = this.state;
         let $imagePreview = null;
-        if (imagePreviewUrl) {
-          $imagePreview = (<img src={imagePreviewUrl} />);
+        if (url) {
+          $imagePreview = (<img src={url} />);
         } else {
           $imagePreview = (<div className="previewText">Vui lòng chọn hình ảnh minh họa cho món ăn</div>);
         }
@@ -60,29 +95,39 @@ class EditContent extends Component {
                     type="file" 
                     onChange={(e)=>this._handleImageChange(e)} />
                     <input className="nameDishAdd"
-                    name="dishName"
+                    name="name"
                     type="text"
                     placeholder="Tên món ăn"
                     onChange={this.onHandleChange.bind(this)}
                     />
+                    <input className="nameDishAdd"
+                    name="unit"
+                    type="text"
+                    placeholder="Đơn vị"
+                    onChange={this.onHandleChange.bind(this)}
+                    />
                     <input className="priceDishAdd"
-                    name="dishPrice"
+                    name="price"
                     type="number"
                     placeholder="Giá tiền"
                     onChange={this.onHandleChange.bind(this)}
                     />
-                    <div class="typeDishRadio">
+                    <div className="typeDishRadio">
                       <div className="radioInput">
-                        <input type="radio" name="typeDish" value="1" />Khai vị
+                        <input type="radio" name="type" value="1" 
+                        onChange={this.onHandleChange.bind(this)}/>Khai vị
                       </div>
                       <div className="radioInput">
-                        <input type="radio" name="typeDish" value="2" />Món chính
+                        <input type="radio" name="type" value="2" 
+                        onChange={this.onHandleChange.bind(this)}/>Món chính
                       </div>
                       <div className="radioInput">
-                        <input type="radio" name="typeDish" value="3" />Tráng Miệng
+                        <input type="radio" name="type" value="3" 
+                        onChange={this.onHandleChange.bind(this)}/>Tráng Miệng
                       </div>
                       <div className="radioInput">
-                        <input type="radio" name="typeDish" value="4" />Đồ Uống
+                        <input type="radio" name="type" value="4"
+                        onChange={this.onHandleChange.bind(this)}/>Đồ Uống
                       </div>
                     </div>
                       {/* <input type="radio" name="typeDish" value="2" />Món chính
