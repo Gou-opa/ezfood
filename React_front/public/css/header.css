@@ -95,6 +95,7 @@ li.dropdown-content {
     padding: 4px 12px;
 }
 li.dropdown-content a {
+    text-decoration: none;
     color: black;
 }
 li.dropdown-content:hover{
