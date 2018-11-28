@@ -18,7 +18,7 @@ class ChartLine extends Component{
   render(){
     return (
       <div className="chart">
-        <Line  height="60px"
+        <Line  height="70px"
           data={this.state.chartData}
           options={{
             title:{

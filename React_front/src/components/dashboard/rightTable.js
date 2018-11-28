@@ -8,8 +8,7 @@ class RightTable extends Component{
 
     componentWillMount() {
         callApi( 'storekeeper/all', 'GET', null).then(res => {
-            //  console.log(res.data.menu);
-            console.log(res.data.storage);
+            // console.log(res.data.storage);
            this.setState({
                data : res.data.storage
            })
@@ -25,7 +24,7 @@ class RightTable extends Component{
 
 
     render(){
-        const { data } = this.state;
+        const  {data}  = this.state;
         return(
             <Col lg="6">
                 <Card>
