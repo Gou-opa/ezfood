@@ -1,0 +1,18 @@
+.process {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    width: auto;
+    margin: 10px;
+    padding: 10px;
+}
+
+.process .box-border{
+    border : 1px solid grey;
+    margin: 10px;
+    padding : 10px;
+    cursor: pointer;
+    background: #61dafb9e;
+    border-radius: 5%;
+}

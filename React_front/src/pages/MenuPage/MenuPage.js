@@ -58,6 +58,18 @@ class MenuPage extends Component {
             return true;
         })
         
+        var _data = {
+            dish: dish,
+            order_id:localStorage.getItem('orderid')
+           
+        }
+
+        console.log(dish);
+        callApi('waiter/order/add', 'POST', _data).then(res => {
+            console.log(res.data)
+        })
+
+
         dishpicked.push(dish);
         let totalMoney = this.countTotalMoney(dishpicked)
         localStorage.setItem('totalMoney', totalMoney);

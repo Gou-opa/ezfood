@@ -3,26 +3,34 @@ import callApi from '../../service/APIservice';
 
 class TablePayment extends Component {
 
-    hadlePayment = (id) => {
-        console.log(id)
-        callApi( `waiter/table`, 'POST', {
-            tid : id
-        }).then(res => {
-           console.log(res.data);
-         })
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPick : this.props.table.ispick.is
+        }
+    }
 
+    hadlePreview = (id) => {
+        console.log(id)
+        callApi( `manager/order/preview/${id}`, 'GET', null).then(res => {
+           console.log(res);
+           this.props.handledishes(res.data.dishes);
+         })
     }
 
     render() {
         var {table} = this.props;
         var x = 'reservations';
+        if(this.state.isPick === true) {
+            x = 'reservations picked'
+        }
         return (
             <div className = {x}>
                 <div className="ban_content">
                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
-                    <button className="ban_datcho" onClick = {this.hadlePayment.bind(this, table._id)}>Thanh toán</button>
+                    <button className="ban_datcho" onClick = {this.hadlePreview.bind(this, table.ispick.oid)}>Thanh toán</button>
                 </div>
             </div>
         );

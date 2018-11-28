@@ -6,8 +6,7 @@ class Table extends Component {
     constructor(props) {
         super(props);
         this.state={
-            isPick : false,
-            displayPick : 'Pick'
+            isPick : this.props.table.ispick.is,
         }
     }
 
@@ -15,8 +14,7 @@ class Table extends Component {
         localStorage.setItem('numOftable',num )
         callApi('waiter/table/pick', 'POST', {
             uid : localStorage.getItem('uid'),
-            tid : id,
-            is : true
+            tid : id
         }).then(res => {
             console.log(res.data);
             if(res.status === 200 ) {
@@ -25,22 +23,25 @@ class Table extends Component {
                 alert('tai khoan khong chinh xac !')
             }
          })
-        this.setState ({
-            isPick : true,
-            displayPick : 'Picked'
-        })
+         this.setState({
+             displayPick : 'Picked'
+         })
+         localStorage.setItem("picked", true)
+         localStorage.setItem("tid" , id);
     }
 
     render() {
-        console.log(this.props.table)
-        if(this.state.isPick === true) {
+        var {table} = this.props;
+        console.log(table);
+        if(JSON.parse(localStorage.getItem("picked")) === true) {
             return <Redirect to= '/menu'/>
         } 
-        var {table} = this.props;
-        var {isPick,displayPick} = this.state;
+        var {isPick} = this.state;
         var x = 'reservations';
+        var y = 'Pick';
         if(isPick === true) {
             x = 'reservations picked';
+            y = 'Picked'
         }
         return (
             <div className = {x}>
@@ -48,7 +49,7 @@ class Table extends Component {
                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
-                    <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table._id, table.num)}>{displayPick}</button>
+                    <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table.tid, table.num)}>{y}</button>
                 </div>
             </div>
         );

@@ -33,7 +33,7 @@ class LeftContentManager extends Component {
         return (
             <div className="left_tap">
             <TabManager navTab = {navTab} tabdefault={this.state.tabdefault} onReceiveTabActive={this.onActiveTab}/>
-            <TabContentManager tabdefault = {this.state.tabdefault} data= {tables}/>
+            <TabContentManager tabdefault = {this.state.tabdefault} data= {tables} handledishes={this.props.handledishes}/>
             </div>
         );
     }

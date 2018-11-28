@@ -25,5 +25,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://chitbi.ddns.net:4004"
+  "proxy": "http://chitbi.ddns.net:4004",
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "style-loader": "^0.23.1"
+  }
 }

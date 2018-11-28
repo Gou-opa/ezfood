@@ -30,6 +30,7 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
         path = {to}
         exact={activeOnlyWhenExact}
         children={({match})=> {
+            // localStorage.removeItem("picked")
             return (
                 <li><Link to ={to}>{label}</Link></li>
             )

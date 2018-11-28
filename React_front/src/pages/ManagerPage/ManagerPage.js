@@ -19,12 +19,20 @@ class ManagerPage extends Component {
         super(props);
         this.state = {
             data : [],
-            tablePicked : []
+            dishes : []
         }
     };
 
-    render() {
+    handledishes(datas) {
+    console.log(datas);
+       this.setState({
+           dishes : datas
+       })
+    }
 
+    render() {
+        localStorage.removeItem("picked")
+        var dishes = this.state.dishes;
         if(localStorage.getItem('uid') === null) {
             return <Redirect to= '/login' />
         }
@@ -34,8 +42,8 @@ class ManagerPage extends Component {
             <div>
                 <Header />
                 <div id = "wrap">
-                <LeftContentManager data= {data} tablePicked={tablePicked}/>
-                <OrderListManager />
+                <LeftContentManager data= {data} tablePicked={tablePicked} handledishes={this.handledishes}/>
+                <OrderListManager dishes ={dishes}/>
                 </div>
             </div>
 

@@ -20,6 +20,7 @@ class TabContentManager extends Component {
                    key={index}
                    table={table}
                    dishpicked={dishpicked}
+                   handledishes={this.props.handledishes}
                    />
                 )
             })
