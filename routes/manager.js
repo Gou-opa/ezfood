@@ -34,12 +34,15 @@ router.get('/order', function(req, res, next){
         tablepool.findOne({"ispick": {"uid" : allorder[i].uid}} , function(err, thistable){
           if(err) console.log("khong tim thay uid cua ban")
           else {
+            console.log("order nay la " + allorder[i] + "\n se them thong tin cua table nay");
             console.log(JSON.stringify(thistable));
+            /*
             allorder[i].table = 
             {
               "level": "",
               "num" : ""
             };
+            */
             res.json(allorder);
           }
         })
