@@ -4,7 +4,7 @@ import ManagerPage from './pages/ManagerPage/ManagerPage';
 import MenuPage from './pages/MenuPage/MenuPage';
 import Loggin from './components/login/login';
 import Register from './components/register/register';
-import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
+import DashbroadPage from './pages/DashboardPage/DashboardPage';
 
 const routes = [
     {
@@ -29,13 +29,13 @@ const routes = [
     },
     {
         path : '/manager',
-        exact : true,
+        exact : false,
         main : ()=> <ManagerPage />
     },
     {
         path : '/dashboard',
         exact : false,
-        main : ()=> <DashBoardPage />
+        main : ()=> <DashbroadPage />
     },
     {
         path : '',

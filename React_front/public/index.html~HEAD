@@ -5,23 +5,20 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   <meta name="theme-color" content="#000000">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- menu -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/header.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/menu.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/manager.css">
-  <link rel="stylesheet" href="%PUBLIC_URL%/css/dashboard.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800|Slabo+13px&amp;subset=latin-ext,vietnamese" rel="stylesheet">
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
   <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
-  <!-- add boostrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <title>EzFood</title>
+  <title>React App</title>
 </head>
 
 <body>
