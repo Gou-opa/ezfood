@@ -13,8 +13,8 @@ app.set('view engine', 'ejs');
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
-app.use(bodyParser.json({limit: '1000000kb'}));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
