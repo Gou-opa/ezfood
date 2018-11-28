@@ -24,8 +24,19 @@ router.get('/table', function(req, res, next){
     
   );
 });
-router.get('/orderwait', function(req, res, next){
-  res.send('order waiting');
+router.get('/order', function(req, res, next){
+  orderpool.aggregate([{
+    $lookup: {
+        from: "tablepools", // collection name in db
+        localField: "_id",
+        foreignField: "ispick.oid",
+        as: "table"
+    }
+  }]).exec(function(err, result) {
+    if(err) throw err;
+    else res.json(result);
+  });
+  
 })
 router.get('/ingredient', function(req, res, next){
   res.send('ingredient');
