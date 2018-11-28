@@ -28,12 +28,15 @@ router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
     for(var i = 0 ; i< allorder.length ; i++ ){
       tablepool.findOne({"uid" : allorder[i].uid} , function(err, thistable){
-        allorder[i].table = 
-        {
-          "level": thistable.level,
-          "num" : thistable.num
-        };
-        res.json(allorder);
+        if(err) console.log("khong tim thay uid cua ban")
+        else {
+          allorder[i].table = 
+          {
+            "level": thistable.level,
+            "num" : thistable.num
+          };
+          res.json(allorder);
+        }
       })
     }
   })
