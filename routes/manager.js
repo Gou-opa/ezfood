@@ -25,19 +25,19 @@ router.get('/table', function(req, res, next){
   );
 });
 router.get('/order', function(req, res, next){
-  orderpool.aggregate([{
-    $lookup: {
-        from: "tablepools", // collection name in db
-        localField: "_id",
-        foreignField: "ispick.oid",
-        as: "table"
+  orderpool.find(function(err, allorder){
+    for(var i = 0 ; i< allorder.length ; i++ ){
+      tablepool.findOne({"uid" : allorder[i].uid} , function(err, thistable){
+        allorder[i].table = 
+        {
+          "level": thistable.level,
+          "num" : thistable.num
+        };
+        res.json(allorder);
+      })
     }
-  }]).exec(function(err, result) {
-    if(err) throw err;
-    else res.json(result);
-  });
-  
-})
+  })
+});
 router.get('/ingredient', function(req, res, next){
   res.send('ingredient');
 })

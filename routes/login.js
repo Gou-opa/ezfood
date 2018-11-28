@@ -31,8 +31,10 @@ router.post('/', function(req,res){
           delete user.password;
           delete user.username;
           user.uid = result._id;
-          
-          res.status(200).json(user);
+          orderpool.findOne({"uid": user.uid}, function(err, order){
+            user.order = order._id;
+            res.status(200).json(user);
+          });
         }
         else res.status(299).json({"result": "user or pass"});
       }
