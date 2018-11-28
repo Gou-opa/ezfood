@@ -127,7 +127,8 @@ router.post('/order/add', function(req, res){
                 "price": newdish.price,
                 "unit": newdish.unit
             },
-            quantity: 1
+            quantity: 1,
+            status: 1
             
           };
 

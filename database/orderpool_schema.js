@@ -14,7 +14,8 @@ var orderpoolSchema = new mongoose.Schema({
     [
         {
             dish: dishSchema,
-            quantity: Number
+            quantity: Number,
+            status: Number // 1 la dang cho, 2 la nau xong, 3 la da phuc vu
             
         }
     ],
