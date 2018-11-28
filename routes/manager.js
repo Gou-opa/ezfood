@@ -24,6 +24,16 @@ router.get('/table', function(req, res, next){
     
   );
 });
+
+var multer = require('multer');
+
+var uploading = multer({
+  dest: './React_front/imanges'
+})
+
+router.post('/upload', uploading, function(req, res) {
+  res.status(200).json({});
+});
 router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
     if(err) console.log("cant get order");
