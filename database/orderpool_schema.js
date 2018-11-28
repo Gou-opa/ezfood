@@ -19,6 +19,7 @@ var orderpoolSchema = new mongoose.Schema({
         }
     ],
     uid: String,
+    tid: String,
     estimate: Number,
     status: Number, // 1 là init, 2 là dang gọi đang ăn, 3 là chờ thanh toán
     create: {type:Date, default:Date.now}

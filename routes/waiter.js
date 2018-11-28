@@ -68,6 +68,7 @@ router.post("/table/pick", function(req,res){
   orderpool.count(function(err, count) {
     var order = {
       "uid": customer,
+      "tid": table,
       "status" : 1
     }
     orderpool.create(order, function(err, resu){
