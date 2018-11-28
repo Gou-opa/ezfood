@@ -2,76 +2,27 @@ import React, { Component } from 'react';
 import {Col, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 // react table
 import ReactTable from "react-table";
+import callApi from '../../service/APIservice'
 
 class RightTable extends Component{
 
-    constructor() {
-        super();
-        this.state = {
-          data: [{
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt chó",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt bò",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt mèo",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt mèo",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            },
-            { 
-                resources: "Thịt mèo",
-                amount: "2kg",
-                need: "2.2kg",
-                status: "Đang vận chuyển"
-            }    
-        ]
-            
-        }
+    componentWillMount() {
+        callApi( 'storekeeper/all', 'GET', null).then(res => {
+            //  console.log(res.data.menu);
+            console.log(res.data.storage);
+           this.setState({
+               data : res.data.storage
+           })
+        })
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            data : []
+        }
+    };
+
 
     render(){
         const { data } = this.state;
@@ -94,17 +45,22 @@ class RightTable extends Component{
                             {
                                 width: "16%",
                                 Header: "Nguyên Liệu",
-                                accessor: "resources"
+                                accessor: "name"
                             },
                             {
                                 width: "16%",
                                 Header: "Số lượng",
-                                accessor: "amount",
+                                accessor: "quantity",
                             },
                             {
                                 width: "22%",
-                                Header: "Cần thêm",
-                                accessor: "need"
+                                Header: "Ngày nhập",
+                                accessor: "import-date"
+                            },
+                            {
+                                width: "22%",
+                                Header: "Ngày xuất",
+                                accessor: "expire-date"
                             },
                             {
                                 width: "10%",

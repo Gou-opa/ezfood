@@ -39,7 +39,7 @@ class Chart extends Component{
             hoverable: true,
             pressable: true,
             init: { scale: 1 },
-            hover: { scale: 1.1 },
+            hover: { scale: 1.07 },
             press: { scale: 1.05}
         })
 
