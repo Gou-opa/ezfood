@@ -2,7 +2,7 @@
 *{margin: 0px; padding: 0px}
 
 body {
-    background-color: #ececec;
+    background-color: #f6f6f6 !important;
     font-family: sans-serif;
 }
 
@@ -12,9 +12,10 @@ p.dropdown-title {
 }
 
 #nav_menu {
+    height: 58px;
     margin-bottom: 25px;
     display: flex;
-    background-color: #ff706a;
+    background: linear-gradient(20deg,#ef3447,#ff6491,#f6ac9a);
     color: white;
     padding: 10px 22px;
     box-shadow: 2px 2px 14px grey;
@@ -45,7 +46,6 @@ i.fa.fa-sort-desc {
     font-size: 30px;
     cursor: pointer;
     position: relative;
-    top: -13px;
     left: 5px;
 }
 
@@ -71,7 +71,8 @@ h1{
     right: -1rem;
     list-style: none;
     box-shadow: 0 4px 10px rgb(216, 206, 206);
-    text-align: center
+    text-align: center;
+    z-index: 1;
 }
 
 #nav_menu .dropdown-avatar.active{
@@ -111,13 +112,14 @@ li.dropdown-content:hover{
 #left_menu {
     position: absolute;
     background : white;
-    width: 100px;
+    width: 200px;
     top: 58px;
-    left: -100px;
+    left: -200px;
     height: 90vh;
     box-shadow: 0px 2px 14px rgb(218, 216, 216);
     border-radius: 3px;
     transition: 200ms;
+    z-index: 1;
 }
 
 #left_menu.active {
