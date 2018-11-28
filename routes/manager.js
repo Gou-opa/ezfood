@@ -28,6 +28,7 @@ router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
     if(err) console.log("cant get order");
     else {
+      allorder = JSON.parse(allorder);
       console.log(JSON.stringify(allorder));
     
       for(var i = 0 ; i< allorder.length ; i++ ){
