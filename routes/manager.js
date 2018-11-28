@@ -26,19 +26,24 @@ router.get('/table', function(req, res, next){
 });
 router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
-    for(var i = 0 ; i< allorder.length ; i++ ){
-      tablepool.findOne({"ispick": {"uid" : allorder[i].uid}} , function(err, thistable){
-        if(err) console.log("khong tim thay uid cua ban")
-        else {
-          console.log(JSON.stringify(thistable));
-          allorder[i].table = 
-          {
-            "level": "",
-            "num" : ""
-          };
-          res.json(allorder);
-        }
-      })
+    if(err) console.log("cant get order");
+    else {
+      console.log(JSON.stringify(allorder));
+    
+      for(var i = 0 ; i< allorder.length ; i++ ){
+        tablepool.findOne({"ispick": {"uid" : allorder[i].uid}} , function(err, thistable){
+          if(err) console.log("khong tim thay uid cua ban")
+          else {
+            console.log(JSON.stringify(thistable));
+            allorder[i].table = 
+            {
+              "level": "",
+              "num" : ""
+            };
+            res.json(allorder);
+          }
+        })
+      }
     }
   })
 });
