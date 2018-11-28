@@ -6,6 +6,14 @@ var levelpool = require('../database/levelpool_schema');
 var orderpool = require('../database/orderpool_schema');
 var userpool = require('../database/userpool_schema');
 var historypool = require('../database/historypool_schema');
+const busboy = require('connect-busboy');   // Middleware to handle the file upload https://github.com/mscdex/connect-busboy
+const path = require('path');               // Used for manipulation with path
+const fs = require('fs-extra'); 
+
+
+
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('Welcome to manager page');
@@ -13,19 +21,17 @@ router.get('/', function(req, res, next) {
 
 router.get('/table', function(req, res, next){
   res.json(
-    [
+    
       { 
-        "booked": 15
-      },
-      {
+        "booked": 15,
         "empty": 30
       }
-    ]
+    
     
   );
 });
 
-const path = require("path");
+
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -55,8 +61,20 @@ router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
     if(err) console.log("cant get order");
     else {
+      orderpool.aggregate([{
+        $lookup: {
+            from: "tablepools", // collection name in db
+            localField: "tid",
+            foreignField: "tid",
+            as: "tables"
+        }
+      }]).exec(function(err, result) {
+        if(err) throw err;
+        else res.json(result);
+      });
+            
       
-            res.json(allorder);
+      
           
     }
   })
@@ -102,6 +120,12 @@ router.get('/acction_history/issue', function(req, res, next){
   res.send('acction_history issue');
 });
 router.post("/dish", function(req,res){
+  upload(req, res, function(err) {
+    if (err) {
+        return res.end("Something went wrong!");
+    }
+    return res.send(200).end();
+  });
   var dishform = req.body;
   console.log("adding dish " + JSON.stringify(dishform));
   menu.create(dishform, function(err,result){
@@ -111,7 +135,7 @@ router.post("/dish", function(req,res){
       console.log(result);
     }
   });
-  res.status(200).json({});
+  //res.status(200).json({});
 });
 router.post("/table/add", function(req,res){
   var tableform = req.body;
