@@ -30,7 +30,7 @@ var fs = require("fs");
 var upload = multer({ dest: __dirname+ '/images/'});
 
 // File input field name is simply 'file'
-app.post('/upload', upload.single('file'), function(req, res) {
+router.post('/upload', upload.single('file'), function(req, res) {
   var file = __dirname + '/React_front/' + req.file.filename;
   fs.rename(req.file.path, file, function(err) {
     if (err) {
