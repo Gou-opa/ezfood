@@ -30,10 +30,11 @@ router.get('/order', function(req, res, next){
       tablepool.findOne({"ispick": {"uid" : allorder[i].uid}} , function(err, thistable){
         if(err) console.log("khong tim thay uid cua ban")
         else {
+          console.log(JSON.stringify(thistable));
           allorder[i].table = 
           {
-            "level": thistable.level,
-            "num" : thistable.num
+            "level": "",
+            "num" : ""
           };
           res.json(allorder);
         }
