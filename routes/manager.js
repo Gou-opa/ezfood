@@ -25,22 +25,30 @@ router.get('/table', function(req, res, next){
   );
 });
 
-var multer = require('multer');
-var fs = require("fs");
-var upload = multer({ dest: __dirname+ '/images/'});
+const path = require("path");
+const multer = require("multer");
 
-// File input field name is simply 'file'
-router.post('/upload', upload.single('file'), function(req, res) {
-  var file = __dirname + '/React_front/' + req.file.filename;
-  fs.rename(req.file.path, file, function(err) {
-    if (err) {
-      console.log(err);
-      res.send(500);
-    } else {
-      res.status(200).json({});
-    }
+const storage = multer.diskStorage({
+   destination: "./React-front/images/",
+   filename: function(req, file, cb){
+      cb(null,file.originalname);
+   }
+});
+
+const upload = multer({
+   storage: storage,
+   limits:{fileSize: 10000000},
+}).single("myImage");
+
+router.post("/upload", function(req,res){
+  upload(req, res, function(err){
+      console.log("Request ---", req.body);
+      console.log("Request file ---", req.file);//Here you get file.
+      /*Now do where ever you want to do*/
+      if(!err) res.send(200).end();
   });
 });
+
 
 router.get('/order', function(req, res, next){
   orderpool.find(function(err, allorder){
