@@ -8,7 +8,7 @@ var BF_H = require('../business_flow/history/CRUD');
 var BF_S = require('../business_flow/storage/CRUD');
 var BF_R = require('../business_flow/report/CRUD');
 var BF_U = require('../business_flow/user/CRUD');
-var url = 'mongodb://192.168.1.5:27017/ezfood';
+var url = 'mongodb://192.168.1.16:27017/ezfood';
 mongoose.url = url;
 
 mongoose.connect(url);
