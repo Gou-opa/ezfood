@@ -144,7 +144,6 @@ class MenuPage extends Component {
         var dishpicked = (localStorage.getItem('dishes') !== 'undefined' && localStorage.getItem('dishes') !== null) ? JSON.parse(localStorage.getItem('dishes')) : this.state.dishpicked
         var dishes = this.filterDishes(dishpicked);
         var {data,dishpicked} = this.state;
-        console.log(this.state);
         return (
             <div>
                 <Header />

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "chart.js": "^2.7.3",
     "react": "^16.6.3",
     "react-bootstrap-table": "^4.3.1",
@@ -15,6 +16,15 @@
     "react-scripts": "2.1.1",
     "react-table": "^6.8.6",
     "reactstrap": "^6.5.0"
+=======
+    "nvm": "0.0.4",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-tabs": "^1.2.0",
+    "react-scripts": "2.1.1",
+    "serve": "^10.1.1"
+>>>>>>> e29ede48997d43b1a0bbe752e35dc0864ee0baa3
   },
   "scripts": {
     "start": "react-scripts start",

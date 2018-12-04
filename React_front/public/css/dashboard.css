@@ -1,33 +1,13 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
-
-.row {
-    padding: 20px 50px 0px 50px;
+﻿
+.row{
+    padding: 30px 60px 0px 30px;
+}
+div.card{
     font-family: 'Montserrat', sans-serif;
+    border-radius: 12px; 
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
 }
-
-div.card {
-    border: 0px;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 12px;
-    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .15);
-}
-
-div.card-body>table {
-    width: 100%;
-}
-
-div.card-body>h3,
-h4 {
-    text-align: left;
-}
-
-#cardyeucau div.card {
-    margin-top: 10px;
-}
-
-.card .card-header:first-child {
-    background-color: rgba(0,0,0,0);
-    text-align: left;
+.card .card-header:first-child{
     font-weight: bold;
     font-size: 1em;
     padding: 15px 15px 0;
@@ -35,68 +15,14 @@ h4 {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px
 }
-
 div.card-footer {
     padding: 0 15px 15px;
     background-color: transparent;
     color: #66615b;
     border: 0;
-    border-top: 0px solid rgba(0, 0, 0, .125);
-    ;
-}
-.card-footer:last-child {
-    font-size: smaller;
-    border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px);
-    text-align: left;
+    border-top: 0px solid rgba(0,0,0,.125);;
 }
 
-.col-lg-6,
-.col-lg-2 {
+.col-lg-6, .col-lg-2{
     margin-right: -10px;
-}
-
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #404040;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 22px;
-    letter-spacing: .4px;
-    background: #eee;
-    padding-top: 30px;
-}
-
-.text-muted {
-    text-align: center;
-    color: #99abb4 !important;
-}
-html body .font-light {
-    text-align: center;
-    font-weight: 900;
-}
-
-.round {
-  line-height: 48px;
-  color: #ffffff;
-  width: 45px;
-  height: 45px;
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  border-radius: 100%;
-  background: #1e88e5; 
-}
-.round img {
-  border-radius: 100%; 
-}
-
-.round-lg {
-  line-height: 55px;
-  width: 50px;
-  height: 50px;
-  font-size: 27px; 
-}
-
-.round.round-info {
-  background: #f53232;
 }
