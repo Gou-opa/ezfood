@@ -5,9 +5,33 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.send('Welcome to store keeper page');
 });
-router.get('/dashboard', function(req, res, next){
-  res.send('dashboard');
-})
+router.get('/all', function(req, res, next){
+  res.json(
+    {
+      "storage": 
+      [
+        {
+          "_id": "43134346jrhhbg",
+          "name": "Thit nac vai",
+          "quantity": 45.7,
+          "unit": "Kg",
+          "status": "Ready",
+          "import-date": "10-10-2018",
+          "expire-date": "10-11-2018"
+        },
+        {
+          "_id": "43134346jrhhbg",
+          "name": "Tom hum xanh",
+          "quantity": 6,
+          "unit": "Con",
+          "status": "Dong lanh",
+          "import-date": "10-9-2018",
+          "expire-date": "10-12-2018"
+        }
+      ]
+    }
+  );
+});
 router.get('/import', function(req, res, next){
   res.send('import');
 })
@@ -15,6 +39,7 @@ router.get('/status', function(req, res, next){
   res.send('status');
 })
 router.get('/expire', function(req, res, next){
+
   res.send('expire');
 })
 router.get('/acction_history', function(req, res, next){

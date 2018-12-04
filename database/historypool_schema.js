@@ -3,12 +3,13 @@ var mongoose = require('mongoose');
 var historySchema = new mongoose.Schema({
     user: {
         uid: String,
-        name: String,
+        name: String
     },
-    orderid: String,
     table: {
         level: Number,
-        num: Number
+        num: Number,
+        tid: String,
+        capacity: Number
     },
     dishes: [
         {
@@ -20,15 +21,13 @@ var historySchema = new mongoose.Schema({
     discount: {
         discount_id: String,
         value: Number,
-        type: Number // 1 la percent, 2 la $
+        discount_type: Number // 1 la percent, 2 la $
     },
-    create: {type:Date, default:Date.now}
-
+    create_time: {type: Date},
+    paid_time:  {type:Date, default:Date.now}
      
 });
 
 var historypool = mongoose.model("historypool", historySchema);
-
-
 
 module.exports = historypool;
