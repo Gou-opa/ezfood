@@ -19,6 +19,32 @@ router.get('/', function(req, res, next) {
   res.send('Welcome to manager page');
 });
 
+router.get('/evaluate', function(req, res){
+  var lastDayOfMonth = function(y,m){
+    return  new Date(y, m +1, 0).getDate();
+  }
+  var datetime = new Date();
+  var year = datetime.getFullYear();
+  var month = datetime.getMonth() + 1;
+  var day = lastDayOfMonth(year, month - 1);
+
+  var startDate = `${year}-${month}-01 00:00:00.001`;
+  var endDate = `${year}-${month}-${day} 23:59:59.999`;
+
+  var insight = {};
+  historypool.find({"paid_time":{"$gt": startDate, "$lt": endDate } }, function(err, result){
+    if (err) throw err;
+    for(let i = 0; i < result.length; i++){
+      var totalOfEachDay = 0;
+      result[i].dishes.forEach(element =>{
+        totalOfEachDay += element.dish.price * element.quantity;
+      });
+      insight[`Day ${i+1}`] = totalOfEachDay;
+    }
+    res.send(JSON.stringify(insight));
+  });
+});
+
 router.delete('/table', function(req, res, next){
   var tid = req.body.tid;
   tablepool.findOneAndDelete({"tid": tid }, function(err, ressu){
