@@ -49,11 +49,41 @@ const upload = multer({
 router.post("/upload", function(req, res) {
   upload(req, res, function(err) {
       if (err) {
-          return res.end("Something went wrong!");
+           res.end("Something went wrong!");
       }
-      return res.send(200).end();
+      else {
+        var dishform = req.body;
+        console.log("adding dish " + JSON.stringify(dishform));
+        menu.create(dishform, function(err,result){
+          if(err) throw err;
+          else {
+            console.log("1 dish added to menu");
+            console.log(result);
+          }
+        });
+        res.send(200).end();
+      }
     
   });
+});
+
+router.post("/dish", function(req,res){
+  upload(req, res, function(err) {
+    if (err) {
+        return res.end("Something went wrong!");
+    }
+    return res.send(200).end();
+  });
+  var dishform = req.body;
+  console.log("adding dish " + JSON.stringify(dishform));
+  menu.create(dishform, function(err,result){
+    if(err) throw err;
+    else {
+      console.log("1 dish added to menu");
+      console.log(result);
+    }
+  });
+  //res.status(200).json({});
 });
 
 
@@ -125,24 +155,7 @@ router.get('/acction_history/serve', function(req, res, next){
 router.get('/acction_history/issue', function(req, res, next){
   res.send('acction_history issue');
 });
-router.post("/dish", function(req,res){
-  upload(req, res, function(err) {
-    if (err) {
-        return res.end("Something went wrong!");
-    }
-    return res.send(200).end();
-  });
-  var dishform = req.body;
-  console.log("adding dish " + JSON.stringify(dishform));
-  menu.create(dishform, function(err,result){
-    if(err) throw err;
-    else {
-      console.log("1 dish added to menu");
-      console.log(result);
-    }
-  });
-  //res.status(200).json({});
-});
+
 router.post("/table/add", function(req,res){
   var tableform = req.body;
   console.log("adding table " + tableform);
