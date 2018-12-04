@@ -3,13 +3,9 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MenuPage from './pages/MenuPage/MenuPage';
 import Loggin from './components/login/login';
 import Register from './components/register/register';
-<<<<<<< HEAD
 import PickTablePage from './pages/pickTablePage/pickTablePage';
 import ManagerPage from './pages/ManagerPage/ManagerPage';
-import DashbroadPage from './pages/DashboardPage/DashboardPage';
-=======
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
->>>>>>> e29ede48997d43b1a0bbe752e35dc0864ee0baa3
 
 
 const routes = [
