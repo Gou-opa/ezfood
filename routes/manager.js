@@ -53,6 +53,7 @@ router.post("/upload", function(req, res) {
       }
       else {
         var dishform = req.body;
+        dishform.url = "/React_front/public/images/"+req.files.foodimage.name;
         console.log("adding dish " + JSON.stringify(dishform));
         menu.create(dishform, function(err,result){
           if(err) throw err;

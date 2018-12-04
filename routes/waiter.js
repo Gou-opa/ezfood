@@ -13,13 +13,7 @@ var historypool = require('../database/historypool_schema');
 router.get('/', function(req, res) {
   res.send('Welcome to waiter page');
 });
-router.get('/all_order', function(req, res){
-  orderpool.find({}, function(err, resu){
-    if(err) console.log("order pool trong hoac query loi");
-    else res.json(resu);
-  })
-  res.send();
-});
+
 
 router.get('/menu', function(req, res){
   catalogpool.aggregate([{
