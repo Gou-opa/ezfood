@@ -253,7 +253,7 @@ router.post('/paid', function(req, res){
                         else res.status(200).json(
                           {
                             "server_estimate": histo.estimate,
-                            "billed":histo.billed
+                            "billed": histo.billed
                           });
                       });
                     }
