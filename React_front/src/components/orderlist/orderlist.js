@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import OrderItem from './orderItem';
-import callApi from '../../service/APIservice';
-
 class OrderList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            totalMoney : 0
-        }
-    }
     
     showOrderList =(orderList) =>{
         var result = null;
@@ -20,7 +12,6 @@ class OrderList extends Component {
                     key ={index}
                     data ={orderItem}
                     handleDeleteDish = {this.props.handleDeleteDish}
-                    printquantity = {this.props.printquantity}
                     />
                 )
             })
@@ -28,8 +19,14 @@ class OrderList extends Component {
         return result;
     }
 
+
+
     sendOrder =() => {
-        var orderList = this.props.dishpicked;
+        // var totalMoney = this.countTotalMoney(this.props.dishpicked);
+        // this.setState({
+        //     totalMoney : totalMoney
+        // })
+        var orderList = this.props.dishes;
         if(orderList.length > 0) {
             alert("Đã gửi đơn hàng , Hân hạnh phục vụ quý khách !")
         } else {
@@ -38,49 +35,44 @@ class OrderList extends Component {
         this.props.handleOrderList();
     }
 
-    countTotalMoney=(dishpicked) => {
-        var result = 0;
-        dishpicked.map((dish, index) => {
-            result = result + dish.price;
-        });
-        return result;
-    }
+    // countTotalMoney=(dishpicked) => {
+    //     var result = 0;
+    //     dishpicked.map((dish, index) => {
+    //         result = result + dish.price;
+    //         return true;
+    //     });
+    //     return result;
+    // }
 
 
-    sendPayment =()=> {
-        var totalMoney = this.countTotalMoney(this.props.dishpicked);
-    
-        callApi( 'waiter/pay', 'POST', {
-            orderid : localStorage.getItem('orderid'),
-            estimate : totalMoney
-        }).then(res => {
-            console.log(res.data)
-            if(res.status === 200) {
-               alert('thanh cong');
-            } else {
-                alert("Lỗi giao dịch !")
-            }
-          
-        })
-
-        this.setState({
-            totalMoney : totalMoney
-        })
-       
-    }
+    commaSeparateNumber(val){ 
+        while (/(\d+)(\d{3})/.test(val.toString())){ 
+         val = val.toString().replace(/(\d+)(\d{3})/, '$1'.concat(',','$2')); 
+        } 
+        return val; 
+    } 
     render() {
     
-        var orderList = this.props.dishpicked;
+        var orderList = this.props.dishes;
+        var totalMoney = this.props.totalMoney;
         // console.log(orderList);
         return (
+          
             <div className="tab_right">
                 <div className="thanh-t">
-                    <label  id="total-money">Tổng : {this.state.totalMoney}</label>
-
-                    <button id="payment" onClick = {this.sendOrder}><i className="fa fa-credit-card-alt" aria-hidden="true">Order</i></button>
-                    <button id="payment" onClick = {this.sendPayment}><i className="fa fa-credit-card-alt" aria-hidden="true">payment</i></button>
+                    <label  id="total-money"><b>Tổng Tiền : {this.commaSeparateNumber(totalMoney)} đ</b> </label>
+                    <button id="payment" onClick = {this.sendOrder}><i className="fa fa-credit-card-alt" aria-hidden="true">Gọi món</i></button>
                 </div>
-                <h2>Ban1 - Tang1</h2>
+                <br />
+                <h2>Bàn {localStorage.getItem('numOftable')} - Tầng {localStorage.getItem('tabname')}</h2>
+
+                <ul className="one_dish" id ="title-orderlist">
+                    <li className="name_dish pay-item">Tên món ăn</li>
+                    <li className="price_dish pay-item">Giá/món</li>
+                    <li className="number_dish pay-item">Số lượng</li>
+                    <li className="total_one pay-item"></li>
+                    <li className="delete_dish pay-item">Xóa/món</li>
+                </ul>
                 {this.showOrderList(orderList)}
             </div>
 

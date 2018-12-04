@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-class TabMenu extends Component {
+class TabManager extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tabname: this.props.navTab
         }
     }
+    componentDidMount() {
+        localStorage.setItem('tabname', 1)
+    }
     setActiveTab = (name) => {
         this.props.onReceiveTabActive(name);
+        localStorage.setItem('tabname', name);
     }
-
     render() {
-        // console.log(this.props.navTab);
+        // console.log(this.props.navTab)
         var tabname = this.props.navTab.map((tab, index) => {
-            let to = `/menu`;
+            let to = `/manager`;
             return <Link to={to} key={index} exact="true"
                 className={this.props.tabdefault === tab.name ? 'active' : ''}
                 onClick={() => this.setActiveTab(tab.name)}
@@ -29,4 +32,4 @@ class TabMenu extends Component {
     }
 }
 
-export default TabMenu;
+export default TabManager;

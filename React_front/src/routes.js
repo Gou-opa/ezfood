@@ -1,10 +1,12 @@
 import React from 'react';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ManagerPage from './pages/ManagerPage/ManagerPage';
 import MenuPage from './pages/MenuPage/MenuPage';
 import Loggin from './components/login/login';
 import Register from './components/register/register';
+import PickTablePage from './pages/pickTablePage/pickTablePage';
+import ManagerPage from './pages/ManagerPage/ManagerPage';
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
+
 
 const routes = [
     {
@@ -31,6 +33,11 @@ const routes = [
         path : '/manager',
         exact : true,
         main : ()=> <ManagerPage />
+    },
+    {
+        path : '/picktable',
+        exact : true,
+        main : ()=> <PickTablePage/>
     },
     {
         path : '/dashboard',

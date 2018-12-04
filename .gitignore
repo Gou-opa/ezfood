@@ -61,3 +61,5 @@ Node_back/.env
 # next.js build output
 Node_back/.next
 
+#build of front
+React_front/build

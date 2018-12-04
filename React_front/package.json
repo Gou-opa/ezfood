@@ -4,12 +4,18 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "nvm": "0.0.4",
+    "chart.js": "^2.7.3",
     "react": "^16.6.1",
+    "react-bootstrap-table": "^4.3.1",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.6.1",
+    "react-pose": "^4.0.2",
     "react-router-dom": "^4.3.1",
     "react-router-tabs": "^1.2.0",
     "react-scripts": "2.1.1",
+    "react-table": "^6.8.6",
+    "reactstrap": "^6.5.0",
+    "nvm": "0.0.4",
     "serve": "^10.1.1"
   },
   "scripts": {
@@ -27,5 +33,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://chitbi.ddns.net:4004"
+  "proxy": "http://chitbi.ddns.net:4004",
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "style-loader": "^0.23.1"
+  }
 }

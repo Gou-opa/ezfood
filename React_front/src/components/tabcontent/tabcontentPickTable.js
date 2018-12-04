@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
-import Dish from '../dish/dish';
+import Table from '../table/table';
 
-
-class TabContentMenu extends Component {
+class TabContentPickTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: this.props.data
         }
     }
-
-    showDish = (dishs) => {
+    showTables = (tables) => {
+        // console.log(tables);
         var result = null;
         var {dishpicked} = this.props;
-        // console.log(dishs);
-        if (dishs.length > 0) {
-            result = dishs.map((dish, index)=> {
+        if (tables.length > 0) {
+            result = tables.map((table, index)=> {
                 return (
-                    <Dish
+                    <Table
                         key={index}
-                        dish={dish}
+                        table={table}
                         dishpicked={dishpicked}
-                        handleDishPicked ={this.props.handleDishPicked}
                     />
                 )
             })
@@ -30,20 +27,18 @@ class TabContentMenu extends Component {
     }
 
     render() {
-     
         var id = this.props.tabdefault;
-        // console.log(this.props.tabdefault);
-        var dishs=[];
+        var tables=[];
         this.props.data.map((item, index) => {
-            // console.log(item);
-            if (item.type === id) {
-                dishs = item.dishes;
+            if (item.level === id) {
+                tables = item.tables;
             }
             return true;
+            
         });
         return (
             <div id={id} className="tabcontent">
-                {this.showDish(dishs)}
+                {this.showTables(tables)}
             </div>
         );
 
@@ -51,4 +46,4 @@ class TabContentMenu extends Component {
     }
 }
 
-export default TabContentMenu;
+export default TabContentPickTable;

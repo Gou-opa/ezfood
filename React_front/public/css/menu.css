@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid grey;
+    text-align: center
 }
 ul.one_dish .name_dish {
     flex-basis: 40%;
@@ -23,15 +24,14 @@ ul.one_dish .price_dish {
     flex-basis: 20%;
 }
 ul.one_dish .number_dish {
-    flex-basis: 10%;
+    flex-basis: 20%;
 }
-ul.one_dish .total_one {
-    flex-basis: 25%;
-}
+
 ul.one_dish .delete_dish {
-    flex-basis: 5%;
+    flex-basis: 20%;
     cursor: pointer;
 }
+
  input[type="number"] {
     width: 85%;
     border: none;
@@ -189,33 +189,33 @@ i.fa.fa-plus {
  /* responsive web */
  @media (max-width : 1024px) {
     #wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
     .tabcontent {
-        grid-template-columns: repeat(4, 3fr);
+        grid-template-columns: repeat(4, 3fr)!important;
     }
  }
  @media (max-width : 800px) {
     #wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
     .tabcontent {
-        grid-template-columns: repeat(3, 3fr);
+        grid-template-columns: repeat(3, 3fr)!important;
     }
 }
  @media (max-width : 600px) {
     #wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
     .tabcontent {
-        grid-template-columns: repeat(2, 2fr);
+        grid-template-columns: repeat(2, 2fr)!important;
     }
 }
  @media (max-width : 480px) {
     #wrap {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
     .tabcontent {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr!important;
     }
 }
