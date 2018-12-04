@@ -113,6 +113,12 @@ router.get('/delete_all_order', function(req, res, next){
   });
   res.send('acction_history');
 })
+router.get('/all_order', function(req, res){
+  orderpool.find({}, function(err, resu){
+    if(err) console.log("order pool trong hoac query loi");
+    else res.json(resu);
+  });
+});
 router.get('/acction_history/serve', function(req, res, next){
   res.send('acction_history serve');
 })
