@@ -33,6 +33,7 @@ Node_back/.lock-wscript
 Node_back/build/Release
 
 # Dependency directories
+node_modules/
 Node_back/node_modules/
 React_front/node_modules/
 Node_back/jspm_packages/
