@@ -13,7 +13,7 @@ class LeftContentPickTable extends Component {
     }
 
     onActiveTab(params) {
-        console.log(params);
+        // console.log(params);
         this.setState({
             tabdefault : params
         });

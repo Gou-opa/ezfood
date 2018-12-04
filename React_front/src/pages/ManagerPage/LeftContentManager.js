@@ -3,7 +3,6 @@ import TabContentManager from './TabContentManager';
 import TabManager from './TabManager';
 
 class LeftContentManager extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +12,7 @@ class LeftContentManager extends Component {
     }
 
     onActiveTab(params) {
-        console.log(params);
+        // console.log(params);
         this.setState({
             tabdefault : params
         });

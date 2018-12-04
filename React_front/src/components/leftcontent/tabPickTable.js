@@ -17,7 +17,6 @@ class TabPickTable extends Component {
     }
 
     render() {
-        console.log(this.props.navTab)
 
         var tabname = this.props.navTab.map((tab, index) => {
             let to = `/picktable`;

@@ -61,14 +61,12 @@ class MenuPage extends Component {
         var _data = {
             dish: dish,
             order_id:localStorage.getItem('orderid')
-           
         }
 
-        console.log(dish);
+        // console.log(dish);
         callApi('waiter/order/add', 'POST', _data).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
         })
-
 
         dishpicked.push(dish);
         let totalMoney = this.countTotalMoney(dishpicked)
@@ -100,7 +98,7 @@ class MenuPage extends Component {
         })
         // thay vi set state co the post len API
     }
-    
+
     duplicate = (arr)=> {
         return Array.from(new Set(arr.map(JSON.stringify))).map(JSON.parse);
     }
@@ -137,8 +135,9 @@ class MenuPage extends Component {
     }
 
     render() {
+        localStorage.removeItem("picked")
         if(localStorage.getItem('uid') === null) {
-            return <Redirect to= '/login' />
+            return <Redirect to= '/picktable' />
         }
         var { data } = this.state;
         var totalMoney = (localStorage.getItem('totalMoney') !== 'undefined' && localStorage.getItem('totalMoney') !== null) ? JSON.parse(localStorage.getItem('totalMoney')) : 0

@@ -6,11 +6,12 @@ class Table extends Component {
     constructor(props) {
         super(props);
         this.state={
-            isPick : this.props.table.ispick.is,
+            isPick : (this.props.table.ispick === undefined ) ? false : this.props.table.ispick.is
         }
     }
 
     onPickTable = (id, num) => {
+        localStorage.removeItem("dishes")
         localStorage.setItem('numOftable',num )
         callApi('waiter/table/pick', 'POST', {
             uid : localStorage.getItem('uid'),
@@ -30,9 +31,18 @@ class Table extends Component {
          localStorage.setItem("tid" , id);
     }
 
+
+    onDeleteTable = (id) => {
+        callApi('manager/table', 'DELETE', {
+            tid : id
+        }).then(res => {
+            console.log(res);
+        })
+    }
+
     render() {
         var {table} = this.props;
-        console.log(table);
+        // console.log(table);
         if(JSON.parse(localStorage.getItem("picked")) === true) {
             return <Redirect to= '/menu'/>
         } 
@@ -40,8 +50,8 @@ class Table extends Component {
         var x = 'reservations';
         var y = 'Pick';
         if(isPick === true) {
-            x = 'reservations picked';
-            y = 'Picked'
+            x = 'reservations picked hiddenButton';
+            y = 'Picked';
         }
         return (
             <div className = {x}>
@@ -50,6 +60,7 @@ class Table extends Component {
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
                     <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table.tid, table.num)}>{y}</button>
+                    <button className="ban_datcho" onClick ={this.onDeleteTable.bind(this, table.tid)}>Xóa bàn</button>
                 </div>
             </div>
         );

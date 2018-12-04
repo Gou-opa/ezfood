@@ -11,13 +11,11 @@ class TabManager extends Component {
         localStorage.setItem('tabname', 1)
     }
     setActiveTab = (name) => {
-
         this.props.onReceiveTabActive(name);
         localStorage.setItem('tabname', name);
     }
-
     render() {
-        console.log(this.props.navTab)
+        // console.log(this.props.navTab)
         var tabname = this.props.navTab.map((tab, index) => {
             let to = `/manager`;
             return <Link to={to} key={index} exact="true"

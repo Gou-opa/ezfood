@@ -21,16 +21,31 @@ class ManagerPage extends Component {
             data : [],
             dishes : []
         }
+        this.handledishes = this.handledishes.bind(this);
     };
 
-    handledishes(datas) {
-    console.log(datas);
-       this.setState({
-           dishes : datas
-       })
+    handledishes(id) {
+        // localStorage.setItem('tid', id);
+        callApi( `manager/order/preview/${id}`, 'GET', null).then(res => {
+            // console.log(res.data)
+            if(res.data === null) {
+                alert("Khách ở bàn này chưa gọi món !")
+            } else {
+                this.setState({
+                    dishes : res.data.dishes
+                })
+            }
+          
+          })
+    // console.log(datas);
+    //    this.setState({
+    //        dishes : datas
+    //    })
     }
 
     render() {
+        console.log(this.state.dishes)
+        console.log(this.state.data)
         localStorage.removeItem("picked")
         var dishes = this.state.dishes;
         if(localStorage.getItem('uid') === null) {

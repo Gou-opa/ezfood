@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import OrderItem from './orderItem';
-import callApi from '../../service/APIservice';
-
 class OrderList extends Component {
 
     
@@ -46,25 +44,6 @@ class OrderList extends Component {
     //     return result;
     // }
 
-    sendPayment =()=> {
-        var totalMoney = this.countTotalMoney(this.props.totalMoney);
-    
-        callApi( 'waiter/pay', 'POST', {
-            orderid : localStorage.getItem('orderid'),
-            estimate : totalMoney
-        }).then(res => {
-            console.log(res.data)
-            if(res.status === 200) {
-               alert('thanh cong');
-            } else {
-                alert("Lỗi giao dịch !")
-            }
-        })
-        this.setState({
-            totalMoney : totalMoney
-        })
-       
-    }
 
     commaSeparateNumber(val){ 
         while (/(\d+)(\d{3})/.test(val.toString())){ 
@@ -94,7 +73,6 @@ class OrderList extends Component {
                     <li className="total_one pay-item"></li>
                     <li className="delete_dish pay-item">Xóa/món</li>
                 </ul>
-
                 {this.showOrderList(orderList)}
             </div>
 

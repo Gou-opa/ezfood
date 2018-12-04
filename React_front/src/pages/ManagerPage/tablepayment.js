@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import callApi from '../../service/APIservice';
 
 class TablePayment extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -11,13 +9,9 @@ class TablePayment extends Component {
     }
 
     hadlePreview = (id) => {
-        console.log(id)
-        callApi( `manager/order/preview/${id}`, 'GET', null).then(res => {
-           console.log(res);
-           this.props.handledishes(res.data.dishes);
-         })
+        // console.log(id)
+        this.props.handledishes(id);
     }
-
     render() {
         var {table} = this.props;
         var x = 'reservations';

@@ -24,7 +24,7 @@ class PickTablePage extends Component {
     };
 
     render() {
-
+        console.log(this.state.data)
         if(localStorage.getItem('uid') === null) {
             return <Redirect to= '/login' />
         }
