@@ -8,6 +8,14 @@
     margin: 5px;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
+    color: #3c3d3d
+}
+
+#title-orderlist {
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
 }
 
 ul.one_dish {
@@ -25,13 +33,11 @@ ul.one_dish .price_dish {
     flex-basis: 20%;
 }
 ul.one_dish .number_dish {
-    flex-basis: 10%;
+    flex-basis: 20%;
 }
-ul.one_dish .total_one {
-    flex-basis: 25%;
-}
+
 ul.one_dish .delete_dish {
-    flex-basis: 5%;
+    flex-basis: 20%;
     cursor: pointer;
 }
 
@@ -40,7 +46,7 @@ h3{
     margin: 10px;
 }
 i.fa.fa-credit-card-alt {
-    font-size: 22px;
+    font-size: 20px;
     color: white;
 }
 
@@ -111,13 +117,21 @@ label#total-money {
 }
 
 /* Style the tab content */
-.tabcontent {
+#wrap .tabcontent {
     display: grid;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
     grid-template-columns: repeat(3, 4fr);
 }
+/* 
+#wrap2 .tabcontent {
+    display: grid;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    grid-template-columns: repeat(5, 3fr);
+} */
 
 /* css cho ban */
 i.fa.fa-check-circle {position: relative;left: 42%;top: 4px;font-size: 30px;color: #3c3d3d;}
@@ -139,6 +153,9 @@ i.fa.fa-check-circle {position: relative;left: 42%;top: 4px;font-size: 30px;colo
 .reservations.picked button.ban_datcho , .reservations.picked button.ban_payment {
     background: #00000085;
     color: white;
+}
+.reservations.hiddenButton button.ban_datcho {
+   visibility: hidden;
 }
 
 .reservations.picked i.fa.fa-check-circle {
@@ -179,9 +196,6 @@ button.ban_datcho , button.ban_payment{
 
 
 
-
-
-
 /* layout tong the */
 #wrap {
     display: grid;
@@ -190,7 +204,6 @@ button.ban_datcho , button.ban_payment{
 .left_tab {
     grid-column: 1/8;
 }
-
 
 /* responsive web */
 

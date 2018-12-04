@@ -16,7 +16,6 @@ class TabContentMenu extends Component {
         // console.log(dishs);
         if (dishs.length > 0) {
             result = dishs.map((dish, index)=> {
-                // console.log(dish);
                 return (
                     <Dish
                         key={index}

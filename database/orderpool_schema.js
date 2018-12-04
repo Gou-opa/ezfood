@@ -1,26 +1,27 @@
 var mongoose = require('mongoose');
 
+
+var dishSchema = new mongoose.Schema({
+    type: Number, //khai vi 1 mon chinh 2 trang mieng 3 do uong 4
+    name: String,
+    price: Number,
+    unit: String
+    
+});
 var orderpoolSchema = new mongoose.Schema({
     order_id: String,
     dishes: 
     [
         {
-            dish: {
-                type: Number,
-                name: String,
-                price: Number,
-                unit: String
-            },
-            quantity: {type: Number, min: 1},
-            option: {
-                ingredient: [String],
-                cook: [String],
-                decoration: [String]
-            }
+            dish: dishSchema,
+            quantity: Number,
+            status: Number // 1 la dang cho, 2 la nau xong, 3 la da phuc vu
             
         }
     ],
     uid: String,
+    tid: String,
+    estimate: Number,
     status: Number, // 1 là init, 2 là dang gọi đang ăn, 3 là chờ thanh toán
     create: {type:Date, default:Date.now}
     

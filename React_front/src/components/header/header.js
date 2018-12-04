@@ -8,6 +8,11 @@ const menus = [
         exact :true
     },
     {
+        name : 'Pick Table',
+        to : '/picktable',
+        exact :true
+    },
+    {
         name : 'Manager',
         to : '/manager',
         exact :true
@@ -25,6 +30,7 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
         path = {to}
         exact={activeOnlyWhenExact}
         children={({match})=> {
+            // localStorage.removeItem("picked")
             return (
                 <li><Link to ={to}>{label}</Link></li>
             )

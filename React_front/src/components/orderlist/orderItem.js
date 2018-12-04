@@ -2,34 +2,35 @@ import React, { Component } from 'react';
 
 class OrderItem extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            quantity : 0
-        }
-    }
 
-    onDelete =(id)=> {
+    onDelete = (id) => {
         this.props.handleDeleteDish(id);
     }
-    
-    printquantity =() =>{
-        this.props.printquantity();
-        return this.state.quantity;
+
+    componentDidMount() {
+        this.setState({
+            quantity: this.props.data.quantity
+        })
     }
 
+    commaSeparateNumber(val){ 
+        while (/(\d+)(\d{3})/.test(val.toString())){ 
+         val = val.toString().replace(/(\d+)(\d{3})/, '$1'.concat(',','$2')); 
+        } 
+        return val; 
+    } 
     render() {
-        console.log(this.props.data)
+        var dish_quantity = this.props.data;
         return (
-            <div>
-                <ul className="one_dish" >
-                    <li className="name_dish pay-item">{this.props.data.name}</li>
-                    <li className="price_dish pay-item">{this.props.data.price}</li>
-                    <li className="number_dish pay-item"><input type="number" defaultValue={this.printquantity} name="true"  /></li>
-                    <li className="total_one pay-item"></li>
-                    <li onClick = {this.onDelete.bind(this, this.props.data._id)} className="delete_dish pay-item"><i className="fa fa-trash" aria-hidden="true" /></li>
-                </ul>
-            </div>
+
+            <ul className="one_dish" >
+                <li className="name_dish pay-item">{dish_quantity.dish.name}</li>
+                <li className="price_dish pay-item">{this.commaSeparateNumber(dish_quantity.dish.price)}</li>
+                <li className="number_dish pay-item">{dish_quantity.quantity}</li>
+                <li className="total_one pay-item"></li>
+                <li onClick={this.onDelete.bind(this, dish_quantity.dish._id)} className="delete_dish pay-item"><i className="fa fa-trash" aria-hidden="true" /></li>
+            </ul>
+
         );
     }
 }
