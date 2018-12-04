@@ -6,6 +6,7 @@ import Loggin from './components/login/login';
 import Register from './components/register/register';
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
 import EditMenu from './pages/EditMenu/EditMenu';
+import AddTablePage from './pages/AddTablePage/AddTablePage';
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path : '/editmenu',
         exact : false,
         main : ()=> <EditMenu />
+    },
+    {
+        path : '/addtable',
+        exact : false,
+        main : ()=> <AddTablePage />
     },
     {
         path : '',

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import callApi from '../../service/APIservice';
 import { Redirect ,Link} from 'react-router-dom';
 
@@ -6,42 +7,49 @@ class EditContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          form: null,
             filename: "",
-            file: '',
+            file: "",
             url: '',
             name: '',
             price: 0,
             isAdded: false,
             type: 1,
-            unit:''
+            unit:'',
+            loaded: 0
         };
       }
     
       _handleSubmit(e) {
         e.preventDefault();
-        var{type,name,price,unit,filename} =this.state;
-        console.log(this.state);
+        var{type,name,price,filename,unit} =this.state;
+        console.log(this.state.file.type);
         if(this.checkInfo() == true ){
           callApi(`manager/dish`, 'POST', {
             type : type,
             name : name,
             price : price,
             unit: unit,
-            filename: filename
+            filename: filename,            
           }).then(res => {
               console.log(res);
               if(res.status == 200){
-                alert('thêm món thành công');
+                 alert('thêm món thành công');
               }
           })
-          callApi(`manager/dish`, 'POST', this.state.file).then(res => {
-              console.log(res);
-              
-          })
+          
+          
         }
         else{
           alert("Vui lòng nhập đầy đủ thông tin món ăn!");
         }
+        const formData = new FormData()
+        formData.append('foodimage', this.state.file, this.state.file.name)
+
+        axios.post('upload', formData)
+          .then(res => {
+            console.log(res)
+          })
       }
     
       _handleImageChange(e) {
@@ -90,9 +98,10 @@ class EditContent extends Component {
         return (
           <div className="editMenuAdd tab_right">
             <div className="leftContentEdit">
-                <form onSubmit={(e)=>this._handleSubmit(e)}>
+              <form onSubmit={(e)=>this._handleSubmit(e)}>
                 <input className="fileInput" 
                     type="file" 
+                    name="foodimage"
                     onChange={(e)=>this._handleImageChange(e)} />
                     <input className="nameDishAdd"
                     name="name"

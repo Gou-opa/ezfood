@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Dish from '../dish/dish';
+import Previewdish from '../dish/previewdish';
+
 class TabcontentEditMenu extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ class TabcontentEditMenu extends Component {
             result = dishs.map((dish, index)=> {
                 // console.log(dish);
                 return (
-                    <Dish
+                    <Previewdish
                         key={index}
                         dish={dish}
                         dishpicked={dishpicked}
