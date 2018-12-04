@@ -19,23 +19,26 @@ router.get('/', function(req, res, next) {
   res.send('Welcome to manager page');
 });
 
-router.get('/table', function(req, res, next){
-  res.json(
-    
-      { 
-        "booked": 15,
-        "empty": 30
-      }
-    
-    
-  );
+router.delete('/table', function(req, res, next){
+  var tid = req.body.tid;
+  tablepool.findOneAndDelete({"tid": tid }, function(err, ressu){
+    if(err) {
+      console.log("xoa failed");
+      res.status(403).json({});
+    }
+    else {
+      console.log("da xoa ban "+tid);
+      res.status(200).json({});
+    }
+  })
+ 
 });
 
 
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-   destination: "./React-front/images/",
+   destination: "./React_front/public/images/",
    filename: function(req, file, cb){
       cb(null,file.originalname);
    }
@@ -49,40 +52,29 @@ const upload = multer({
 router.post("/upload", function(req, res) {
   upload(req, res, function(err) {
       if (err) {
-           res.end("Something went wrong!");
+        res.status(408).json({is:false});
       }
       else {
-        var dishform = req.body;
-        dishform.url = "/React_front/public/images/"+req.files.foodimage.name;
-        console.log("adding dish " + JSON.stringify(dishform));
-        menu.create(dishform, function(err,result){
-          if(err) throw err;
-          else {
-            console.log("1 dish added to menu");
-            console.log(result);
-          }
-        });
-        res.send(200).end();
+        console.log("upload anh " + req.files.foodimage.name);
+        res.status(200).json({});
       }
-    
   });
 });
 
 router.post("/dish", function(req,res){
-  upload(req, res, function(err) {
-    if (err) {
-        return res.end("Something went wrong!");
-    }
-    return res.send(200).end();
-  });
   var dishform = req.body;
   console.log("adding dish " + JSON.stringify(dishform));
   menu.create(dishform, function(err,result){
-    if(err) throw err;
+    if(err) {
+      console.log("insert mon moi failed");
+      res,status(500).json({});
+    }
     else {
       console.log("1 dish added to menu");
       console.log(result);
+      res.status(200).json({});
     }
+    
   });
   //res.status(200).json({});
 });
@@ -159,6 +151,7 @@ router.get('/acction_history/issue', function(req, res, next){
 
 router.post("/table/add", function(req,res){
   var tableform = req.body;
+  tableform.ispick = {is:false, uid:"", oid:""};
   console.log("adding table " + tableform);
   tablepool.create(tableform, function(err,result){
     if(err) throw err;
@@ -229,7 +222,7 @@ router.post('/paid', function(req, res){
       tablepool.updateOne({"tid": table}, {$set :{"ispick": {"is":false, "uid":"", "oid": ""} }}, function(err, output){
         var orderid_on_table = tableinfo.ispick.oid;
         orderpool.findById(orderid_on_table, function(err, order){
-          if(err) res.status(409).json({});
+          if(err) res.status(409).json({"discription": "Khong tim thay order"});
           else {
             console.log(order);
             histo.dishes = order.dishes;

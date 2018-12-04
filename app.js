@@ -6,7 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var app = express();
-var bf_gateway = require('./business_flow/BF_gateway');
+//var bf_gateway = require('./business_flow/BF_gateway');
 const busboy = require('connect-busboy');   
 
 
