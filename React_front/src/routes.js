@@ -6,7 +6,8 @@ import Register from './components/register/register';
 import PickTablePage from './pages/pickTablePage/pickTablePage';
 import ManagerPage from './pages/ManagerPage/ManagerPage';
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
-
+import EditMenu from './pages/EditMenu/EditMenu';
+import AddTablePage from './pages/AddTablePage/AddTablePage';
 
 const routes = [
     {
@@ -43,6 +44,16 @@ const routes = [
         path : '/dashboard',
         exact : false,
         main : ()=> <DashBoardPage />
+    },
+    {
+        path : '/editmenu',
+        exact : false,
+        main : ()=> <EditMenu />
+    },
+    {
+        path : '/addtable',
+        exact : false,
+        main : ()=> <AddTablePage />
     },
     {
         path : '',

@@ -21,6 +21,16 @@ const menus = [
         name : 'Dashboard',
         to : '/dashboard',
         exact :true
+    },
+    {
+        name : 'EditMenu',
+        to : '/editmenu',
+        exact :true
+    },
+    {
+        name : 'AddTable',
+        to : '/addtable',
+        exact :true
     }
 ];
 

@@ -1,0 +1,56 @@
+.addTableBox{
+    background: white;
+    border-radius: 5vh;
+    padding: 2vw 5vw 5vw 5vw;
+    height: 55vh;
+    width: 40vw;
+    box-shadow: 0px 0px 8px gray;
+    margin: auto;
+    margin-top: 10vh;
+    position: relative;
+}
+    .addTableBox h2{
+        font-size: 5vh;
+        color: gray;
+        text-align: center;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+    .addTableBox input{
+        margin: auto;
+        font-size: 4vh;
+        height: 8vh;
+        width: 20vw;
+        display: block;
+        border:none;  
+        transition: all 0.3s; 
+        border-bottom: 2px solid gray;
+    }
+    .addTableBox input:focus{
+        font-size: 3vh;
+        outline: none;
+        
+    }
+
+    .addTableBox .addTableBt{
+        color: gray;
+        border-radius: 2vh;
+        background: #ffffff;
+        border:1vh solid #FFC8C8;
+        margin-top: 1vh;
+        height: 8vh;
+        width: 12vh;
+        font-size: 2.5vh;
+        font-weight: bold;
+        transition: all 0.3s;
+
+    }
+    .addTableBox .addTableBt:hover{
+        color: black;
+        cursor: pointer;
+        border:1vh solid #FF706A;
+        background: rgb(243, 222, 222);
+    }
