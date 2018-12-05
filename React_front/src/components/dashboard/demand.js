@@ -38,7 +38,6 @@ class Demand extends Component{
                 let dishes = record.dishes;
                 dishes.forEach( function(child){
                     let name = child.dish.name;
-                    console.log(name);
                     let amount = child.quantity;
                     let status = (child.status === 1 ? "Đang chế biến": "Đang chờ");
                     result.push({
@@ -52,7 +51,7 @@ class Demand extends Component{
                 
             })
         }
-        
+
         return(
             <Card >
                 <CardHeader>

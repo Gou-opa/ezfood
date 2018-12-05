@@ -6,23 +6,26 @@ import callApi from '../../service/APIservice'
 class TableNumber extends Component{
 
     componentWillMount() {
-        callApi( 'manager/table', 'GET', null).then(res => {
+        callApi( 'waiter/table', 'GET', null).then(res => {
             // console.log(res.data);
            this.setState({
-               booked: res.data.booked,
-               empty: res.data.empty
+               data: res.data
            })
         })
     }
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            booked: 0,
-            empty: 0
+          data: [],
+          result: {
+              booked: 0,
+              empty: 0
+          }           
         }
-    };
+    }
 
     render(){
+        var {data, result} = this.state;
 
         const Box = posed.div({
             hoverable: true,
@@ -31,10 +34,23 @@ class TableNumber extends Component{
             hover: { scale: 1.2 },
             press: { scale: 1.1}
         })
+        
+        console.log(result);
 
-        const data = this.state;
-        console.log(data);
+        if(data.length > 0){
+            data.forEach( function(child) {
+                child.tables.forEach( function(child){
+                    if(child.ispick.is){
+                        result.booked++;
+                    }else{
+                        result.empty++;
+                    }
+                })
+            })
+        }
+    
 
+        
         return(
             <Col lg="2" sm="12">
                 <Card className="card">
@@ -43,11 +59,11 @@ class TableNumber extends Component{
                     </CardHeader>
                     <CardBody>
                         <Box>
-                        <h3 className="font-light"> {data.booked} </h3>
+                        <h3 className="font-light"> {result.booked} </h3>
                         <p className="text-muted"> Bàn đang phục vụ</p> </Box>
                         <hr/>
                         <Box>
-                        <h3 className="font-light"> {data.empty}</h3>
+                        <h3 className="font-light"> {result.empty}</h3>
                         <p className="text-muted"> Bàn còn trống</p>
                         </Box>
                     </CardBody>

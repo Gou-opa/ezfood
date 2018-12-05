@@ -45,7 +45,6 @@ class History extends Component{
                 })
             })
         }
-        console.log(result);
 
         return(
             <Card style={{margin: "10px 0px 0px 0px"}}>
