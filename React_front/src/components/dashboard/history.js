@@ -3,70 +3,50 @@ import {Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
 // react table
 import ReactTable from "react-table";
+import callApi from '../../service/APIservice'
 
 class History extends Component{
+
+    componentWillMount() {
+        callApi( 'manager/order', 'GET', null).then(res => {
+            // console.log(res.data);
+           this.setState({
+              data: res.data
+           })
+        })
+    }
 
     constructor() {
         super();
         this.state = {
-          data: [{
-                id: 1,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 10,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 10,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 10,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 5,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 14,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 4,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 12,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 3,
-                time: "20/11/2018",
-                amountMoney: "2.000.000"
-            },
-            { 
-                id: 8,
-                time: "22/11/2018",
-                amountMoney: "3.000.000"
-
-            }    
-        ]
+          data: [],
+          result: []
             
         }
     }
 
     render(){
-        const { data } = this.state;
+        const { data, result } = this.state;
+
+        if(data.length > 0){
+            data.forEach( function(record) {
+                let id = record._id;
+                let date = record.create.match(/([\d]+\-[\d]+\-[\d]+)/gm);
+                let time = record.create.match(/([\d]+\:[\d]+\:[\d]+)/gm);
+                let datetime = date + " " + time;
+                let money = 0;
+                record.dishes.forEach( function(child){
+                    money+=child.dish.price;
+                })
+                result.push({
+                    id: id,
+                    time: datetime,
+                    money: money,
+                })
+            })
+        }
+        console.log(result);
+
         return(
             <Card style={{margin: "10px 0px 0px 0px"}}>
                 <CardHeader>
@@ -79,24 +59,23 @@ class History extends Component{
                         showPageSizeOptions = {false}
                         pageSizeOptions = {false}
                         // nextText={"Tiếp theo"}
-                        data={data}
+                        data={result}
                        
                         columns= {[
                             {
                                 width: "30%",
                                 Header: "Mã đơn hàng",
-                                id: "id",
-                                accessor: a => a.id
-                            },
+                                accessor: "id"                            },
                             {
                                 width: "30%",
                                 Header: "Thời gian",
-                                accessor: "time",
+                                id: "time",
+                                accessor: a => a.time
                             },
                             {
                                 width: "30%",
                                 Header: "Số tiền",
-                                accessor: "amountMoney"
+                                accessor: "money"
                             }
                             ]
                         }

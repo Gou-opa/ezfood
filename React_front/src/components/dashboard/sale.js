@@ -56,8 +56,6 @@ class Sale extends Component{
         const h = this.state.time.getHours()
         const m = this.state.time.getMinutes()
         const s = this.state.time.getSeconds()
-
-        console.log(this.state.time);
             
         return(
             

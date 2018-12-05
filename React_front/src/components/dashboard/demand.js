@@ -20,101 +20,14 @@ class Demand extends Component{
     constructor() {
         super();
         this.state = {
-          data: [{
-                time: 1,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 10,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 10,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 10,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 5,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 14,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 4,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "7",
-                option: "Thêm hành",
-                status: "Đang nấu"
-            },
-            { 
-                time: 12,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "1",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 3,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "3",
-                option: "không",
-                status: "Đang nấu"
-            },
-            { 
-                time: 8,
-                table: "1a1",
-                dish: "Tôm hùm",
-                amount: "2",
-                option: "không",
-                status: "Đang nấu"
-            }    
-        ]
+          data: [],
+          result: []
             
         }
     }
 
     render(){
         const { data } = this.state;
-        console.log(data);
-        console.log(data[0]);
-        console.log(typeof data[0]);
-        var dt = new Date();
-        var utcDate = dt.toUTCString();
-
-        //Print results
-        console.log(utcDate);
 
         return(
             <Card >
