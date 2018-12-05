@@ -30,17 +30,40 @@ router.get('/evaluate', function(req, res){
 
   var startDate = `${year}-${month}-01 00:00:00.001`;
   var endDate = `${year}-${month}-${day} 23:59:59.999`;
+  
+  var insight = [];
+  function checkExists(day){
+    var isExists = false;
+    insight.forEach(element => {
+      if(element.Day == day){
+        isExists = true;
+      }
+    });
+    return isExists;
+  }
 
-  var insight = {};
   historypool.find({"paid_time":{"$gt": startDate, "$lt": endDate } }, function(err, result){
     if (err) throw err;
     for(let i = 0; i < result.length; i++){
-      var totalOfEachDay = 0;
+      var day = result[i].paid_time.getDate();
+
+      var totalOfBill = 0;
       result[i].dishes.forEach(element =>{
-        totalOfEachDay += element.dish.price * element.quantity;
+        totalOfBill += element.dish.price * element.quantity;
       });
-      insight[`Day ${i+1}`] = totalOfEachDay;
+      if(checkExists(day) == false){
+        insight.push({
+          "Day":day,
+          "value":totalOfBill
+        });
+      }else{
+        insight[insight.findIndex(element => element.Day == day)].value += totalOfBill;
+      }
     }
+    insight.forEach(element => {
+      var day = element.Day;
+      element.Day = `${year}-${month}-${day}`;
+    });
     res.send(JSON.stringify(insight));
   });
 });
