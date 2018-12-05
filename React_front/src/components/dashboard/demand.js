@@ -27,8 +27,32 @@ class Demand extends Component{
     }
 
     render(){
-        const { data } = this.state;
+        const { data, result } = this.state;
 
+        if(data.length > 0){
+            data.forEach( function(record) {
+                let date = record.create.match(/([\d]+\-[\d]+\-[\d]+)/gm);
+                let time = record.create.match(/([\d]+\:[\d]+\:[\d]+)/gm);
+                let datetime = date + " " + time;                
+                let table = record.tid;
+                let dishes = record.dishes;
+                dishes.forEach( function(child){
+                    let name = child.dish.name;
+                    console.log(name);
+                    let amount = child.quantity;
+                    let status = (child.status === 1 ? "Đang chế biến": "Đang chờ");
+                    result.push({
+                        time: datetime,
+                        table: table,
+                        dish: name,
+                        amount: amount,
+                        status: status
+                    })
+                })
+                
+            })
+        }
+        
         return(
             <Card >
                 <CardHeader>
@@ -41,39 +65,34 @@ class Demand extends Component{
                         showPageSizeOptions = {false}
                         pageSizeOptions = {false}
                         // nextText={"Tiếp theo"}
-                        data={data}
+                        data={result}
                        
                         columns= {[
                             {
                                 width: "16%",
                                 Header: "Thời gian (ph)",
-                                id: "create",
+                                id: "time",
                                 accessor: a => a.time
                             },
                             {
                                 width: "16%",
                                 Header: "Bàn",
-                                accessor: "tid",
+                                accessor: "table",
                             },
                             {
                                 width: "22%",
                                 Header: "Món",
-                                accessor: "dishes.dish.name"
+                                accessor: "dish"
                             },
                             {
                                 width: "10%",
                                 Header: "Số lượng",
-                                accessor: "dishes.quantity",
-                            },
-                            {
-                                width: "16%",
-                                Header: "Ghi chú",
-                                accessor: "option",
+                                accessor: "amount"
                             },
                             {
                                 width: "16%",
                                 Header: "Trạng thái",
-                                accessor: "status",
+                                accessor: "status"
                             }
                             ]
                         }
