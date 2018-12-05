@@ -64,7 +64,7 @@ router.delete('/table', function(req, res, next){
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-   destination: "./../React_front/public/images/",
+   destination: "C:/Users/Chit-Server/Dev/ezfood/React_front/public/images/",
    filename: function(req, file, cb){
       cb(null,file.originalname);
    }
