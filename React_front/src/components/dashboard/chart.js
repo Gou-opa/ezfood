@@ -1,14 +1,31 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import ChartLine from './chartLine';
 import {Col, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
-import posed from 'react-pose'
+import posed from 'react-pose';
+import callApi from '../../service/APIservice'
+
 
 class Chart extends Component{
-
+    
     constructor(){
         super();
         this.state = {
-          chartData:{}
+        chartData:{
+            labels: ["6 ngày trước", "5 ngày trước", "4 ngày trước", "3 ngày trước", "2 ngày trước", "Hôm qua", "Hôm nay"],
+            datasets:[
+                {
+                label:'Doanh thu',
+                data: [0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: "#ff6491",
+                borderColor: '#ffc107',
+                }
+            ]
+        },
+        data: {}
         }
     }
     
@@ -18,19 +35,27 @@ class Chart extends Component{
 
     getChartData(){
         // Ajax calls here
-        this.setState({
-          chartData:{
-            labels: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ Nhật"],
-            datasets:[
-              {
-                label:'Doanh thu',
-                data: [35, 10, 35, 42, 36, 66, 69],
-                backgroundColor: "#ff6491",
-                borderColor: '#ffc107',
-              }
-            ]
-          }
+        callApi( 'manager/evaluate', 'GET', null).then(res => {
+           console.log(res.data);
+           this.setState({
+                data: res.data,
+                chartData:{
+                    labels: ["6 ngày trước", "5 ngày trước", "4 ngày trước", "3 ngày trước", "2 ngày trước", "Hôm qua", "Hôm nay"],
+                    datasets:[
+                      {
+                        label:'Doanh thu',
+                        data: [0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: "#ff6491",
+                        borderColor: '#ffc107',
+                      }
+                    ]
+                }
+                
+           });
+           
         });
+       
+          
     }
 
     render(){
@@ -43,6 +68,23 @@ class Chart extends Component{
             press: { scale: 1.05}
         })
 
+        var data = this.state.data;
+        var chartData = this.state.chartData;
+       
+        if(data.length > 0){
+            if(data.length <= chartData.datasets[0].data.length){
+                let j = 6;
+                let resLeng = data.length-1;
+                for(let i = resLeng; i >= 0; i--){
+                    chartData.datasets[0].data[j--] = data[i].value;
+                }
+            }else{
+                let resLeng = data.length-1;
+                for(var i = 6; i >= 0; i--){
+                    chartData.datasets[0].data[i] =  data[resLeng--].value;
+                }
+            }
+        }
         return(
             <Col lg="7" md="12" sm="12">
                 <Card>
@@ -51,11 +93,11 @@ class Chart extends Component{
                     </CardHeader>
                     <Box>
                     <CardBody >
-                        <ChartLine chartData={this.state.chartData} legendPosition="top" />
+                        <ChartLine chartData={chartData} legendPosition="top" />
                     </CardBody>
                     </Box>
                     <CardFooter >
-                        <i className="fa fa-info-circle"></i> Doanh thu tuần này
+                        <i className="fa fa-info-circle"></i> Doanh thu 7 ngày gần đây
                     </CardFooter>
                 </Card>
             </Col>
