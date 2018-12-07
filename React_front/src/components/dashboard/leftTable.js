@@ -3,7 +3,7 @@
 */
 
 import React, { Component } from 'react';
-import History from "./history";
+import Storekeeper from "./storekeeper";
 import Demand from "./demand";
 import {Col } from 'reactstrap';
 
@@ -14,7 +14,7 @@ class LeftTable extends Component{
         return(
             <Col lg="6">
                 <Demand />
-                <History />
+                <Storekeeper />
             </Col>
         );
     }

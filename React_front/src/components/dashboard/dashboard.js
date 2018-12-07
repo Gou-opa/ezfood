@@ -7,7 +7,7 @@ import TableNumber from './tableNumber';
 import Sale from './sale';
 import Chart from './chart';
 import LeftTable from './leftTable';
-import RightTable from './rightTable';
+import History from './history';
 import 'react-table/react-table.css'
 // boostrap table
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
@@ -26,7 +26,7 @@ class DashBoard extends Component {
                 </Row>
                 <Row>
                     <LeftTable />
-                    <RightTable />
+                    <History />
                 </Row>
            </Container>
 
