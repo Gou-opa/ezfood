@@ -31,8 +31,12 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
         exact={activeOnlyWhenExact}
         children={({match})=> {
             // localStorage.removeItem("picked")
+            let x = '';
+            if(label==='Dashboard'){
+                x = <i class="far fa-chart-bar"></i>;
+            }
             return (
-                <li><Link to ={to}>{label}</Link></li>
+                <li><Link to ={to}>{x} {label}</Link></li>
             )
         }}/>
     )
