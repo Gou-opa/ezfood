@@ -3,7 +3,7 @@
 */
 
 import React, { Component } from 'react';
-import {Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
+import {Card, CardHeader, CardBody, CardTitle, Col } from 'reactstrap';
 
 // react table
 import ReactTable from "react-table";
@@ -51,7 +51,8 @@ class History extends Component{
         }
 
         return(
-            <Card style={{margin: "10px 0px 0px 0px"}}>
+            <Col lg="6">
+            <Card >
                 <CardHeader>
                     <CardTitle>Lịch sử</CardTitle>
                 </CardHeader>
@@ -89,7 +90,7 @@ class History extends Component{
                               desc: true
                             }
                           ]}
-                        defaultPageSize={5}
+                        defaultPageSize={10}
                         className="-striped -highlight"
                     />
                         
@@ -97,6 +98,7 @@ class History extends Component{
                     </div>
                 </CardBody>
             </Card>
+            </Col>
         );
     }
 }
