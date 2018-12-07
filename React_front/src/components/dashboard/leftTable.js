@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import History from "./history";
 import Demand from "./demand";

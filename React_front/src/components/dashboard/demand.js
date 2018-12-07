@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import {Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
@@ -31,8 +35,8 @@ class Demand extends Component{
 
         if(data.length > 0){
             data.forEach( function(record) {
-                let date = record.create.match(/([\d]+\-[\d]+\-[\d]+)/gm);
-                let time = record.create.match(/([\d]+\:[\d]+\:[\d]+)/gm);
+                let date = record.create.match(/([\d]+-[\d]+-[\d]+)/gm);
+                let time = record.create.match(/([\d]+:[\d]+:[\d]+)/gm);
                 let datetime = date + " " + time;                
                 let table = record.tid;
                 let dishes = record.dishes;
@@ -69,7 +73,7 @@ class Demand extends Component{
                         columns= {[
                             {
                                 width: "16%",
-                                Header: "Thời gian (ph)",
+                                Header: "Thời gian",
                                 id: "time",
                                 accessor: a => a.time
                             },
@@ -99,7 +103,7 @@ class Demand extends Component{
                         defaultSorted={[
                             {
                               id: "time",
-                              desc: false
+                              desc: true
                             }
                           ]}
                         defaultPageSize={5}

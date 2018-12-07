@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import TableNumber from './tableNumber';
 import Sale from './sale';

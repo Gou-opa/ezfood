@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import {Col, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 import posed from 'react-pose';
@@ -35,8 +39,6 @@ class TableNumber extends Component{
             press: { scale: 1.1}
         })
         
-        console.log(result);
-
         if(data.length > 0){
             data.forEach( function(child) {
                 child.tables.forEach( function(child){

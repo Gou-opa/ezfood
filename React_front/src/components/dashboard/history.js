@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import {Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 
@@ -31,8 +35,8 @@ class History extends Component{
         if(data.length > 0){
             data.forEach( function(record) {
                 let id = record._id;
-                let date = record.create.match(/([\d]+\-[\d]+\-[\d]+)/gm);
-                let time = record.create.match(/([\d]+\:[\d]+\:[\d]+)/gm);
+                let date = record.create.match(/([\d]+-[\d]+-[\d]+)/gm);
+                let time = record.create.match(/([\d]+:[\d]+:[\d]+)/gm);
                 let datetime = date + " " + time;
                 let money = 0;
                 record.dishes.forEach( function(child){

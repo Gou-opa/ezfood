@@ -1,3 +1,7 @@
+/*
+*   author @Van Long
+*/
+
 import React, { Component } from 'react';
 import {Col, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 // react table
