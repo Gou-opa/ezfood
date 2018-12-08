@@ -43,7 +43,7 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
             // localStorage.removeItem("picked")
             let x = '';
             if(label==='Dashboard'){
-                x = <i class="far fa-chart-bar" style={{'font-size':'24px'}}></i>;
+                x = <i className="far fa-chart-bar" style={{fontSize:'24px'}}></i>;
             }
             return (
                 <li><Link to ={to}>{x} {label}</Link></li>
