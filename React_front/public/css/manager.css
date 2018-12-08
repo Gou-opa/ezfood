@@ -56,8 +56,8 @@ button#payment {
     border-top-left-radius: 29px;
     width: 22%;
     cursor: pointer;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
+    border-bottom-right-radius: 18px;
+    border-top-right-radius: 18px;
     outline: none;
 }
 
@@ -72,7 +72,7 @@ label#total-money {
     background: #4e4a4a;
     color: white;
     display: flex;
-    border-radius: 8px;
+    border-radius: 18px;
 }
 
 
@@ -96,6 +96,7 @@ label#total-money {
 
 /* Style the buttons inside the tab */
 .tab a {
+    text-decoration: none !important;
     background-color: inherit;
     float: left;
     border: none;
@@ -152,9 +153,6 @@ i.fa.fa-check-circle {position: relative;left: 42%;top: 4px;font-size: 30px;colo
 .reservations.picked button.ban_datcho , .reservations.picked button.ban_payment {
     background: #00000085;
     color: white;
-}
-.reservations.hiddenButton button.ban_datcho {
-   visibility: hidden;
 }
 
 .reservations.picked i.fa.fa-check-circle {
