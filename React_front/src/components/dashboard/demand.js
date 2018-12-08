@@ -66,8 +66,10 @@ class Demand extends Component{
                     <ReactTable
                         showPagination = {true}
                         showPageSizeOptions = {false}
-                        pageSizeOptions = {false}
-                        // nextText={"Tiếp theo"}
+                        nextText={"Tiếp theo"}
+                        previousText={"Trước"}
+                        pageText={"Trang"}
+                        ofText={''}
                         data={result}
                        
                         columns= {[
