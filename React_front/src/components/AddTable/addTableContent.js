@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import callApi from '../../service/APIservice';
 
 class AddTableContent extends Component {
@@ -28,7 +28,7 @@ class AddTableContent extends Component {
         ispick: ispick
       }).then(res => {
           console.log(res);
-          if(res.status == 200){
+          if(res.status === 200){
             alert('Thêm bàn thành công');
             this.setState({
               added: true
