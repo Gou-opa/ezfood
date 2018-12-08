@@ -15,7 +15,7 @@ p.dropdown-title {
     height: 50px;
     margin-bottom: 25px;
     display: flex;
-    background: linear-gradient(20deg,#ef3447,#ff6491,#f6ac9a);
+    background-color: #ff706a;
     color: white;
     padding: 10px 22px;
     box-shadow: 2px 2px 14px grey;
@@ -116,7 +116,7 @@ li.dropdown-content:hover{
     width: 200px;
     top: 58px;
     left: -200px;
-    height: 91vh;
+    height: 93vh;
     box-shadow: 0px 2px 14px rgb(218, 216, 216);
     border-radius: 3px;
     transition: 200ms;
