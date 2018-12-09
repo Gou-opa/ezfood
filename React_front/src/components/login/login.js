@@ -52,34 +52,35 @@ class Loggin extends Component {
             return <Redirect to= '/picktable'/>
         } 
         return (
-            <div id="login_style">
-                <form className="box" onSubmit = {this.onLogin}>
-                    <div className="title">Đăng nhập</div>
-                    <div className="input">
-                        <input type="text"
-                            placeholder="Tên tài khoản"
-                            name="txtUsername"
-                            id="name"
-                            value={txtUsername}
-                            onChange={this.onChange} />
-                        <span className="spin" />
-                    </div>
-                    <div className="input">
-                        <input type="password"
-                        placeholder="Mật khẩu"
-                            name="txtPassword"
-                            id="pass"
-                            value={txtPassword}
-                            onChange={this.onChange} />
-                        <span className="spin" />
-                    </div>
-                    <div className="button login">
-                        <button type="submit">Đăng nhập</button>
-                    </div>
-                    <Link to ="/register" className="pass-forgot">Đăng ký</Link>
-                </form>
+            <div className="login_page_ta">
+                <div id="login_style">
+                    <form className="box" onSubmit = {this.onLogin}>
+                        <div className="title">Đăng nhập</div>
+                        <div className="input">
+                            <input type="text"
+                                placeholder="Tên tài khoản"
+                                name="txtUsername"
+                                id="name"
+                                value={txtUsername}
+                                onChange={this.onChange} />
+                            <span className="spin" />
+                        </div>
+                        <div className="input">
+                            <input type="password"
+                            placeholder="Mật khẩu"
+                                name="txtPassword"
+                                id="pass"
+                                value={txtPassword}
+                                onChange={this.onChange} />
+                            <span className="spin" />
+                        </div>
+                        <div className="button login">
+                            <button type="submit">Đăng nhập</button>
+                        </div>
+                        <Link to ="/register" className="pass-forgot">Đăng ký</Link>
+                    </form>
+                </div>
             </div>
-
 
         );
     }

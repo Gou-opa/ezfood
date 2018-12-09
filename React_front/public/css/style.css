@@ -10,13 +10,18 @@
     border-radius: 10px;
     box-shadow: 1px 1px 11px 2px #797777a8;
  }
- 
+ .login_page_ta{
+    position: absolute;
+   width: 100vw;
+   height: 100vh;
+   background-image: url('../images/food.jpg');
+}
  div#login_style{
      width: 30%;
      margin: 3rem auto;
  }
  div#register_style{
-     width:  30%;
+     width:  40%;
      margin:  auto;
      height: 80%;
  }
