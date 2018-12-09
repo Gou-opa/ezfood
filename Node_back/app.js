@@ -8,6 +8,7 @@ var cors = require('cors');
 var app = express();
 //var bf_gateway = require('./business_flow/BF_gateway');
 const busboy = require('connect-busboy');   
+const fs = require('fs');
 
 
 
@@ -23,7 +24,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
 app.use(busboy({
-    highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
+    highWaterMark: 10 * 1024 * 1024, // Set 2MiB buffer
 }));
 
 
@@ -41,9 +42,11 @@ app.use(fileUpload());
 app.get('/upload' , function(req, res){
 	res.render('form');
 })
+
+
 app.post('/upload', function(req, res) {
 		
-		console.log("anh upload ten la: "+req.files.foodimage.name);
+		console.log("app.js said anh upload ten la: "+req.files.foodimage.name);
 		console.log("ten la: "+req.body);
 		if (Object.keys(req.files).length == 0) {
 			return res.status(400).send('No files were uploaded.');
@@ -52,18 +55,27 @@ app.post('/upload', function(req, res) {
 			console.log("anh upload ten la: "+req.files.foodimage.name);
 			// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 			let image = req.files.foodimage;
-			uploadPath = __dirname + '/React_front/public/images/' + image.name;
+			uploadPath = __dirname + '/../React_front/public/images/dish/' + image.name;
 			// Use the mv() method to place the file somewhere on your server
 			image.mv(uploadPath, function(err) {
 				if (err){
 					console.log("loi mv " + err); 
 					res.status(509).send(err);
 				}
-				else res.status(200).json({"is":"ok"});
+				else {
+					fs.copyFile(uploadPath, `${__dirname}/../React_front/build/images/dish/${image.name}`, (err) => {
+						if (err){
+							console.log("loi cp " + err); 
+							res.status(509).send(err);
+						}
+						else res.status(200).json({"is":"ok"});
+					});
+				}
 			});
 		}
 
 });
+
 app.get('/', function(req,res){
 	res.json({});
 });

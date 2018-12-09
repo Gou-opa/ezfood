@@ -87,7 +87,7 @@ router.delete('/table', function(req, res, next){
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-   destination: "./../React_front/public/images/",
+   destination: "./images/",
    filename: function(req, file, cb){
       cb(null,file.originalname);
    }
@@ -98,17 +98,6 @@ const upload = multer({
    limits:{fileSize: 10000000},
 }).single("myImage");
 
-router.post("/upload", function(req, res) {
-  upload(req, res, function(err) {
-      if (err) {
-        res.status(408).json({is:false});
-      }
-      else {
-        console.log("upload anh " + req.files.foodimage.name);
-        res.status(200).json({});
-      }
-  });
-});
 
 router.post("/dish", function(req,res){
   var dishform = req.body;
