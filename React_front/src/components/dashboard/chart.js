@@ -73,7 +73,6 @@ class Chart extends Component{
     getChartData(){
         // Ajax calls here
         callApi( 'manager/evaluate', 'GET', null).then(res => {
-           console.log(res.data);
            this.setState({
                 data: res.data,
                 chartData:{
