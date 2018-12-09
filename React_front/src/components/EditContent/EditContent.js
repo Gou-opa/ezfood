@@ -23,7 +23,7 @@ class EditContent extends Component {
       _handleSubmit(e) {
         e.preventDefault();
         var{type,name,price,filename,unit} =this.state;
-        var url = '/images/'+ this.state.filename;
+        var url = '/images/dish/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
         if(this.checkInfo() == true ){
@@ -32,11 +32,10 @@ class EditContent extends Component {
             name : name,
             price : price,
             unit: unit,
-            filename: filename,  
+            filename: filename, 
             url: url          
           }).then(res => {
               console.log(res);
-              
           })
           const formData = new FormData()
           formData.append('foodimage', this.state.file, this.state.file.name)

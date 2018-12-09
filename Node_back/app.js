@@ -8,6 +8,7 @@ var cors = require('cors');
 var app = express();
 //var bf_gateway = require('./business_flow/BF_gateway');
 const busboy = require('connect-busboy');   
+const fs = require('fs');
 
 
 
@@ -54,14 +55,22 @@ app.post('/upload', function(req, res) {
 			console.log("anh upload ten la: "+req.files.foodimage.name);
 			// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 			let image = req.files.foodimage;
-			uploadPath = __dirname + '/React_front/public/images/' + image.name;
+			uploadPath = __dirname + '/../React_front/public/images/dish/' + image.name;
 			// Use the mv() method to place the file somewhere on your server
 			image.mv(uploadPath, function(err) {
 				if (err){
 					console.log("loi mv " + err); 
 					res.status(509).send(err);
 				}
-				else res.status(200).json({"is":"ok"});
+				else {
+					fs.copyFile(uploadPath, `${__dirname}/../React_front/build/images/dish/${image.name}`, (err) => {
+						if (err){
+							console.log("loi cp " + err); 
+							res.status(509).send(err);
+						}
+						else res.status(200).json({"is":"ok"});
+					});
+				}
 			});
 		}
 

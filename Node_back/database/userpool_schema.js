@@ -5,7 +5,8 @@ var userSchema = new mongoose.Schema({
     "username": String,
     "password": String,
     "name": String,
-    "currentorder": Number
+    "currentorder": Number,
+    "avatar": String
 });
 
 userSchema.statics.findbyname = function(dishname){

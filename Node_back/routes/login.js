@@ -41,9 +41,6 @@ router.post('/', function(req,res){
               user.order = order._id;
               res.status(200).json(user);
             }
-              
-            
-            
           });
         }
         else res.status(299).json({"result": "user or pass"});
