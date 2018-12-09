@@ -87,7 +87,7 @@ router.delete('/table', function(req, res, next){
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-   destination: "C:/Users/Chit-Server/Dev/ezfood/React_front/public/images/",
+   destination: "./images/",
    filename: function(req, file, cb){
       cb(null,file.originalname);
    }
@@ -98,6 +98,7 @@ const upload = multer({
    limits:{fileSize: 10000000},
 }).single("myImage");
 
+/*
 router.post("/upload", function(req, res) {
   upload(req, res, function(err) {
       if (err) {
@@ -108,6 +109,30 @@ router.post("/upload", function(req, res) {
         res.status(200).json({});
       }
   });
+});
+*/
+router.post('/upload', function(req, res) {
+		
+  console.log("app.js said anh upload ten la: "+req.files.foodimage.name);
+  console.log("ten la: "+req.body);
+  if (Object.keys(req.files).length == 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
+  else{
+    console.log("anh upload ten la: "+req.files.foodimage.name);
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    let image = req.files.foodimage;
+    uploadPath = __dirname + '/React_front/public/images/' + image.name;
+    // Use the mv() method to place the file somewhere on your server
+    image.mv(uploadPath, function(err) {
+      if (err){
+        console.log("loi mv " + err); 
+        res.status(509).send(err);
+      }
+      else res.status(200).json({"is":"ok"});
+    });
+  }
+
 });
 
 router.post("/dish", function(req,res){

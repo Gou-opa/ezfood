@@ -23,7 +23,7 @@ class EditContent extends Component {
       _handleSubmit(e) {
         e.preventDefault();
         var{type,name,price,filename,unit} =this.state;
-        var url = '/image/'+ this.state.filename;
+        var url = '/images/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
         if(this.checkInfo() == true ){
@@ -48,7 +48,7 @@ class EditContent extends Component {
           // formData.append('price', this.state.price)
           // formData.append('unit', this.state.unit)
           // formData.append('type', this.state.type)
-          axios.post('manager/upload', formData)
+          callApi('upload','POST', formData)
             .then(res => {
               if(res.status == 200){
                 console.log(res);

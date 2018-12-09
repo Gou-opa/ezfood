@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 
 app.use(busboy({
-    highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
+    highWaterMark: 10 * 1024 * 1024, // Set 2MiB buffer
 }));
 
 
@@ -41,9 +41,11 @@ app.use(fileUpload());
 app.get('/upload' , function(req, res){
 	res.render('form');
 })
+
+
 app.post('/upload', function(req, res) {
 		
-		console.log("anh upload ten la: "+req.files.foodimage.name);
+		console.log("app.js said anh upload ten la: "+req.files.foodimage.name);
 		console.log("ten la: "+req.body);
 		if (Object.keys(req.files).length == 0) {
 			return res.status(400).send('No files were uploaded.');
@@ -64,6 +66,7 @@ app.post('/upload', function(req, res) {
 		}
 
 });
+
 app.get('/', function(req,res){
 	res.json({});
 });
