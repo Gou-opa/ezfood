@@ -7,7 +7,7 @@ class AddTableContent extends Component {
     super(props);
     this.state = {
       level: "",
-      number: '',
+      num: '',
       tid: '',
       capacity: '',
       ispick: false,
@@ -17,12 +17,12 @@ class AddTableContent extends Component {
   }
   _handleSubmit(e) {
     e.preventDefault();
-    var{level,number,tid,capacity,ispick} =this.state;
+    var{level,num,tid,capacity,ispick} =this.state;
     console.log(this.state);
 
       callApi(`manager/table/add`, 'POST', {
         level : level,
-        number : number,
+        num : num,
         tid : tid,
         capacity: capacity,
         ispick: ispick
@@ -52,8 +52,8 @@ class AddTableContent extends Component {
                   </h2>
                   <form onSubmit={(e)=>this._handleSubmit(e)}>
                     <input type="number" className="level" name="level" placeholder="Tầng số" onChange={this.onHandleChange.bind(this)}/>
-                    <input type="number" className="number" name="number" placeholder="Bàn số" onChange={this.onHandleChange.bind(this)}/>
-                    <input type="text" className="tid" name="tid" placeholder="Mã bàn" onChange={this.onHandleChange.bind(this)}/>
+                    <input type="number" className="num" name="num" placeholder="Bàn số" onChange={this.onHandleChange.bind(this)}/>
+                    <input type="text" className="tid" name="tid" placeholder="Tên bàn" onChange={this.onHandleChange.bind(this)}/>
                     <input type="number" className="capacity" name="capacity" placeholder="Số lượng khách" onChange={this.onHandleChange.bind(this)}/>
                     <button type="submit"  onClick={(e)=>this._handleSubmit(e)} className="addTableBt">Thêm</button>
                   </form>
