@@ -98,7 +98,7 @@ class Header extends Component {
                             <img src="../images/guest_biopic-holland_1.jpg" alt="a" />
                             <i className="fa fa-sort-desc " aria-hidden="true" id="icon" onClick={this.onActive} />
                             <ul className={avatarActive}>
-                                <p className="dropdown-title">Your Profile</p>
+                                <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
                                 <li className="dropdown-content">Setting</li>
                                 <li className="dropdown-content"><Link to ="/" onClick ={() =>{localStorage.clear()}}>Log out</Link></li>
                             </ul>

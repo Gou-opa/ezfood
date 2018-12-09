@@ -32,14 +32,6 @@ class Table extends Component {
     }
 
 
-    onDeleteTable = (id) => {
-        callApi('manager/table', 'DELETE', {
-            tid : id
-        }).then(res => {
-            console.log(res);
-        })
-    }
-
     render() {
         var {table} = this.props;
         // console.log(table);
@@ -59,8 +51,7 @@ class Table extends Component {
                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
-                    <button className="ban_datcho" onClick ={this.onPickTable.bind(this, table.tid, table.num)}>{y}</button>
-                    <button className="ban_datcho" onClick ={this.onDeleteTable.bind(this, table.tid)}>Xóa bàn</button>
+                    <button className="ban_datcho hidden" onClick ={this.onPickTable.bind(this, table.tid, table.num)}>{y}</button>
                 </div>
             </div>
         );

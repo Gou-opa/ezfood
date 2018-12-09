@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import callApi from '../../service/APIservice';
+//import callApi from '../../service/APIservice';
 class Previewdish extends Component {
     constructor(props) {
         super(props);

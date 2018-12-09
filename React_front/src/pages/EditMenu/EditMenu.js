@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from '../../components/header/header';
 import callApi from '../../service/APIservice'
 import EditContent from '../../components/EditContent/EditContent';
-import LeftContentMenu from '../../components/leftcontent/leftcontentMenu';
 import LeftcontenEditMenu from '../../components/leftcontent/leftcontenEditMenu';
 
 class EditMenu extends Component {
@@ -19,14 +18,13 @@ class EditMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data : [],
-            dishpicked : [ ]
+            data : [],           
         }
     };
     
 
     render() {
-        var {data,dishpicked} = this.state;
+        var {data} = this.state;
         return (
             <div>
                 <Header />

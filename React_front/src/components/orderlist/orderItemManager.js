@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class OrderItemManager extends Component {
 
-    
-
     onDelete =(id)=> {
         this.props.handleDeleteDish(id);
     }

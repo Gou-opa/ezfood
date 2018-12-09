@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import callApi from '../../service/APIservice';
-import { Redirect ,Link} from 'react-router-dom';
+//import { Redirect ,Link} from 'react-router-dom';
 
 class EditContent extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class EditContent extends Component {
         var url = '/images/dish/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
-        if(this.checkInfo() == true ){
+        if(this.checkInfo() === true ){
           callApi(`manager/dish`, 'POST', {
             type : type,
             name : name,
@@ -49,7 +49,7 @@ class EditContent extends Component {
           // formData.append('type', this.state.type)
           callApi('upload','POST', formData)
             .then(res => {
-              if(res.status == 200){
+              if(res.status === 200){
                 console.log(res);
                 alert('Đã thêm món');
               }
@@ -84,7 +84,7 @@ class EditContent extends Component {
         reader.readAsDataURL(file)
       }
       checkInfo = () =>{
-        if(this.state.price == '' || this.state.name == '' ||  this.state.type =='' || this.state.unit ==''){
+        if(this.state.price === '' || this.state.name === '' ||  this.state.type ==='' || this.state.unit ===''){
           return false;
         }
         else{
@@ -105,7 +105,7 @@ class EditContent extends Component {
         let {url} = this.state;
         let $imagePreview = null;
         if (url) {
-          $imagePreview = (<img src={url} />);
+          $imagePreview = (<img src={url} alt="preview"/>);
         } else {
           $imagePreview = (<div className="previewText">Vui lòng chọn hình ảnh minh họa cho món ăn</div>);
         }
