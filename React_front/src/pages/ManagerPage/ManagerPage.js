@@ -37,15 +37,16 @@ class ManagerPage extends Component {
             }
           
           })
-    // console.log(datas);
-    //    this.setState({
-    //        dishes : datas
-    //    })
     }
 
     handleCompletePayment = (id) => {
         console.log(id);
-        console.log(this.state.data);
+        callApi( `waiter/table`, 'GET', null).then(res => {
+            console.log(res.data)
+            this.setState({
+                data : res.data
+            })
+         })
     }
 
 

@@ -4,8 +4,7 @@ import OrderItemManager from './orderItemManager';
 class OrderListManager extends Component {
 
     sendPayment = (id) => {
-        // console.log(id)
-       
+        console.log(id)
         callApi( `manager/paid`, 'POST', {
             tid : id,
             uid : localStorage.getItem('uid')
@@ -15,11 +14,11 @@ class OrderListManager extends Component {
             }else if(res.status === 409) {
                 alert("Sap server roi huhu")
             } else if (res.status === 200 ){
+                
                 // localStorage.removeItem("dishes");
                 // localStorage.removeItem("orderid");
                 this.props.completePayment(id);
                 alert("Thanh toán thành công")
-
             }
          })
     }

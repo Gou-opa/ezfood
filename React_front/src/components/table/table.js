@@ -17,7 +17,7 @@ class Table extends Component {
             uid : localStorage.getItem('uid'),
             tid : id
         }).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             if(res.status === 200 ) {
                 localStorage.setItem('orderid', res.data._id);
             } else   {
@@ -28,7 +28,7 @@ class Table extends Component {
              displayPick : 'Picked'
          })
          localStorage.setItem("picked", true)
-         localStorage.setItem("tid" , id);
+        //  localStorage.setItem("tid" , id);
     }
 
 
