@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect ,Link} from 'react-router-dom';
 import callApi from '../../service/APIservice'
-// import callApiAo from '../../service/APIao'
 class Loggin extends Component {
     constructor(props)  {
         super(props)
@@ -12,13 +11,6 @@ class Loggin extends Component {
             check : []
         }
     }
-    // componentDidMount() {
-    //     callApiAo('users', 'GET', null).then(res => {
-    //         this.setState({
-    //             check : res.data
-    //         })
-    //      })
-    // }
 
     onChange=(e)=> {
         var target = e.target;
@@ -39,6 +31,8 @@ class Loggin extends Component {
                 username : txtUsername,
                 password : txtPassword
             }).then(res => {
+                console.log(res.data)
+                localStorage.setItem("infor" , JSON.stringify(res.data))
                 if(res.status === 200 ) {
                     localStorage.setItem('uid', res.data.uid);
                     this.setState({
@@ -48,15 +42,7 @@ class Loggin extends Component {
                     alert('Tài khoản hoặc mật khẩu không chính xác !')
                 }
              })
-
-        //    this.setState({
-        //        isLogin : true
-        //    })
-
-
         }
-       
-      
     }
 
     render() {

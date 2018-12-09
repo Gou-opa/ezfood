@@ -159,6 +159,10 @@ i.fa.fa-check-circle {position: relative;left: 42%;top: 4px;font-size: 30px;colo
     visibility: visible;
 }
 
+.reservations.picked .hidden {
+    visibility: hidden;
+}
+
 .reservations:hover .ban_content{
     transition: 300ms;
   transform: translate3d(10px, 10px, -200px);

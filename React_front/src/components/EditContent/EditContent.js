@@ -35,8 +35,7 @@ class EditContent extends Component {
             filename: filename,  
             url: url          
           }).then(res => {
-              console.log(res);
-              
+              console.log(res); 
           })
           const formData = new FormData()
           formData.append('foodimage', this.state.file, this.state.file.name)

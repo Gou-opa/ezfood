@@ -24,8 +24,8 @@ class ManagerPage extends Component {
         this.handledishes = this.handledishes.bind(this);
     };
 
-    handledishes(id) {
-        // localStorage.setItem('tid', id);
+    handledishes =(id)=> {
+        localStorage.setItem('tid', id);
         callApi( `manager/order/preview/${id}`, 'GET', null).then(res => {
             // console.log(res.data)
             if(res.data === null) {
@@ -43,9 +43,15 @@ class ManagerPage extends Component {
     //    })
     }
 
+    handleCompletePayment = (id) => {
+        console.log(id);
+        console.log(this.state.data);
+    }
+
+
     render() {
-        console.log(this.state.dishes)
-        console.log(this.state.data)
+        // console.log(this.state.dishes)
+        // console.log(this.state.data)
         localStorage.removeItem("picked")
         var dishes = this.state.dishes;
         if(localStorage.getItem('uid') === null) {
@@ -58,7 +64,7 @@ class ManagerPage extends Component {
                 <Header />
                 <div id = "wrap">
                 <LeftContentManager data= {data} tablePicked={tablePicked} handledishes={this.handledishes}/>
-                <OrderListManager dishes ={dishes}/>
+                <OrderListManager dishes ={dishes} completePayment={this.handleCompletePayment.bind(this)}/>
                 </div>
             </div>
 

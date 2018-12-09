@@ -106,6 +106,13 @@ i.fa.fa-credit-card-alt {
     background-color: #ff706a;
     color: white;
 }
+
+.tab a.active:hover {
+    color: white;
+}
+.tab a:hover {
+    color: black;
+}
  /* Style the tab content */
 .tabcontent {
     display: none;
@@ -178,6 +185,9 @@ i.fa.fa-plus {
     border :5px solid #f3f3f3;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+
  /* layout tong the */
 #wrap {
     display: grid;
