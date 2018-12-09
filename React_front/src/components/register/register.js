@@ -42,46 +42,47 @@ class Register extends Component {
         return <Redirect to= '/login'/>
     }
         return (
-            <div id="register_style">
-                <form className="box" onSubmit={this.onHandleSubmit.bind(this)}>
-                    <div className="title">Tạo tài khoản</div>
-                    <div className="input">
-                        <input type="text"
-                            placeholder="Họ và Tên"
-                            name="name"
-                            id="regname"
-                            value ={name}
-                            onChange={this.onHandleChange.bind(this)}
-                        />
-                        <span className="spin" />
-                    </div>
-                    <div className="input">
-                        <input type="text"
-                            placeholder="Tên tài khoản"
-                            name="username"
-                            id="reregpass"
-                            value={username}
-                            onChange={this.onHandleChange.bind(this)}
-                        />
-                        <span className="spin" />
-                    </div>
-                    <div className="input">
-                        <input type="password"
-                            placeholder="Mật khẩu"
-                            name="password"
-                            id="regpass"
-                            value={password}
-                            onChange={this.onHandleChange.bind(this)}
-                        />
-                  
-                    </div>
-                    <div className="button login">
-                        <button type="submit">Đăng ký</button>
-                    </div>
-                    <Link to ="/login" className="pass-forgot">Đăng nhập</Link>
-                </form>
+            <div className="login_page_ta">
+                <div id="register_style">
+                    <form className="box" onSubmit={this.onHandleSubmit.bind(this)}>
+                        <div className="title">Tạo tài khoản</div>
+                        <div className="input">
+                            <input type="text"
+                                placeholder="Họ và Tên"
+                                name="name"
+                                id="regname"
+                                value ={name}
+                                onChange={this.onHandleChange.bind(this)}
+                            />
+                            <span className="spin" />
+                        </div>
+                        <div className="input">
+                            <input type="text"
+                                placeholder="Tên tài khoản"
+                                name="username"
+                                id="reregpass"
+                                value={username}
+                                onChange={this.onHandleChange.bind(this)}
+                            />
+                            <span className="spin" />
+                        </div>
+                        <div className="input">
+                            <input type="password"
+                                placeholder="Mật khẩu"
+                                name="password"
+                                id="regpass"
+                                value={password}
+                                onChange={this.onHandleChange.bind(this)}
+                            />
+                    
+                        </div>
+                        <div className="button login">
+                            <button type="submit">Đăng ký</button>
+                        </div>
+                        <Link to ="/login" className="pass-forgot">Đăng nhập</Link>
+                    </form>
+                </div>
             </div>
-
 
         );
     }
