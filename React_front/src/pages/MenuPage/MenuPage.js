@@ -16,13 +16,6 @@ class MenuPage extends Component {
                 data: res.data.menu,
             })
         })
-
-        // callApiAo('menu', 'GET', null).then(res => {
-        //     console.log(res.data);
-        //     this.setState({
-        //         data : res.data
-        //     })
-        // })
     }
     constructor(props) {
         super(props);
@@ -62,8 +55,7 @@ class MenuPage extends Component {
             dish: dish,
             order_id:localStorage.getItem('orderid')
         }
-
-        // console.log(dish);
+        
         callApi('waiter/order/add', 'POST', _data).then(res => {
             // console.log(res.data)
         })
@@ -116,7 +108,6 @@ class MenuPage extends Component {
             })
             return true;
         })
-        // console.log(uniquequantity);
         return uniquequantity;
     }
 

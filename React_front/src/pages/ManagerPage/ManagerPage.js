@@ -27,7 +27,7 @@ class ManagerPage extends Component {
     handledishes =(id)=> {
         localStorage.setItem('tid', id);
         callApi( `manager/order/preview/${id}`, 'GET', null).then(res => {
-            // console.log(res.data)
+            console.log(res.data)
             if(res.data === null) {
                 alert("Khách ở bàn này chưa gọi món !")
             } else {
@@ -42,11 +42,21 @@ class ManagerPage extends Component {
     handleCompletePayment = (id) => {
         console.log(id);
         callApi( `waiter/table`, 'GET', null).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 data : res.data
             })
          })
+    }
+
+    duplicate = (arr)=> {
+        return Array.from(new Set(arr.map(JSON.stringify))).map(JSON.parse);
+    }
+
+    filterDishes=(arr)=>  {
+        var temp = this.duplicate(arr);
+        console.log(temp);
+        return arr;
     }
 
 
@@ -54,7 +64,7 @@ class ManagerPage extends Component {
         // console.log(this.state.dishes)
         // console.log(this.state.data)
         localStorage.removeItem("picked")
-        var dishes = this.state.dishes;
+        var dishes = this.filterDishes(this.state.dishes);
         if(localStorage.getItem('uid') === null) {
             return <Redirect to= '/login' />
         }
