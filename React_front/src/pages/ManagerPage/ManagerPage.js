@@ -65,7 +65,7 @@ class ManagerPage extends Component {
 
     filterDishes = (arr) => {
         var temp = this.duplicate(arr);
-        // console.log(temp);
+        console.log(temp);
         return arr;
     }
 

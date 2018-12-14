@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+//import AddAvatar from '../AddAvatar/AddAvatar';
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
@@ -49,21 +50,30 @@ class Header extends Component {
         }
     }
 
-
-    state = {
-        avatarActive: 'dropdown-avatar',
-        lefMenuactive: '',
-        menus: [{
-            name: 'Menu',
-            to: '/menu',
-            exact: true
-        },
-        {
-            name: 'Pick Table',
-            to: '/picktable',
-            exact: true
-        }]
+       
+    constructor(props) {
+        super(props);
+        this.state = {
+            avatarActive: 'dropdown-avatar',
+            lefMenuactive: '',
+            stateClass: "AddAvatar hideAvatarEdit",
+            filename: "",
+            file: "",
+            url: '',
+            menus : [{
+                name: 'Menu',
+                to: '/menu',
+                exact: true
+            },
+            {
+                name: 'Picktable',
+                to: '/picktable',
+                exact: true
+            }]
+        }
     }
+
+
     onActive = () => {
         this.setState({
             avatarActive: (this.state.avatarActive === 'dropdown-avatar') ? "dropdown-avatar active" : "dropdown-avatar"
@@ -88,8 +98,60 @@ class Header extends Component {
         }
         return result;
     }
+    _handleSubmit(e) {
+        e.preventDefault();
+        // var url = '/images/'+ this.state.filename;
+        // console.log(this.state);
+        // console.log(url);
+        //   callApi(`manager/dish`, 'POST', {  
+        //     url: url          
+        //   }).then(res => {
+        //       console.log(res);
+              
+        //   })
+        //   const formData = new FormData()
+        //   formData.append('foodimage', this.state.file, this.state.file.name)
+        //   callApi(`upload`, 'POST', {
+        //     formData : formData,     
+        //   }).then(res => {
+        //     if(res.status === 200){
+        //       console.log(res);
+              
+        //       this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+        //     }
+              
+        //   })         
+          alert('Đã thay đổi ảnh đại diện');
+          this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+        
+      }
+    
+      _handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+    
+        reader.onloadend = () => {
+          this.setState({
+            filename: file.name,
+            file: file,
+            url: reader.result
+          });
+        }
+    
+        reader.readAsDataURL(file)
+      }
     render() {
-        var { avatarActive, lefMenuactive } = this.state;
+        let {url} = this.state;
+        let $imagePreview = null;
+        
+        if (url) {
+          $imagePreview = (<img src={url} alt="preview"/>);
+        } else {
+          $imagePreview = (<div className="previewText">Vui lòng chọn hình ảnh đại diện</div>);
+        }
+        var { avatarActive, lefMenuactive,stateClass } = this.state;
         console.log(JSON.parse(localStorage.getItem("infor")).avatar)
         var avatar = JSON.parse(localStorage.getItem("infor")).avatar;
         return (
@@ -119,6 +181,26 @@ class Header extends Component {
                         {this.showMenu(this.state.menus)}
                     </ul>
                 </div>
+                {/* set avatar */}
+                <div className={stateClass}>
+                    <button className="closeBT" onClick ={() => {this.setState({stateClass: "AddAvatar hideAvatarEdit"})}}>X</button>
+                    <div className="imgPreview">
+                    {$imagePreview}
+                    </div>
+                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                        <input className="fileInput" 
+                            type="file" 
+                            name="avatar"
+                            id="avatar"
+                            onChange={(e)=>this._handleImageChange(e)} 
+                            />
+                        <div><label htmlFor="avatar" className="label-avatar">Choose a file</label></div>    
+                        <button className="submitButton" 
+                            type="submit" 
+                            onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
+                        </form>
+                    
+            </div>
                 {/* end nav */}
             </div>
 
