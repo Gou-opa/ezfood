@@ -6,11 +6,12 @@ import React, { Component } from 'react';
 import {Col, Card, CardHeader, CardBody, CardTitle } from 'reactstrap';
 import posed from 'react-pose';
 import callApi from '../../service/APIservice'
+import {uid} from "../../service/auth"
 
 class TableNumber extends Component{
 
     componentWillMount() {
-        callApi( 'waiter/table', 'GET', null).then(res => {
+        callApi( `waiter/table/${uid}`, 'GET', null).then(res => {
             // console.log(res.data);
            this.setState({
                data: res.data

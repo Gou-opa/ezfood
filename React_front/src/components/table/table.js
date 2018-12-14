@@ -15,7 +15,7 @@ class Table extends Component {
         
         localStorage.removeItem("dishes")
         localStorage.setItem('numOftable',num)
-        callApi(`waiter/table/pick`, 'POST', {
+        callApi(`waiter/table/pick/`, 'POST', {
             uid : localStorage.getItem('uid'),
             tid : id
         }).then(res => {
