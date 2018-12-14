@@ -21,7 +21,7 @@ class TabcontentEditMenu extends Component {
                         key={index}
                         dish={dish}
                         dishpicked={dishpicked}
-                        handleDishPicked ={this.props.handleDishPicked}
+                        handleDeleteDish ={this.props.handleDeleteDish}
                     />
                 )
             })
