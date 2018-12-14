@@ -39,80 +39,43 @@ app.use(express.static(path.join(__dirname, 'public')));
 const fileUpload = require('express-fileupload');
 // default options
 app.use(fileUpload());
-app.get('/upload' , function(req, res){
-	res.render('form');
-})
+
 
 
 app.post('/upload', function(req, res) {
-		
-		console.log("app.js said anh upload ten la: "+req.files.foodimage.name);
-		console.log("ten la: "+req.body);
-		if (Object.keys(req.files).length == 0) {
-			return res.status(400).send('No files were uploaded.');
-		}
-		else{
-			console.log("anh upload ten la: "+req.files.foodimage.name);
-			// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-			let image = req.files.foodimage;
-			uploadPath = __dirname + '/../React_front/public/images/dish/' + image.name;
-			// Use the mv() method to place the file somewhere on your server
-			image.mv(uploadPath, function(err) {
-				if (err){
-					console.log("loi mv " + err); 
-					res.status(509).send(err);
-				}
-				else {
-					fs.copyFile(uploadPath, `${__dirname}/../React_front/build/images/dish/${image.name}`, (err) => {
-						if (err){
-							console.log("loi cp " + err); 
-							res.status(509).send(err);
-						}
-						else res.status(200).json({"is":"ok"});
-					});
-				}
-			});
-		}
-
+	console.log("app.js said anh upload ten la: "+req.files.foodimage.name);
+	if (Object.keys(req.files).length == 0) {
+		return res.status(400).send('No files were uploaded.');
+	}
+	else{
+		console.log("anh upload ten la: "+req.files.foodimage.name);
+		// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+		var image = req.files.foodimage;
+		uploadPath = __dirname + '/../React_front/public/images/dish/' + image.name;
+		// Use the mv() method to place the file somewhere on your server
+		image.mv(uploadPath, function(err) {
+			if (err){
+				console.log("loi mv " + err); 
+				res.status(509).send(err);
+			}
+			else {
+				fs.copyFile(uploadPath, `${__dirname}/../React_front/build/images/dish/${image.name}`, (err) => {
+					if (err){
+						console.log("loi cp " + err); 
+						res.status(509).send(err);
+					}
+					else res.status(200).json({"is":"ok"});
+				});
+			}
+		});
+	}
 });
-app.post('/upload', function(req, res) {
-		
-		console.log("app.js said anh upload ten la: "+ req.files.foodimage.name);
-		//console.log("ten la: "+req.body);
-		if (Object.keys(req.files).length == 0) {
-			res.status(400).send('No files were uploaded.');
-		}
-		else{
-			console.log("anh upload ten la: "+req.files.foodimage.name);
-			// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-			let image = req.files.foodimage;
-			uploadPath = __dirname + '/../React_front/public/images/dish/' + image.name;
-			// Use the mv() method to place the file somewhere on your server
-			image.mv(uploadPath, function(err) {
-				if (err){
-					console.log("loi mv " + err); 
-					res.status(509).send(err);
-				}
-				else {
-					fs.copyFile(uploadPath, `${__dirname}/../React_front/build/images/dish/${image.name}`, (err) => {
-						if (err){
-							console.log("loi cp " + err); 
-							res.status(509).send(err);
-						}
-						else {
-							res.status(200).json({"is":"ok"});
-						}
-					});
-				}
-			});
-		}
 
-});
 app.post('/change-user-avatar' , function(req, res){
-	var username = req.body.username;
+	var userid = req.body.uid;
 	var avatarfilename = req.body.avatar;
-	console.log("change avatar for " + username);
-	userpool.updateOne({"username": username}, {$set:{ avatar: `./images/avatar/${avatarfilename}`}}, function(err, out){
+	console.log("change avatar for " + userid);
+	userpool.updateOne({"_id": userid}, {$set:{ avatar: `/images/avatar/${avatarfilename}`}}, function(err, out){
 		if(err) {
 			console.log("change avatar failed");
 			res.status(500).json({change: false});
@@ -124,14 +87,13 @@ app.post('/change-user-avatar' , function(req, res){
 });
 app.post('/change-avatar', function(req, res) {
 	console.log("app.js said avatar upload ten la: "+req.files.avatar.name);
-	//console.log("ten la: "+req.body);
 	if (Object.keys(req.files).length == 0) {
-		return res.status(400).send('No avatar were uploaded.');
+		return res.status(400).send('No files were uploaded.');
 	}
 	else{
-		console.log("avatar upload ten la: "+req.files.avatar.name);
+		console.log("anh upload ten la: "+req.files.avatar.name);
 		// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-		let image = req.files.avatar;
+		var image = req.files.avatar;
 		uploadPath = __dirname + '/../React_front/public/images/avatar/' + image.name;
 		// Use the mv() method to place the file somewhere on your server
 		image.mv(uploadPath, function(err) {
@@ -145,17 +107,12 @@ app.post('/change-avatar', function(req, res) {
 						console.log("loi cp " + err); 
 						res.status(509).send(err);
 					}
-					else {
-						
-						res.status(200).json({"is":"ok"});
-					}
+					else res.status(200).json({"is":"ok"});
 				});
 			}
 		});
 	}
-
 });
-
 app.get('/', function(req,res){
 	res.json({});
 });
@@ -172,8 +129,8 @@ app.get('/', function(req,res){
 
 app.use('/',
 	require('./routes/index'))
-.use('/storekeeper', 
-	require('./routes/storekeeper'))
+.use('/storage', 
+	require('./routes/storage'))
 .use('/waiter', 
 	require('./routes/waiter'))
 .use('/manager', 

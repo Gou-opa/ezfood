@@ -13,10 +13,10 @@ var historypool = require('../database/historypool_schema');
 router.get('/:uid', function(req, res) {
   authorize.checker(req.params.uid, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       res.send('Welcome to waiter page');
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
 
@@ -37,7 +37,7 @@ router.get('/menu/:uid', function(req, res){
         else res.json({"menu":result});
       });
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 })
 
@@ -69,7 +69,7 @@ router.get('/table/:uid', function(req, res){
         else res.json(result);
       });
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 })
 
@@ -79,7 +79,7 @@ router.post("/table/pick", function(req,res){
   console.log(customer + " picked table "+ JSON.stringify(table));
   authorize.checker(customer, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       orderpool.count(function(err, count) {
         var order = {
           "uid": customer,
@@ -115,19 +115,42 @@ router.post("/table/pick", function(req,res){
           }
         });
       });
-    } 
+    }
     else {
-      res.json(authorize.guess);
-  }
+      res.status(402).json(authorize.guess);
+    }
+  });
 });
 
-  
+
+router.delete('/order/dish/:uid', function(req, res){
+  authorize.checker(req.params.uid, function(role){
+    console.log(role);
+    if( role == authorize.USER){
+      console.log(req.body);
+      var orderid = req.body.order_id;
+      var dishid = req.body.did;
+      orderpool.findOne({"_id" : orderid}, function(err, result){
+        if(err) res.json({"result":"khong tim thay order"});
+        else{
+          //tim thay order
+          orderpool.findByIdAndUpdate(orderid, {$pull:{"dishes": {_id: dishid}}}, function(err, output){
+            if(err) console.log("xoa mon khoi order "+ order_id + " failed");
+            else res.status(200).json({});
+          });
+        }
+      });
+    }
+    else {
+      res.status(402).json(authorize.guess);
+    }
+  });
 });
 
 router.post('/order/add/:uid', function(req, res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       console.log(req.body);
       var orderid = req.body.order_id;
       orderpool.findOne({"_id" : orderid}, function(err, result){
@@ -169,7 +192,7 @@ router.post('/order/add/:uid', function(req, res){
           });
         }
       });
-    }else res.json(authorize.guess);
+    }else res.status(402).json(authorize.guess);
   });
 });
 /*

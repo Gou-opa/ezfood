@@ -5,7 +5,7 @@ var pool = require('../database/userpool_schema');
 var orderpool = require('../database/orderpool_schema');
 //var db = localmongo.BF.user;
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.send('Welcome to login page');
 });
 
@@ -62,7 +62,7 @@ router.post('/register',function(req,res){
       }
       else {
         console.log("inserting...");
-        pool.create(form, function(err,res){
+        pool.create(form, function(err,resu){
           if(err) {
             res.status(404).json({});
             throw err;
@@ -73,7 +73,6 @@ router.post('/register',function(req,res){
             res.status(200).json({});
           }
         });
-        
       }
     }
   });
