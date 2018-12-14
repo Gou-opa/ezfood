@@ -1,4 +1,4 @@
-# [ Demo](chitbi.ddns.net:5000)  [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](chitbi.ddns.net:5000) 
+# [ Demo](http://chitbi.ddns.net:5000/)  [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://chitbi.ddns.net:5000/) 
 
   
 Quản lý nhà hàng
