@@ -9,6 +9,9 @@ class Decentraliztion extends Component {
             
            <div>
            <Header />
+                <div className>
+                
+                </div>
                 <hr />
                 <br />
                 <br />

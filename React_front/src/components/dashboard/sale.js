@@ -8,6 +8,8 @@ import {Col, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstra
 import posed from 'react-pose';
 
 import callApi from '../../service/APIservice'
+//authentication
+import {uid} from "../../service/auth"
 
 
 function numberWithCommas(x) {
@@ -27,8 +29,8 @@ class Sale extends Component{
         }
     }
 
-    componentWillMount() {
-        callApi( 'manager/evaluate', 'GET', null).then(res => {
+    componentDidMount() {
+        callApi( `manager/evaluate/${uid}`, 'GET', null).then(res => {
             // console.log(res.data);
            this.setState({
               data: res.data,

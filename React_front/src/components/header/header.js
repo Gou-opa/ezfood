@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route, Link} from 'react-router-dom';
-const menus = [
+
+const menus = (localStorage.getItem("infor")).role === 2 ? [
     {
         name : 'Menu',
         to : '/menu',
@@ -10,28 +11,99 @@ const menus = [
         name : 'Pick Table',
         to : '/picktable',
         exact :true
-    },
-    {
-        name : 'Manager',
-        to : '/manager',
-        exact :true
-    },
-    {
-        name : 'Dashboard',
-        to : '/dashboard',
-        exact :true
-    },
-    {
-        name : 'EditMenu',
-        to : '/editmenu',
-        exact :true
-    },
-    {
-        name : 'AddTable',
-        to : '/addtable',
-        exact :true
-    }
-];
+    }] : [
+        {
+            name : 'Manager',
+            to : '/manager',
+            exact :true
+        },
+        {
+            name : 'Dashboard',
+            to : '/dashboard',
+            exact :true
+        },
+        {
+            name : 'EditMenu',
+            to : '/editmenu',
+            exact :true
+        },
+        {
+            name : 'AddTable',
+            to : '/addtable',
+            exact :true
+        }
+    ]
+
+// const menus = [
+//     {
+//         name : 'Menu',
+//         to : '/menu',
+//         exact :true
+//     },
+//     {
+//         name : 'Pick Table',
+//         to : '/picktable',
+//         exact :true
+//     },
+//     {
+//         name : 'Manager',
+//         to : '/manager',
+//         exact :true
+//     },
+//     {
+//         name : 'Dashboard',
+//         to : '/dashboard',
+//         exact :true
+//     },
+//     {
+//         name : 'EditMenu',
+//         to : '/editmenu',
+//         exact :true
+//     },
+//     {
+//         name : 'AddTable',
+//         to : '/addtable',
+//         exact :true
+//     }
+// ];
+
+if(JSON.parse(localStorage.getItem("infor")).role === 2) {
+    const menus = [
+        {
+            name : 'Menu',
+            to : '/menu',
+            exact :true
+        },
+        {
+            name : 'Pick Table',
+            to : '/picktable',
+            exact :true
+        }]
+} else if (JSON.parse(localStorage.getItem("infor")).role === 2) {
+    const menus = [
+        {
+            name : 'Manager',
+            to : '/manager',
+            exact :true
+        },
+        {
+            name : 'Dashboard',
+            to : '/dashboard',
+            exact :true
+        },
+        {
+            name : 'EditMenu',
+            to : '/editmenu',
+            exact :true
+        },
+        {
+            name : 'AddTable',
+            to : '/addtable',
+            exact :true
+        }
+    ]
+}
+
 
 const MenuLink = ({label, to, activeOnlyWhenExact})=> {
     return (
@@ -52,6 +124,7 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
 }
 
 class Header extends Component {
+
     
     state = {
         avatarActive: 'dropdown-avatar',
@@ -82,6 +155,8 @@ class Header extends Component {
         return result;
     }
     render() {
+
+
         var { avatarActive, lefMenuactive } = this.state;
         console.log(JSON.parse(localStorage.getItem("infor")).avatar)
         var avatar = ".." + JSON.parse(localStorage.getItem("infor")).avatar;

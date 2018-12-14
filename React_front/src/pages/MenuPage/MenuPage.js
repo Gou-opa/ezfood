@@ -8,7 +8,7 @@ import {uid} from '../../service/auth'
 class MenuPage extends Component {
     componentWillMount() {
         console.log(uid)
-        if(localStorage.getItem('uid') === null) {
+        if(localStorage.getItem('infor') === null) {
             return;
         }
         callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
@@ -138,6 +138,8 @@ class MenuPage extends Component {
         localStorage.removeItem("picked")
         if(uid === null) {
             return <Redirect to= '/picktable' />
+        } else if(JSON.parse(localStorage.getItem("infor")).role !== 1) {
+            return <Redirect to='/khongdu' />
         }
         var { data } = this.state;
         var totalMoney = (localStorage.getItem('totalMoney') !== 'undefined' && localStorage.getItem('totalMoney') !== null) ? JSON.parse(localStorage.getItem('totalMoney')) : 0

@@ -10,6 +10,9 @@ import callApi from '../../service/APIservice'
 // jsPDF
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
+//authentication
+import {uid} from "../../service/auth"
+
 
 
 function numberWithCommas(x) {
@@ -72,7 +75,7 @@ class Chart extends Component{
 
     getChartData(){
         // Ajax calls here
-        callApi( 'manager/evaluate', 'GET', null).then(res => {
+        callApi( `manager/evaluate/${uid}`, 'GET', null).then(res => {
            this.setState({
                 data: res.data,
                 chartData:{

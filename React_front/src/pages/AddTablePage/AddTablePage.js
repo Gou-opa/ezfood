@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Header from '../../components/header/header';
-//import callApi from '../../service/APIservice'
+import { Redirect } from 'react-router-dom'
 import AddTableContent from '../../components/AddTable/addTableContent';
 
 class AddTablePage extends Component {
     render() {
+        if (localStorage.getItem('infor') === null) {
+            return <Redirect to='/login' />
+        } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
+            return <Redirect to='/khongdu' />
+        }
         return (
             <div>
                 <Header />
