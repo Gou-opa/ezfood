@@ -18,7 +18,7 @@ Restaurant management system
 
 - Front-end: ReactJS
 - Backend: NodeJS
-- Storage: mongodb
+- Storage: Mongodb
 
 ## Installation
 ```bash
