@@ -34,7 +34,7 @@ class LeftcontenEditMenu extends Component {
         return (
             <div className="left_tap">
                 <TabEditMenu navTab = {navTab} tabdefault={this.state.tabdefault} onReceiveTabActive={this.onActiveTab}/>
-                <TabcontentEditMenu tabdefault = {this.state.tabdefault} data= {dishs}  dishpicked ={dishpicked} handleDishPicked = {this.props.handleDishPicked}/>
+                <TabcontentEditMenu tabdefault = {this.state.tabdefault} data= {dishs}  dishpicked ={dishpicked} handleDeleteDish = {this.props.handleDeleteDish}/>
                 
             </div>
         );

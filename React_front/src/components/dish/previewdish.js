@@ -8,8 +8,8 @@ class Previewdish extends Component {
         }
     }
 
-    deleteDish =(id)=> {
-        
+    deleteDish =(id,type,name)=> {
+        this.props.handleDeleteDish(id,type)
         // var{type,name,price,unit,filename} =this.state;
         // console.log(this.state);        
         //   callApi(`manager/dish`, 'POST', {
@@ -17,7 +17,7 @@ class Previewdish extends Component {
         //   }).then(res => {
         //       console.log(res);
         //       if(res.status == 200){
-                 alert('Bạn đã xóa món '+ this.state.dish.name);
+                 alert('Bạn đã xóa món '+ name);
         //       }
         //   })
         //   callApi(`manager/dish`, 'POST', this.state.file).then(res => {
@@ -36,7 +36,7 @@ class Previewdish extends Component {
                     <h2>{dish.name}</h2>
                     <h5 className="one_dish_price">{dish.price}</h5>
                     <button type="button" 
-                    onClick={this.deleteDish.bind(this, dish._id)}><i className="fa" aria-hidden="true"> Xóa món</i></button>
+                    onClick={this.deleteDish.bind(this, dish._id,dish.type,dish.name)}><i className="fa" aria-hidden="true"> Xóa món</i></button>
                 </div>
             </div>
         );

@@ -21,7 +21,30 @@ class EditMenu extends Component {
             data : [],           
         }
     };
-    
+    handleDeleteDish = (id, type) => {
+        let dish = null;
+        let { data } = this.state;
+        data.map((list, index) => {
+            if (list.type === type) {
+                list.dishes.map((dishreal, index) => {
+                    if (dishreal._id === id) {
+                        dish = dishreal;
+                    }
+                    return true;
+                })
+            }
+            return true;
+        })
+        console.log(dish);
+        callApi(`manager/dish`, 'DELETE', {
+            _id: dish._id,         
+          }).then(res => {
+              console.log(dish._id);
+              console.log(res);
+              
+          })
+
+    }
 
     render() {
         var {data} = this.state;
@@ -29,7 +52,7 @@ class EditMenu extends Component {
             <div>
                 <Header />
                 <div id="wrap">
-                    <LeftcontenEditMenu data= {data} />
+                    <LeftcontenEditMenu data= {data} handleDeleteDish={this.handleDeleteDish.bind(this)}/>
                     <EditContent></EditContent>
                 </div>
             </div>
