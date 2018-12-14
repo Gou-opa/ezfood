@@ -46,21 +46,26 @@ class OrderListManager extends Component {
         }
         
     }
+    commaSeparateNumber(val){ 
+        while (/(\d+)(\d{3})/.test(val.toString())){ 
+         val = val.toString().replace(/(\d+)(\d{3})/, '$1'.concat(',','$2')); 
+        } 
+        return val; 
+    } 
     render() {
         // console.log(this.props.dishes)
         var totalMoney = 0;
         for(let i = 0; i< this.props.dishes.length; i++) {
             totalMoney = totalMoney + this.props.dishes[i].dish.price*this.props.dishes[i].quantity;
         }
-
         return (
             <div className="tab_right">
                 <div className="thanh-t">
-                    <label id="total-money"><b>Tổng Tiền :{totalMoney}đ</b> </label>
+                    <label id="total-money"><b>Tổng Tiền :{this.commaSeparateNumber(totalMoney)}đ</b> </label>
                     <button id="payment" onClick={this.sendPayment.bind(this,localStorage.getItem("tid"))}><i className="fa fa-credit-card-alt" aria-hidden="true">Thanh toán</i></button>
                 </div>
                 <br />
-                <h2>Bàn </h2>
+                <h2>Bàn - Tầng{localStorage.getItem("tabname")} </h2>
                 <ul className="one_dish" id="title-orderlist">
                     <li className="name_dish pay-item">Tên món ăn</li>
                     <li className="price_dish pay-item">Giá/món</li>

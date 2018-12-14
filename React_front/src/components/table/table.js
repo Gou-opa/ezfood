@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import callApi from '../../service/APIservice';
+import {uid} from "../../service/auth"
 class Table extends Component {
 
     constructor(props) {
@@ -15,7 +16,7 @@ class Table extends Component {
         localStorage.removeItem("dishes")
         localStorage.setItem('numOftable',num)
         callApi(`waiter/table/pick/`, 'POST', {
-            uid : localStorage.getItem('uid'),
+            uid : uid,
             tid : id
         }).then(res => {
             // console.log(res.data);
