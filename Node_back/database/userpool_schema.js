@@ -6,7 +6,8 @@ var userSchema = new mongoose.Schema({
     "password": String,
     "name": String,
     "currentorder": Number,
-    "avatar": String
+    "avatar": {type: String, default: "/images/avatar/default.png"},
+    "role" : {type: Number , default: 1} //1 la user 2 la admin
 });
 
 userSchema.statics.findbyname = function(dishname){
