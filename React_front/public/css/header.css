@@ -12,7 +12,7 @@ p.dropdown-title {
 }
 
 #nav_menu {
-    height: 50px;
+    height: 56px;
     margin-bottom: 25px;
     display: flex;
     background-color: #ff706a;
@@ -29,6 +29,10 @@ p.dropdown-title {
 #nav_menu .nav_list .nav_item {
     margin: 0 0.5rem;
 }
+#nav_logo img{
+    width:  103px;
+    height: 101px;
+}
 #nav_avatar {
     position: absolute;
     right: 2rem;
@@ -37,6 +41,7 @@ p.dropdown-title {
     font-size: 30px;
     font-family: initial;
     font-weight: bold;
+    cursor: pointer;
 }
 i.fa.fa-bars {
     font-size: 30px;

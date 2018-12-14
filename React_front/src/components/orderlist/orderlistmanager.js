@@ -57,7 +57,7 @@ class OrderListManager extends Component {
             <div className="tab_right">
                 <div className="thanh-t">
                     <label id="total-money"><b>Tổng Tiền :{totalMoney}đ</b> </label>
-                    <button id="payment" onClick={this.sendPayment.bind(this,localStorage.getItem("tid"))}><i className="fa fa-credit-card-alt" aria-hidden="true">Payment</i></button>
+                    <button id="payment" onClick={this.sendPayment.bind(this,localStorage.getItem("tid"))}><i className="fa fa-credit-card-alt" aria-hidden="true">Thanh toán</i></button>
                 </div>
                 <br />
                 <h2>Bàn </h2>

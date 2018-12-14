@@ -25,13 +25,16 @@ class PickTablePage extends Component {
     };
 
     render() {
-        // console.log(this.state.data)
         if(localStorage.getItem('infor') === null) {
             return <Redirect to= '/login' />
         } else if(JSON.parse(localStorage.getItem("infor")).role !== 1) {
             return <Redirect to='/khongdu' />
+        }else if(localStorage.getItem("numOftable") !== null) {
+            return <Redirect to ='/menu' />
         }
         // console.log(console.log(this.state.data));
+        console.log(JSON.parse(localStorage.getItem("infor")).role);
+
         var {data,tablePicked} = this.state
         return (
             <div>

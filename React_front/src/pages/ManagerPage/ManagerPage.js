@@ -13,7 +13,7 @@ class ManagerPage extends Component {
         }
         this.interval = setInterval(() => {
             callApi(`waiter/table/${uid}`, 'GET', null).then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({
                     data: res.data
                 })
@@ -35,10 +35,9 @@ class ManagerPage extends Component {
     };
 
     handledishes = (id) => {
-        console.log(id);
         localStorage.setItem('tid', id);
         callApi(`manager/order/preview/${id}/${uid}`, 'GET', null).then(res => {
-            console.log(res.data.dishes)
+            // console.log(res.data.dishes)
             if (res.data === null) {
                 alert("Khách ở bàn này chưa gọi món !")
             } else {
@@ -66,14 +65,14 @@ class ManagerPage extends Component {
 
     filterDishes = (arr) => {
         var temp = this.duplicate(arr);
-        console.log(temp);
+        // console.log(temp);
         return arr;
     }
 
 
     render() {
-        console.log(this.state.data)
-        console.log(JSON.parse(localStorage.getItem("infor")).role)
+        // console.log(this.state.data)
+        // console.log(JSON.parse(localStorage.getItem("infor")).role)
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
         if (localStorage.getItem('infor') === null) {
