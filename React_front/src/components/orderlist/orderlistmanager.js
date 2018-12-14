@@ -46,7 +46,7 @@ class OrderListManager extends Component {
         
     }
     render() {
-        console.log(this.props.dishes)
+        // console.log(this.props.dishes)
         var totalMoney = 0;
         for(let i = 0; i< this.props.dishes.length; i++) {
             totalMoney = totalMoney + this.props.dishes[i].dish.price*this.props.dishes[i].quantity;
