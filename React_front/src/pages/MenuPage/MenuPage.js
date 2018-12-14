@@ -75,6 +75,7 @@ class MenuPage extends Component {
     }
 
     handleDeleteDish = (id) => {
+
         let dishpicked = (localStorage.getItem('dishes') !== 'undefined' && localStorage.getItem('dishes') !== null) ? JSON.parse(localStorage.getItem('dishes')) : this.state.dishpicked
         var totalMoney = (localStorage.getItem('totalMoney') !== 'undefined' && localStorage.getItem('totalMoney') !== null) ? JSON.parse(localStorage.getItem('totalMoney')) : 0
         for (let i = 0; i < dishpicked.length; i++) {
@@ -84,6 +85,12 @@ class MenuPage extends Component {
                 break;
             }
         }
+        callApi(`waiter/order/dish/${uid}`, 'DELETE', {
+            _id : id,
+            did : localStorage.getItem("orderid")
+        }).then(res => {
+            console.log(res.data)
+        })
         localStorage.setItem('dishes', JSON.stringify(dishpicked));
         localStorage.setItem('totalMoney', totalMoney);
         this.setState({

@@ -4,28 +4,28 @@ import Header from '../../components/header/header';
 import { Redirect } from 'react-router-dom'
 import OrderListManager from '../../components/orderlist/orderlistmanager';
 import LeftContentManager from './LeftContentManager';
-import { realtime, uid } from '../../service/auth'
+import { uid } from '../../service/auth'
 
 class ManagerPage extends Component {
-    componentWillMount() {
+
+    componentDidMount() {
         if (localStorage.getItem('uid') === null) {
             return;
         }
-        callApi(`waiter/table/${uid}`, 'GET', null).then(res => {
-            console.log(res.data)
-            this.setState({
-                data: res.data
-            })
-        })
-
-        if (localStorage.getItem('realtime_that') !== realtime) {
+        this.interval = setInterval(() => {
             callApi(`waiter/table/${uid}`, 'GET', null).then(res => {
+                console.log(res.data)
                 this.setState({
                     data: res.data
                 })
             })
-        }
+        }, 2000)
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     constructor(props) {
         super(props);
         this.state = {

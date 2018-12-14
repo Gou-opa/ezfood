@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import callApi from '../../service/APIservice';
-import OrderItemManager from './orderItemManager';
+import OrderItemManager from './orderItemManager'
+import { uid } from '../../service/auth'
+
 class OrderListManager extends Component {
 
     sendPayment = (id) => {
         console.log(id)
-        callApi( `manager/paid`, 'POST', {
-            tid : id,
-            uid : localStorage.getItem('uid')
+        callApi( `manager/paid/${uid}`, 'POST', {
+            tid : id
         }).then(res => {
             if(res === undefined) {
                 alert("Bạn chưa chọn bàn để thanh toán !")

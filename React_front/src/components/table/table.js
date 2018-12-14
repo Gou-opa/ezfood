@@ -37,7 +37,7 @@ class Table extends Component {
 
     render() {
         var {table} = this.props;
-        // console.log(table);
+        console.log(table);
         if(JSON.parse(localStorage.getItem("picked")) === true) {
             return <Redirect to= '/menu'/>
         } 
