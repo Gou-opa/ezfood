@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-//import AddAvatar from '../AddAvatar/AddAvatar';
+import callApi from '../../service/APIservice';
+import {uid} from '../../service/auth'
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
@@ -60,6 +61,8 @@ class Header extends Component {
             filename: "",
             file: "",
             url: '',
+            avatar :  JSON.parse(localStorage.getItem("infor")).avatar,
+
             menus : [{
                 name: 'Menu',
                 to: '/menu',
@@ -100,29 +103,34 @@ class Header extends Component {
     }
     _handleSubmit(e) {
         e.preventDefault();
-        // var url = '/images/'+ this.state.filename;
+        var avatar = this.state.filename;
         // console.log(this.state);
-        // console.log(url);
-        //   callApi(`manager/dish`, 'POST', {  
-        //     url: url          
-        //   }).then(res => {
-        //       console.log(res);
+        // console.log(avatar);
+          callApi(`change-user-avatar`, 'POST', {  
+            avatar: avatar,  
+            uid: uid        
+          }).then(res => {
+            //   console.log(res);
+            //   console.log(uid);
+            //   console.log(avatar);
+          })
+          const formData = new FormData()
+          formData.append('avatar', this.state.file, this.state.file.name)
+          callApi(`change-avatar`, 'POST', formData).then(res => {
+            if(res.status === 200){
+                let x = JSON.parse(localStorage.getItem("infor"));
+                x.avatar = res.data.url;
+                console.log(x);
+              console.log(localStorage.setItem("infor", JSON.stringify(x)));
+              this.setState({
+                  avatar : res.data.url
+              })
+              this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+            }
               
-        //   })
-        //   const formData = new FormData()
-        //   formData.append('foodimage', this.state.file, this.state.file.name)
-        //   callApi(`upload`, 'POST', {
-        //     formData : formData,     
-        //   }).then(res => {
-        //     if(res.status === 200){
-        //       console.log(res);
-              
-        //       this.setState({stateClass: "AddAvatar hideAvatarEdit"})
-        //     }
-              
-        //   })         
+          })        
           alert('Đã thay đổi ảnh đại diện');
-          this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+          this.setState({stateClass: "AddAvatar hideAvatarEdit"})   
         
       }
     
@@ -153,7 +161,7 @@ class Header extends Component {
         }
         var { avatarActive, lefMenuactive,stateClass } = this.state;
         // console.log(JSON.parse(localStorage.getItem("infor")).avatar)
-        var avatar = JSON.parse(localStorage.getItem("infor")).avatar;
+        var avatar = this.state.avatar;
         return (
             <div >
                 <nav id="nav_menu">
@@ -169,7 +177,7 @@ class Header extends Component {
                             <i className="fa fa-sort-desc " aria-hidden="true" id="icon" onClick={this.onActive} />
                             <ul className={avatarActive}>
                                 <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
-                                <li className="dropdown-content" onClick={() => { alert("se hoan thien som thoi") }}>Cài đặt</li>
+                                <li className="dropdown-content" onClick ={() => {this.setState({stateClass: "AddAvatar"})}}>Cài đặt</li>
                                 <li className="dropdown-content"><Link to="/" onClick={() => { localStorage.clear() }}>Đăng xuất</Link></li>
                             </ul>
                         </li>
@@ -182,6 +190,26 @@ class Header extends Component {
                     </ul>
                 </div>
                 {/* set avatar */}
+                <div className={stateClass}>
+                    <button className="closeBT" onClick ={() => {this.setState({stateClass: "AddAvatar hideAvatarEdit"})}}>X</button>
+                    <div className="imgPreview">
+                    {$imagePreview}
+                    </div>
+                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                        <input className="fileInput" 
+                            type="file" 
+                            name="avatar"
+                            id="avatar"
+                            onChange={(e)=>this._handleImageChange(e)} 
+                            />
+                        <div><label htmlFor="avatar" className="label-avatar">Choose a file</label></div>    
+                        <button className="submitButton" 
+                            type="submit" 
+                            onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
+                        </form>
+                    
+            </div>
+            {/* set avatar */}
                 <div className={stateClass}>
                     <button className="closeBT" onClick ={() => {this.setState({stateClass: "AddAvatar hideAvatarEdit"})}}>X</button>
                     <div className="imgPreview">

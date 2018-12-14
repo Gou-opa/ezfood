@@ -150,6 +150,9 @@ i.fa.fa-check-circle {position: relative;left: 42%;top: 4px;font-size: 30px;colo
     background: #838586;
     color: white;
 }
+.reservations.picked.preview-order .preview {
+    background: #ff706a;
+}
 .reservations.picked button.ban_datcho , .reservations.picked button.ban_payment {
     background: #00000085;
     color: white;

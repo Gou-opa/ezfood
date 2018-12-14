@@ -59,7 +59,12 @@ class MenuPage extends Component {
         }
         
         callApi(`waiter/order/add/${uid}`, 'POST', _data).then(res => {
-            // console.log(res.data)
+            if(res.status === 220) {
+                alert("Rất xin lỗi quý khách , Nguyên liệu cho món này không đủ !")
+            } else if(res.status === 200) {
+                
+            }
+            console.log(res)
         })
 
         dishpicked.push(dish);

@@ -1,2 +1,3 @@
-export const uid = JSON.parse(localStorage.getItem("infor")).uid;
+    
+    export const uid = JSON.parse(localStorage.getItem("infor")).uid;
 

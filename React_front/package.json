@@ -5,8 +5,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chart.js": "^2.7.3",
+    "html2canvas": "^1.0.0-alpha.12",
     "jspdf": "^1.4.1",
     "jspdf-autotable": "^2.3.5",
+    "nvm": "0.0.4",
     "react": "^16.6.1",
     "react-bootstrap-table": "^4.3.1",
     "react-chartjs-2": "^2.7.4",
@@ -17,7 +19,6 @@
     "react-scripts": "2.1.1",
     "react-table": "^6.8.6",
     "reactstrap": "^6.5.0",
-    "nvm": "0.0.4",
     "serve": "^10.1.1"
   },
   "scripts": {

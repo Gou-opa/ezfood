@@ -21,6 +21,7 @@ class TabContentManager extends Component {
                    table={table}
                    dishpicked={dishpicked}
                    handledishes={this.props.handledishes}
+                   printDocument = {this.props.printDocument}
                    />
                 )
             })

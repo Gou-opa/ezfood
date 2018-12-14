@@ -5,7 +5,10 @@ import { Redirect } from 'react-router-dom'
 import OrderListManager from '../../components/orderlist/orderlistmanager';
 import LeftContentManager from './LeftContentManager';
 import { uid } from '../../service/auth'
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 class ManagerPage extends Component {
+    
     componentDidMount() {
         if (localStorage.getItem('infor') === null) {
             return;
@@ -33,6 +36,19 @@ class ManagerPage extends Component {
         this.handledishes = this.handledishes.bind(this);
     };
 
+    printDocument() {
+        const input = document.getElementById('divToPrint');
+        html2canvas(input)
+          .then((canvas) => {
+            var imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            // pdf.output('dataurlnewwindow');
+            pdf.save("download.pdf");
+          })
+        ;
+      }
+
     handledishes = (id) => {
         localStorage.setItem('tid', id);
         callApi(`manager/order/preview/${id}/${uid}`, 'GET', null).then(res => {
@@ -44,8 +60,8 @@ class ManagerPage extends Component {
                     dishes: res.data.dishes
                 })
             }
-
         })
+
     }
 
     handleCompletePayment = (id) => {
@@ -63,10 +79,26 @@ class ManagerPage extends Component {
     }
 
     filterDishes = (arr) => {
-        
+        var result = [];
+        let temp = arr.map(x => 1);
+        for(let i = 0; i < arr.length; i++) {
+            let count = 1;
+            if(temp[i]) {
+                temp[i] = 0;
+                for(let j = 1+i ; j < arr.length; j++) {
+                    if(arr[i].dish.name === arr[j].dish.name) {
+                        count ++;
+                        temp[j] = 0;
+                    }
+                }
+                result.push({
+                    dish : arr[i].dish,
+                    quantity : count
+                })
 
-
-        return arr;
+            }
+        }
+        return result;
     }
 
    
@@ -76,6 +108,7 @@ class ManagerPage extends Component {
         // console.log(JSON.parse(localStorage.getItem("infor")).role)
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
+        // console.log(dishes);
         if (localStorage.getItem('infor') === null) {
             return <Redirect to='/login' />
         } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
@@ -86,8 +119,8 @@ class ManagerPage extends Component {
             <div>
                 <Header />
                 <div id="wrap">
-                    <LeftContentManager data={data} tablePicked={tablePicked} handledishes={this.handledishes} />
-                    <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment.bind(this)} />
+                    <LeftContentManager data={data} tablePicked={tablePicked} handledishes={this.handledishes} printDocument = {this.printDocument.bind(this)}/>
+                    <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment.bind(this)} id = "divToPrint"/>
                 </div>
             </div>
 
