@@ -12,7 +12,7 @@
 
   
 Restaurant management system
-### - [Documentation](https://docs.google.com/document/d/1n3-VIzdjiQkjYaNPRA3-Pe50zXvZwsuXCLKxOHHFIL4/edit?usp=sharing)
+### [Documentation](https://docs.google.com/document/d/1n3-VIzdjiQkjYaNPRA3-Pe50zXvZwsuXCLKxOHHFIL4/edit?usp=sharing)
 
 ## Technology used
 
