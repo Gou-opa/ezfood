@@ -18,22 +18,27 @@ class AddTableContent extends Component {
     e.preventDefault();
     var{level,num,tid,capacity,ispick} =this.state;
     console.log(this.state);
-
-      callApi(`manager/table/add/${uid}`, 'POST', {
-        level : level,
-        num : num,
-        tid : tid,
-        capacity: capacity,
-        ispick: ispick
-      }).then(res => {
-          console.log(res);
-          if(res.status === 200){
-            alert('Thêm bàn thành công');
-            this.setState({
-              added: true
-            });          
-          }
-      })
+      if(level === "" && num === "" && tid === "" && capacity === "" ){
+        alert('Vui lòng nhập đầy đủ thông tin!');
+      }
+      else{
+        callApi(`manager/table/add/${uid}`, 'POST', {
+          level : level,
+          num : num,
+          tid : tid,
+          capacity: capacity,
+          ispick: ispick
+        }).then(res => {
+            console.log(res);
+            if(res.status === 200){
+              alert('Thêm bàn thành công');
+              this.setState({
+                added: true
+              });          
+            }
+        })
+      }
+      
   }
   onHandleChange(event) {
     var target = event.target;

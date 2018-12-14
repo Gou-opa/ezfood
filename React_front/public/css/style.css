@@ -69,11 +69,14 @@
  .input input,
  .button button {
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     color: rgba(0, 0, 0, 0.54);
     font-weight: 500;
+    transition:all 0.3s;
  }
- 
+ .input input:focus{
+   font-size: 18px;
+ }
  .input:before,
  .input .spin {
     width: 100%;
