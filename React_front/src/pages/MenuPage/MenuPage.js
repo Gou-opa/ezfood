@@ -12,7 +12,7 @@ class MenuPage extends Component {
             return;
         }
         callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
-            console.log(res.data.menu)
+            // console.log(res.data.menu)
             this.setState({
                 data: res.data.menu,
             })
@@ -130,7 +130,7 @@ class MenuPage extends Component {
         }
         // console.log(postobj);
         callApi(`waiter/order/update/${uid}`, 'POST', postobj).then(res => {
-            console.log(res.status);
+            // console.log(res.status);
         })
     }
 
@@ -145,6 +145,7 @@ class MenuPage extends Component {
         var totalMoney = (localStorage.getItem('totalMoney') !== 'undefined' && localStorage.getItem('totalMoney') !== null) ? JSON.parse(localStorage.getItem('totalMoney')) : 0
         var dishpicked = (localStorage.getItem('dishes') !== 'undefined' && localStorage.getItem('dishes') !== null) ? JSON.parse(localStorage.getItem('dishes')) : this.state.dishpicked
         var dishes = this.filterDishes(dishpicked);
+        // console.log(dishpicked)
         // var {data,dishpicked} = this.state;
         return (
             <div>

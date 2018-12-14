@@ -37,7 +37,6 @@ class OrderListManager extends Component {
                         <OrderItemManager
                         key ={index}
                         data ={orderItem}
-                        dishes = {this.props.dishes}
                         />
                     )
                 })

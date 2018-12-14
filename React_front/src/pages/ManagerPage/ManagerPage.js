@@ -6,7 +6,6 @@ import OrderListManager from '../../components/orderlist/orderlistmanager';
 import LeftContentManager from './LeftContentManager';
 import { uid } from '../../service/auth'
 class ManagerPage extends Component {
-
     componentDidMount() {
         if (localStorage.getItem('infor') === null) {
             return;
@@ -64,21 +63,23 @@ class ManagerPage extends Component {
     }
 
     filterDishes = (arr) => {
-        var temp = this.duplicate(arr);
-        console.log(temp);
+        
+
+
         return arr;
     }
 
+   
 
     render() {
-        // console.log(this.state.data)
+        // console.log(this.convertArray(this.state.dishes))
         // console.log(JSON.parse(localStorage.getItem("infor")).role)
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
         if (localStorage.getItem('infor') === null) {
             return <Redirect to='/login' />
         } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
-            return <Redirect to='/khongdu' />
+            return <Redirect to='/khongdu'/>
         }
         var { data, tablePicked } = this.state
         return (

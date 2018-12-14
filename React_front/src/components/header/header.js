@@ -152,7 +152,7 @@ class Header extends Component {
           $imagePreview = (<div className="previewText">Vui lòng chọn hình ảnh đại diện</div>);
         }
         var { avatarActive, lefMenuactive,stateClass } = this.state;
-        console.log(JSON.parse(localStorage.getItem("infor")).avatar)
+        // console.log(JSON.parse(localStorage.getItem("infor")).avatar)
         var avatar = JSON.parse(localStorage.getItem("infor")).avatar;
         return (
             <div >
