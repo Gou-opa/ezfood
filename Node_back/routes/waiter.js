@@ -13,7 +13,7 @@ var historypool = require('../database/historypool_schema');
 router.get('/:uid', function(req, res) {
   authorize.checker(req.params.uid, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       res.send('Welcome to waiter page');
     }
     else res.status(402).json(authorize.guess);
@@ -79,7 +79,7 @@ router.post("/table/pick", function(req,res){
   console.log(customer + " picked table "+ JSON.stringify(table));
   authorize.checker(customer, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       orderpool.count(function(err, count) {
         var order = {
           "uid": customer,
@@ -126,7 +126,7 @@ router.post("/table/pick", function(req,res){
 router.delete('/order/dish/:uid', function(req, res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       console.log(req.body);
       var orderid = req.body.order_id;
       var dishid = req.body.did;
@@ -150,7 +150,7 @@ router.delete('/order/dish/:uid', function(req, res){
 router.post('/order/add/:uid', function(req, res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
-    if( role > 0){
+    if( role == authorize.USER){
       console.log(req.body);
       var orderid = req.body.order_id;
       orderpool.findOne({"_id" : orderid}, function(err, result){

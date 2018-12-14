@@ -129,8 +129,8 @@ app.get('/', function(req,res){
 
 app.use('/',
 	require('./routes/index'))
-.use('/storekeeper', 
-	require('./routes/storekeeper'))
+.use('/storage', 
+	require('./routes/storage'))
 .use('/waiter', 
 	require('./routes/waiter'))
 .use('/manager', 
