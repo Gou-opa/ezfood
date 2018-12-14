@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-//import AddAvatar from '../AddAvatar/AddAvatar';
+import callApi from '../../service/APIservice';
+import {uid} from '../../service/auth'
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
@@ -100,27 +101,28 @@ class Header extends Component {
     }
     _handleSubmit(e) {
         e.preventDefault();
-        // var url = '/images/'+ this.state.filename;
-        // console.log(this.state);
-        // console.log(url);
-        //   callApi(`manager/dish`, 'POST', {  
-        //     url: url          
-        //   }).then(res => {
-        //       console.log(res);
+        var avatar = this.state.filename;
+        console.log(this.state);
+        console.log(avatar);
+          callApi(`change-user-avatar`, 'POST', {  
+            avatar: avatar,  
+            uid: uid        
+          }).then(res => {
+              console.log(res);
+              console.log(uid);
+              console.log(avatar);
               
-        //   })
-        //   const formData = new FormData()
-        //   formData.append('foodimage', this.state.file, this.state.file.name)
-        //   callApi(`upload`, 'POST', {
-        //     formData : formData,     
-        //   }).then(res => {
-        //     if(res.status === 200){
-        //       console.log(res);
+          })
+          const formData = new FormData()
+          formData.append('avatar', this.state.file, this.state.file.name)
+          callApi(`change-avatar`, 'POST', formData).then(res => {
+            if(res.status === 200){
+              console.log(res);
               
-        //       this.setState({stateClass: "AddAvatar hideAvatarEdit"})
-        //     }
+              this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+            }
               
-        //   })         
+          })        
           alert('Đã thay đổi ảnh đại diện');
           this.setState({stateClass: "AddAvatar hideAvatarEdit"})
         
