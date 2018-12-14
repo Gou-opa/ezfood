@@ -119,9 +119,9 @@ li.dropdown-content:hover{
     position: absolute;
     background : white;
     width: 200px;
-    top: 58px;
+    top: 62px;
     left: -200px;
-    height: 93vh;
+    bottom: 1.5%;
     box-shadow: 0px 2px 14px rgb(218, 216, 216);
     border-radius: 3px;
     transition: 200ms;
