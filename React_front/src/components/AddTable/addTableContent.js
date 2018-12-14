@@ -12,7 +12,6 @@ class AddTableContent extends Component {
       capacity: '',
       ispick: false,
       added: false
-        
     };
   }
   _handleSubmit(e) {

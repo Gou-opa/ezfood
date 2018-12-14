@@ -7,11 +7,10 @@ import QuangCao from './quancao';
 import {uid} from '../../service/auth'
 class PickTablePage extends Component {
     componentWillMount() {
-        if(localStorage.getItem('uid') === null) {
+        if(localStorage.getItem('infor') === null) {
             return;
         }
         callApi( `waiter/table/${uid}`, 'GET', null).then(res => {
-            localStorage.setItem('realtime', false)
            this.setState({
                data : res.data
            })
@@ -26,11 +25,16 @@ class PickTablePage extends Component {
     };
 
     render() {
-        // console.log(this.state.data)
-        if(localStorage.getItem('uid') === null) {
+        if(localStorage.getItem('infor') === null) {
             return <Redirect to= '/login' />
+        } else if(JSON.parse(localStorage.getItem("infor")).role !== 1) {
+            return <Redirect to='/khongdu' />
+        }else if(localStorage.getItem("numOftable") !== null) {
+            return <Redirect to ='/menu' />
         }
         // console.log(console.log(this.state.data));
+        console.log(JSON.parse(localStorage.getItem("infor")).role);
+
         var {data,tablePicked} = this.state
         return (
             <div>

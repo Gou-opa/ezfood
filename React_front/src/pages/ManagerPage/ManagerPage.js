@@ -4,28 +4,27 @@ import Header from '../../components/header/header';
 import { Redirect } from 'react-router-dom'
 import OrderListManager from '../../components/orderlist/orderlistmanager';
 import LeftContentManager from './LeftContentManager';
-import { realtime, uid } from '../../service/auth'
-
+import { uid } from '../../service/auth'
 class ManagerPage extends Component {
-    componentWillMount() {
-        if (localStorage.getItem('uid') === null) {
+
+    componentDidMount() {
+        if (localStorage.getItem('infor') === null) {
             return;
         }
-        callApi(`waiter/table/${uid}`, 'GET', null).then(res => {
-            console.log(res.data)
-            this.setState({
-                data: res.data
-            })
-        })
-
-        if (localStorage.getItem('realtime_that') !== realtime) {
+        this.interval = setInterval(() => {
             callApi(`waiter/table/${uid}`, 'GET', null).then(res => {
+                // console.log(res.data)
                 this.setState({
                     data: res.data
                 })
             })
-        }
+        }, 2000)
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,10 +35,9 @@ class ManagerPage extends Component {
     };
 
     handledishes = (id) => {
-        console.log(id);
         localStorage.setItem('tid', id);
         callApi(`manager/order/preview/${id}/${uid}`, 'GET', null).then(res => {
-            console.log(res.data.dishes)
+            // console.log(res.data.dishes)
             if (res.data === null) {
                 alert("Khách ở bàn này chưa gọi món !")
             } else {
@@ -73,14 +71,15 @@ class ManagerPage extends Component {
 
 
     render() {
-        console.log(this.state.dishes)
         // console.log(this.state.data)
+        // console.log(JSON.parse(localStorage.getItem("infor")).role)
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
-        if (localStorage.getItem('uid') === null) {
+        if (localStorage.getItem('infor') === null) {
             return <Redirect to='/login' />
+        } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
+            return <Redirect to='/khongdu' />
         }
-        // console.log(console.log(this.state.data));
         var { data, tablePicked } = this.state
         return (
             <div>
@@ -92,6 +91,9 @@ class ManagerPage extends Component {
             </div>
 
         );
+        
+        // console.log(console.log(this.state.data));
+       
     }
 }
 

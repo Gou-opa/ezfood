@@ -3,15 +3,20 @@ import Header from '../../components/header/header';
 import callApi from '../../service/APIservice'
 import EditContent from '../../components/EditContent/EditContent';
 import LeftcontenEditMenu from '../../components/leftcontent/leftcontenEditMenu';
+import {uid} from '../../service/auth'
+import { Redirect } from 'react-router-dom'
 
 class EditMenu extends Component {
-    
     componentWillMount() {
-        callApi( 'waiter/menu', 'GET', null).then(res => {
-            // console.log(res.data.menu)
-           this.setState({
-               data : res.data.menu
-           })
+       console.log(uid)
+        if(localStorage.getItem('infor') === null) {
+            return;
+        }
+        callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
+            console.log(res.data.menu)
+            this.setState({
+                data: res.data.menu,
+            })
         })
         console.log(this.state.data);
     }
@@ -36,7 +41,7 @@ class EditMenu extends Component {
             return true;
         })
         console.log(dish);
-        callApi(`manager/dish`, 'DELETE', {
+        callApi(`manager/dish/${uid}`, 'DELETE', {
             _id: dish._id,         
           }).then(res => {
               console.log(dish._id);
@@ -48,6 +53,11 @@ class EditMenu extends Component {
 
     render() {
         var {data} = this.state;
+        if (localStorage.getItem('infor') === null) {
+            return <Redirect to='/login' />
+        } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
+            return <Redirect to='/khongdu' />
+        }
         return (
             <div>
                 <Header />

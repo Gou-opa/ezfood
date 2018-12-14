@@ -8,11 +8,14 @@ import {Card, CardHeader, CardBody, CardTitle, Col } from 'reactstrap';
 // react table
 import ReactTable from "react-table";
 import callApi from '../../service/APIservice'
+//authentication
+import {uid} from "../../service/auth"
+
 
 class History extends Component{
 
     componentWillMount() {
-        callApi( 'manager/order', 'GET', null).then(res => {
+        callApi( `manager/order/${uid}`, 'GET', null).then(res => {
             // console.log(res.data);
            this.setState({
               data: res.data

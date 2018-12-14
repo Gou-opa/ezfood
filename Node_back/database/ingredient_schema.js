@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var ingredientSchema = new mongoose.Schema({
     type: Number, 
     name: String,
@@ -8,7 +7,5 @@ var ingredientSchema = new mongoose.Schema({
     expire: {type: Date},
     received_date: {type:Date, default:Date.now}
 });
-
-
 var ingredient = mongoose.model("ingredient", ingredientSchema);
 module.exports = ingredient;

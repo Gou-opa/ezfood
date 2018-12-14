@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import callApi from '../../service/APIservice';
 //import { Redirect ,Link} from 'react-router-dom';
-
+import {uid} from '../../service/auth'
 class EditContent extends Component {
     constructor(props) {
         super(props);
@@ -22,11 +22,11 @@ class EditContent extends Component {
       _handleSubmit(e) {
         e.preventDefault();
         var{type,name,price,filename,unit} =this.state;
-        var url = '/images/'+ this.state.filename;
+        var url = '/images/dish/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
         if(this.checkInfo() === true ){
-          callApi(`manager/dish`, 'POST', {
+          callApi(`manager/dish/${uid}`, 'POST', {
             type : type,
             name : name,
             price : price,
@@ -38,18 +38,10 @@ class EditContent extends Component {
               
           })
           const formData = new FormData()
+          console.log(formData.getAll)
           formData.append('foodimage', this.state.file, this.state.file.name)
-          // formData.name = this.state.name
-          // formData.price = this.state.price
-          // formData.unit = this.state.unit
-          // formData.type = this.state.type
-          // formData.filename = this.state.filename
-          // formData.append('price', this.state.price)
-          // formData.append('unit', this.state.unit)
-          // formData.append('type', this.state.type)
-          callApi(`upload`, 'POST', {
-            formData : formData,     
-          }).then(res => {
+          console.log(formData.get('foodimage'))
+          callApi(`upload`, 'POST', formData).then(res => {
             if(res.status === 200){
               console.log(res);
               alert('Đã thêm món');
