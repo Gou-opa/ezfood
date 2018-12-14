@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import callApi from '../../service/APIservice';
+import {realtime, uid} from '../../service/auth'
 class Table extends Component {
 
     constructor(props) {
@@ -11,15 +12,17 @@ class Table extends Component {
     }
 
     onPickTable = (id, num) => {
+        
         localStorage.removeItem("dishes")
-        localStorage.setItem('numOftable',num )
-        callApi('waiter/table/pick', 'POST', {
+        localStorage.setItem('numOftable',num)
+        callApi(`waiter/table/pick`, 'POST', {
             uid : localStorage.getItem('uid'),
             tid : id
         }).then(res => {
             // console.log(res.data);
             if(res.status === 200 ) {
                 localStorage.setItem('orderid', res.data._id);
+                localStorage.setItem('realtime_that', !realtime)
             } else   {
                 alert('tai khoan khong chinh xac !')
             }

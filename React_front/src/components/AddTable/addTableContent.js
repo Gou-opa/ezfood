@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
 import callApi from '../../service/APIservice';
-
+import {uid} from '../../service/auth'
 class AddTableContent extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +20,7 @@ class AddTableContent extends Component {
     var{level,num,tid,capacity,ispick} =this.state;
     console.log(this.state);
 
-      callApi(`manager/table/add`, 'POST', {
+      callApi(`manager/table/add/${uid}`, 'POST', {
         level : level,
         num : num,
         tid : tid,

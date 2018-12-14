@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import callApi from '../../service/APIservice';
-
+import {uid} from '../../service/auth'
 class TablePayment extends Component {
     hadlePreview = (id) => {
         // console.log(id)
@@ -8,7 +8,7 @@ class TablePayment extends Component {
     }
 
     onDeleteTable = (id) => {
-        callApi('manager/table', 'DELETE', {
+        callApi(`manager/table/${uid}`, 'DELETE', {
             tid : id
         }).then(res => {
             console.log(res);

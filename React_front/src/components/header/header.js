@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Route, Link} from 'react-router-dom';
-
 const menus = [
     {
         name : 'Menu',
@@ -84,6 +83,8 @@ class Header extends Component {
     }
     render() {
         var { avatarActive, lefMenuactive } = this.state;
+        console.log(JSON.parse(localStorage.getItem("infor")).avatar)
+        var avatar = ".." + JSON.parse(localStorage.getItem("infor")).avatar;
         return (
             <div >
                 <nav id="nav_menu">
@@ -95,11 +96,11 @@ class Header extends Component {
                             EZ FOOD
                         </li>
                         <li className="nav_item" id="nav_avatar">
-                            <img src="../images/guest_biopic-holland_1.jpg" alt="a" />
+                            <img src= {avatar} alt="a" />
                             <i className="fa fa-sort-desc " aria-hidden="true" id="icon" onClick={this.onActive} />
                             <ul className={avatarActive}>
                                 <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
-                                <li className="dropdown-content">Setting</li>
+                                <li className="dropdown-content" onClick ={() => {alert("se hoan thien som thoi")}}>Setting</li>
                                 <li className="dropdown-content"><Link to ="/" onClick ={() =>{localStorage.clear()}}>Log out</Link></li>
                             </ul>
                         </li>

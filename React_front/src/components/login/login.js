@@ -46,7 +46,6 @@ class Loggin extends Component {
     }
 
     render() {
-        // console.log(this.state.check)
         var { txtUsername, txtPassword } = this.state;
         if(this.state.isLogin === true) {
             return <Redirect to= '/picktable'/>

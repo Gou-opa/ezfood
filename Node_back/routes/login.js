@@ -30,7 +30,7 @@ router.post('/', function(req,res){
           console.log(user.username + "logged in");
           delete user.__v;
           delete user.password;
-          delete user.username;
+          
           user.uid = result._id;
           orderpool.findOne({"uid": user.uid}, function(err, order){
             if(err || order == undefined) {

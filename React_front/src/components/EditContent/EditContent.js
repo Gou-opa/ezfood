@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import callApi from '../../service/APIservice';
 //import { Redirect ,Link} from 'react-router-dom';
 
@@ -23,7 +22,7 @@ class EditContent extends Component {
       _handleSubmit(e) {
         e.preventDefault();
         var{type,name,price,filename,unit} =this.state;
-        var url = '/images/dish/'+ this.state.filename;
+        var url = '/images/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
         if(this.checkInfo() === true ){
@@ -32,10 +31,11 @@ class EditContent extends Component {
             name : name,
             price : price,
             unit: unit,
-            filename: filename, 
+            filename: filename,  
             url: url          
           }).then(res => {
               console.log(res);
+              
           })
           const formData = new FormData()
           formData.append('foodimage', this.state.file, this.state.file.name)
@@ -47,19 +47,15 @@ class EditContent extends Component {
           // formData.append('price', this.state.price)
           // formData.append('unit', this.state.unit)
           // formData.append('type', this.state.type)
-          callApi('upload','POST', formData)
-            .then(res => {
-              if(res.status === 200){
-                console.log(res);
-                alert('Đã thêm món');
-              }
-          //     console.log(res);
-          //     console.log(formData.get('name'));
-          //     console.log(formData.get('foodimage'));
-          //     console.log(formData.get('unit'));
-          //     console.log(formData.get('type'));
-          //     console.log(formData.get('price'));
-            })
+          callApi(`upload`, 'POST', {
+            formData : formData,     
+          }).then(res => {
+            if(res.status === 200){
+              console.log(res);
+              alert('Đã thêm món');
+            }
+              
+          })         
         }
         else{
           alert("Vui lòng nhập đầy đủ thông tin món ăn!");

@@ -4,19 +4,21 @@ import OrderList from '../../components/orderlist/orderlist';
 import callApi from '../../service/APIservice'
 import LeftContentMenu from '../../components/leftcontent/leftcontentMenu';
 import {Redirect} from 'react-router-dom'
-// import callApiAo from '../../service/APIao';
-
+import {uid} from '../../service/auth'
 class MenuPage extends Component {
     componentWillMount() {
+        console.log(uid)
         if(localStorage.getItem('uid') === null) {
             return;
         }
-        callApi('waiter/menu', 'GET', null).then(res => {
+        callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
+            console.log(res.data.menu)
             this.setState({
                 data: res.data.menu,
             })
         })
     }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -56,7 +58,7 @@ class MenuPage extends Component {
             order_id:localStorage.getItem('orderid')
         }
         
-        callApi('waiter/order/add', 'POST', _data).then(res => {
+        callApi(`waiter/order/add/${uid}`, 'POST', _data).then(res => {
             // console.log(res.data)
         })
 
@@ -120,14 +122,14 @@ class MenuPage extends Component {
             dishes: dishes
         }
         // console.log(postobj);
-        callApi(`waiter/order/update`, 'POST', postobj).then(res => {
+        callApi(`waiter/order/update/${uid}`, 'POST', postobj).then(res => {
             console.log(res.status);
         })
     }
 
     render() {
         localStorage.removeItem("picked")
-        if(localStorage.getItem('uid') === null) {
+        if(uid === null) {
             return <Redirect to= '/picktable' />
         }
         var { data } = this.state;
