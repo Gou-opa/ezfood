@@ -22,34 +22,32 @@ class EditContent extends Component {
       _handleSubmit(e) {
         e.preventDefault();
         var{type,name,price,filename,unit} =this.state;
-        var url = '/images/'+ this.state.filename;
+        var url = '/images/dish/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
         if(this.checkInfo() === true ){
-          // callApi(`manager/dish/${uid}`, 'POST', {
-          //   type : type,
-          //   name : name,
-          //   price : price,
-          //   unit: unit,
-          //   filename: filename,  
-          //   url: url          
-          // }).then(res => {
-          //     console.log(res);
+          callApi(`manager/dish/${uid}`, 'POST', {
+            type : type,
+            name : name,
+            price : price,
+            unit: unit,
+            filename: filename,  
+            url: url          
+          }).then(res => {
+              console.log(res);
               
-          // })
+          })
           const formData = new FormData()
           console.log(formData.getAll)
           formData.append('foodimage', this.state.file, this.state.file.name)
-          console.log(formData.getAll)
-          // callApi(`upload/${uid}`, 'POST', {
-          //   formData : formData,     
-          // }).then(res => {
-          //   if(res.status === 200){
-          //     console.log(res);
-          //     alert('Đã thêm món');
-          //   }
+          console.log(formData.get('foodimage'))
+          callApi(`upload`, 'POST', formData).then(res => {
+            if(res.status === 200){
+              console.log(res);
+              alert('Đã thêm món');
+            }
               
-          // })         
+          })         
         }
         else{
           alert("Vui lòng nhập đầy đủ thông tin món ăn!");

@@ -1,5 +1,39 @@
 import React, { Component } from 'react';
 import {Route, Link} from 'react-router-dom';
+import callApi from '../../service/APIservice'
+//import AddAvatar from '../AddAvatar/AddAvatar';
+const menus = [
+    {
+        name : 'Menu',
+        to : '/menu',
+        exact :true
+    },
+    {
+        name : 'Pick Table',
+        to : '/picktable',
+        exact :true
+    },
+    {
+        name : 'Manager',
+        to : '/manager',
+        exact :true
+    },
+    {
+        name : 'Dashboard',
+        to : '/dashboard',
+        exact :true
+    },
+    {
+        name : 'EditMenu',
+        to : '/editmenu',
+        exact :true
+    },
+    {
+        name : 'AddTable',
+        to : '/addtable',
+        exact :true
+    }
+];
 
 const MenuLink = ({label, to, activeOnlyWhenExact})=> {
     return (
@@ -20,49 +54,14 @@ const MenuLink = ({label, to, activeOnlyWhenExact})=> {
 }
 
 class Header extends Component {
-    componentWillMount() {
-        if(JSON.parse(localStorage.getItem("infor")).role === 2) {
-            this.setState({
-                menus : [
-                    {
-                                name : 'Manager',
-                                to : '/manager',
-                                exact :true
-                            },
-                            {
-                                name : 'Dashboard',
-                                to : '/dashboard',
-                                exact :true
-                            },
-                            {
-                                name : 'EditMenu',
-                                to : '/editmenu',
-                                exact :true
-                            },
-                            {
-                                name : 'AddTable',
-                                to : '/addtable',
-                                exact :true
-                            }
-                ]
-            })
-        }
-    }
-
-   
+    
     state = {
         avatarActive: 'dropdown-avatar',
         lefMenuactive: '',
-        menus : [{
-            name : 'Menu',
-            to : '/menu',
-            exact :true
-        },
-        {
-            name : 'Pick Table',
-            to : '/picktable',
-            exact :true
-        }]
+        stateClass: "AddAvatar hideAvatarEdit",
+        filename: "",
+        file: "",
+        url: ''
     }
     onActive = () => {
         this.setState({
@@ -88,8 +87,60 @@ class Header extends Component {
         }
         return result;
     }
+    _handleSubmit(e) {
+        e.preventDefault();
+        // var url = '/images/'+ this.state.filename;
+        // console.log(this.state);
+        // console.log(url);
+        //   callApi(`manager/dish`, 'POST', {  
+        //     url: url          
+        //   }).then(res => {
+        //       console.log(res);
+              
+        //   })
+        //   const formData = new FormData()
+        //   formData.append('foodimage', this.state.file, this.state.file.name)
+        //   callApi(`upload`, 'POST', {
+        //     formData : formData,     
+        //   }).then(res => {
+        //     if(res.status === 200){
+        //       console.log(res);
+              
+        //       this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+        //     }
+              
+        //   })         
+          alert('Đã thay đổi ảnh đại diện');
+          this.setState({stateClass: "AddAvatar hideAvatarEdit"})
+        
+      }
+    
+      _handleImageChange(e) {
+        e.preventDefault();
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+    
+        reader.onloadend = () => {
+          this.setState({
+            filename: file.name,
+            file: file,
+            url: reader.result
+          });
+        }
+    
+        reader.readAsDataURL(file)
+      }
     render() {
-        var { avatarActive, lefMenuactive } = this.state;
+        let {url} = this.state;
+        let $imagePreview = null;
+        
+        if (url) {
+          $imagePreview = (<img src={url} alt="preview"/>);
+        } else {
+          $imagePreview = (<div className="previewText">Vui lòng chọn hình ảnh đại diện</div>);
+        }
+        var { avatarActive, lefMenuactive,stateClass } = this.state;
         console.log(JSON.parse(localStorage.getItem("infor")).avatar)
         var avatar = ".." + JSON.parse(localStorage.getItem("infor")).avatar;
         return (
@@ -100,15 +151,15 @@ class Header extends Component {
                             <i className="fa fa-bars" aria-hidden="true" onClick={this.onActiveLeftMenu} />
                         </li>
                         <li className="nav_item" id="nav_logo">
-                            <img src ="../images/logo4.png" alt ="a" />
+                            EZ FOOD
                         </li>
                         <li className="nav_item" id="nav_avatar">
                             <img src= {avatar} alt="a" />
                             <i className="fa fa-sort-desc " aria-hidden="true" id="icon" onClick={this.onActive} />
                             <ul className={avatarActive}>
                                 <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
-                                <li className="dropdown-content" onClick ={() => {alert("se hoan thien som thoi")}}>Cài đặt</li>
-                                <li className="dropdown-content"><Link to ="/" onClick ={() =>{localStorage.clear()}}>Đăng xuất</Link></li>
+                                <li className="dropdown-content" onClick ={() => {this.setState({stateClass: "AddAvatar"})}}>Setting</li>
+                                <li className="dropdown-content"><Link to ="/" onClick ={() =>{localStorage.clear()}}>Log out</Link></li>
                             </ul>
                         </li>
                     </ul>
@@ -116,9 +167,29 @@ class Header extends Component {
                 {/* left menu */}
                 <div id="left_menu" className={lefMenuactive}>
                     <ul className="menu_list">
-                       {this.showMenu(this.state.menus)}
+                       {this.showMenu(menus)}
                     </ul>
                 </div>
+                {/* set avatar */}
+                <div className={stateClass}>
+                    <button className="closeBT" onClick ={() => {this.setState({stateClass: "AddAvatar hideAvatarEdit"})}}>X</button>
+                    <div className="imgPreview">
+                    {$imagePreview}
+                    </div>
+                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                        <input className="fileInput" 
+                            type="file" 
+                            name="avatar"
+                            id="avatar"
+                            onChange={(e)=>this._handleImageChange(e)} 
+                            />
+                        <div><label for="avatar" className="label-avatar">Choose a file</label></div>    
+                        <button className="submitButton" 
+                            type="submit" 
+                            onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
+                        </form>
+                    
+            </div>
                 {/* end nav */}
             </div>
 
