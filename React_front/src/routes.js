@@ -8,6 +8,7 @@ import ManagerPage from './pages/ManagerPage/ManagerPage';
 import DashBoardPage from './pages/DashBoardPage/DashBoardPage';
 import EditMenu from './pages/EditMenu/EditMenu';
 import AddTablePage from './pages/AddTablePage/AddTablePage';
+import Decentraliztion from './pages/NotFoundPage/decentralization'
 
 const routes = [
     {
@@ -56,10 +57,16 @@ const routes = [
         main : ()=> <AddTablePage />
     },
     {
+        path : '/khongdu',
+        exact :false,
+        main :() => <Decentraliztion  />
+    },
+    {
         path : '',
         exact :false,
         main :() => <NotFoundPage />
     }
+   
 
 ];
 

@@ -34,7 +34,6 @@ class Loggin extends Component {
                 console.log(res.data)
                 localStorage.setItem("infor" , JSON.stringify(res.data))
                 if(res.status === 200 ) {
-                    localStorage.setItem('uid', res.data.uid);
                     this.setState({
                         isLogin :true
                     })

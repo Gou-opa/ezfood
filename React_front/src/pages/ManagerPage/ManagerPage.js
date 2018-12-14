@@ -73,25 +73,29 @@ class ManagerPage extends Component {
 
 
     render() {
-        console.log(this.state.dishes)
-        // console.log(this.state.data)
+        // console.log(this.state.dishes)
+        console.log(JSON.parse(localStorage.getItem("infor")).role)
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
-        if (localStorage.getItem('uid') === null) {
+        if (localStorage.getItem('infor') === null) {
             return <Redirect to='/login' />
+        } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
+            return <Redirect to='/khongdu' />
+        } else {
+            var { data, tablePicked } = this.state
+            return (
+                <div>
+                    <Header />
+                    <div id="wrap">
+                        <LeftContentManager data={data} tablePicked={tablePicked} handledishes={this.handledishes} />
+                        <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment.bind(this)} />
+                    </div>
+                </div>
+    
+            );
         }
         // console.log(console.log(this.state.data));
-        var { data, tablePicked } = this.state
-        return (
-            <div>
-                <Header />
-                <div id="wrap">
-                    <LeftContentManager data={data} tablePicked={tablePicked} handledishes={this.handledishes} />
-                    <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment.bind(this)} />
-                </div>
-            </div>
-
-        );
+       
     }
 }
 

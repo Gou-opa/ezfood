@@ -3,9 +3,7 @@ import Header from '../../components/header/header';
 import callApi from '../../service/APIservice'
 import EditContent from '../../components/EditContent/EditContent';
 import LeftcontenEditMenu from '../../components/leftcontent/leftcontenEditMenu';
-
 class EditMenu extends Component {
-    
     componentWillMount() {
         callApi( 'waiter/menu', 'GET', null).then(res => {
             // console.log(res.data.menu)
