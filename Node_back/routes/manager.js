@@ -15,13 +15,13 @@ const authorize  = require('./../business_flow/user/checkAuthorized');
 
 
 /* GET users listing. */
-router.get('/:uid', function(req, res, next) {
+router.get('/:uid', function(req, res) {
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if( role == authorize.ADMIN){
       res.send('Welcome to manager page');
-    }else if(authorize.USER  == role) res.json(authorize.unauthorized_message);
-    else res.json(authorize.guess);
+    }else if(authorize.USER  == role) res.status(403).json(authorize.unauthorized_message);
+    else res.status(200).json(authorize.guess);
   });
 });
 
@@ -76,24 +76,30 @@ router.get('/evaluate/:uid', function(req, res){
         res.send(JSON.stringify(insight));
       });
     }
-    else if(authorize.USER  == role) res.json(authorize.unauthorized_message);
-    else res.json(authorize.guess);
+    else if(authorize.USER  == role) res.status(403).json(authorize.unauthorized_message);
+    else res.status(402).json(authorize.guess);
   });
 });
 
-router.delete('/table', function(req, res, next){
-  var tid = req.body.tid;
-  tablepool.findOneAndDelete({"tid": tid }, function(err, ressu){
-    if(err) {
-      console.log("xoa failed");
-      res.status(403).json({});
+router.delete('/table/:uid', function(req, res){
+  authorize.checker(req.params.uid, function(role){
+    console.log(role);
+    if( role == authorize.ADMIN){
+      var tid = req.body.tid;
+      tablepool.findOneAndDelete({"tid": tid }, function(err, ressu){
+        if(err) {
+          console.log("xoa failed");
+          res.status(403).json({});
+        }
+        else {
+          console.log("da xoa ban "+tid);
+          res.status(200).json({});
+        }
+      })
     }
-    else {
-      console.log("da xoa ban "+tid);
-      res.status(200).json({});
-    }
-  })
- 
+    else if(authorize.USER  == role) res.status(403).json(authorize.unauthorized_message);
+    else res.status(402).json(authorize.guess);
+  });
 });
 
 
@@ -128,15 +134,14 @@ router.post("/dish/:uid", function(req,res){
           console.log(result);
           res.status(200).json({});
         }
-        
       });
       //res.status(200).json({});
     }
-    else if(authorize.USER  == role) res.json(authorize.unauthorized_message);
-    else res.json(authorize.guess);
+    else if(authorize.USER  == role) res.status(403).json(authorize.unauthorized_message);
+    else res.status(402).json(authorize.guess);
   });
 });
-router.delete("/dish", function(req,res){
+router.delete("/dish/:uid", function(req,res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if( role == authorize.ADMIN){
@@ -151,13 +156,12 @@ router.delete("/dish", function(req,res){
           console.log("1 dish added to menu");
           console.log(result);
           res.status(200).json({"delete": "thanh cong"});
-          
         }
       });
       //res.status(200).json({});
     }
-    else if(authorize.USER  == role) res.json(authorize.unauthorized_message);
-    else res.json(authorize.guess);
+    else if(authorize.USER  == role) res.status(403).json(authorize.unauthorized_message);
+    else res.status(402).json(authorize.guess);
   });
 });
 
@@ -183,26 +187,26 @@ router.get('/order/:uid', function(req, res){
       })
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
 
-router.get('/delete_all_table', function(req, res, next){
+router.get('/delete_all_table', function(req, res){
   tablepool.deleteMany({},function(err, result){
     console.log(JSON.stringify(result));
   });
   res.send('acction_history');
 })
-router.get('/delete_all_order', function(req, res, next){
+router.get('/delete_all_order', function(req, res){
   
   orderpool.deleteMany({},function(err, result){
     console.log(JSON.stringify(result));
   });
   res.send('acction_history');
 })
-router.get('/all_order', function(req, res){
+router.get('/all_order/:uid', function(req, res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if(role == authorize.ADMIN){
@@ -212,26 +216,26 @@ router.get('/all_order', function(req, res){
       });
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
-router.get('/acction_history/serve', function(req, res, next){
+router.get('/acction_history/serve', function(req, res){
   res.send('acction_history serve');
 })
-router.get('/acction_history/issue', function(req, res, next){
+router.get('/acction_history/issue', function(req, res){
   res.send('acction_history issue');
 });
 
-router.post("/table/add", function(req,res){
+router.post("/table/add/:uid", function(req,res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if(role == authorize.ADMIN){
       var tableform = req.body;
       tableform.ispick = {is:false, uid:"", oid:""};
       console.log("adding table " + tableform);
-      tablepool.create(tableform, function(err,result){
+       tablepool.create(tableform, function(err,result){
         if(err) throw err;
         else {
           console.log("1 table added");
@@ -241,13 +245,13 @@ router.post("/table/add", function(req,res){
       });
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
 
-router.post("/level", function(req,res){
+router.post("/level/:uid", function(req,res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if(role == authorize.ADMIN){
@@ -263,9 +267,9 @@ router.post("/level", function(req,res){
       res.status(200).json({});
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
 
@@ -284,13 +288,13 @@ router.get("/order/preview/:tid/:uid" , function(req, res){
       });
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 })
 
-router.post('/paid', function(req, res){
+router.post('/paid/:uid', function(req, res){
   authorize.checker(req.params.uid, function(role){
     console.log(role);
     if(role == authorize.ADMIN){
@@ -298,8 +302,6 @@ router.post('/paid', function(req, res){
       var histo = {};
       console.log("Thanh toan "+ table);
       tablepool.findOne({"tid": table}, function(err,tableinfo){
-        
-                          
         if(err) console.log("table not found");
         else if(JSON.stringify(tableinfo) == "null") console.log("sai tid");
         else {
@@ -369,9 +371,9 @@ router.post('/paid', function(req, res){
       });
     }
     else if(role === authorize.USER) {
-      res.json(authorize.unauthorized_message);
+      res.status(403).json(authorize.unauthorized_message);
     }
-    else res.json(authorize.guess);
+    else res.status(402).json(authorize.guess);
   });
 });
       

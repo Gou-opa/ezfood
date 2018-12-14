@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.send('Welcome to store keeper page');
 });
-router.get('/all', function(req, res, next){
+router.get('/all', function(req, res){
   res.json(
     {
       "storage": 
@@ -32,26 +32,26 @@ router.get('/all', function(req, res, next){
     }
   );
 });
-router.get('/import', function(req, res, next){
+router.get('/import', function(req, res){
   res.send('import');
 })
-router.get('/status', function(req, res, next){
+router.get('/status', function(req, res){
   res.send('status');
 })
-router.get('/expire', function(req, res, next){
+router.get('/expire', function(req, res){
 
   res.send('expire');
 })
-router.get('/acction_history', function(req, res, next){
+router.get('/acction_history', function(req, res){
   res.send('acction_history');
 })
-router.get('/acction_history/report', function(req, res, next){
+router.get('/acction_history/report', function(req, res){
   res.send('general report');
 })
-router.get('/acction_history/issue', function(req, res, next){
+router.get('/acction_history/issue', function(req, res){
   res.send('issue');
 })
-router.get('/acction_history/receipt', function(req, res, next){
+router.get('/acction_history/receipt', function(req, res){
   res.send('receipt');
 })
 
