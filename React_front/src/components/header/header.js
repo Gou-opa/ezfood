@@ -171,7 +171,7 @@ class Header extends Component {
                             <i className="fa fa-sort-desc " aria-hidden="true" id="icon" onClick={this.onActive} />
                             <ul className={avatarActive}>
                                 <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
-                                <li className="dropdown-content" onClick={() => { alert("se hoan thien som thoi") }}>Cài đặt</li>
+                                <li className="dropdown-content" onClick ={() => {this.setState({stateClass: "AddAvatar"})}}>Cài đặt</li>
                                 <li className="dropdown-content"><Link to="/" onClick={() => { localStorage.clear() }}>Đăng xuất</Link></li>
                             </ul>
                         </li>
@@ -197,6 +197,26 @@ class Header extends Component {
                             onChange={(e)=>this._handleImageChange(e)} 
                             />
                         <div><label htmlFor="avatar" className="label-avatar">Choose a file</label></div>    
+                        <button className="submitButton" 
+                            type="submit" 
+                            onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
+                        </form>
+                    
+            </div>
+            {/* set avatar */}
+                <div className={stateClass}>
+                    <button className="closeBT" onClick ={() => {this.setState({stateClass: "AddAvatar hideAvatarEdit"})}}>X</button>
+                    <div className="imgPreview">
+                    {$imagePreview}
+                    </div>
+                    <form onSubmit={(e)=>this._handleSubmit(e)}>
+                        <input className="fileInput" 
+                            type="file" 
+                            name="avatar"
+                            id="avatar"
+                            onChange={(e)=>this._handleImageChange(e)} 
+                            />
+                        <div><label for="avatar" className="label-avatar">Choose a file</label></div>    
                         <button className="submitButton" 
                             type="submit" 
                             onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
