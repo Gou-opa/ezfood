@@ -62,14 +62,12 @@ class MenuPage extends Component {
                 })
         var _data = {
             dish: dish,
-            order_id:JSON.parse(localStorage.getItem('infor'.order))
+            order_id: JSON.parse(localStorage.getItem('infor')).order
         }
         callApi(`waiter/order/add/${uid}`, 'POST', _data).then(res => {
             if(res.status === 220) {
                 alert("Rất xin lỗi quý khách , Nguyên liệu cho món này không đủ !")
             } else if(res.status === 200) {
-               
-
                 dishpicked.push(dish);
                 let totalMoney = this.countTotalMoney(dishpicked)
                 localStorage.setItem('totalMoney', totalMoney);

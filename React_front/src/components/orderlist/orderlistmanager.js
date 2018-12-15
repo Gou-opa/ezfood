@@ -15,7 +15,6 @@ class OrderListManager extends Component {
             }else if(res.status === 409) {
                 alert("Sap server roi huhu")
             } else if (res.status === 200 ){
-                
                 // localStorage.removeItem("dishes");
                 // localStorage.removeItem("orderid");
                 this.props.completePayment(id);
@@ -64,7 +63,7 @@ class OrderListManager extends Component {
                     <button id="payment" onClick={this.sendPayment.bind(this,localStorage.getItem("tid"))}><i className="fa fa-credit-card-alt" aria-hidden="true">Thanh toán</i></button>
                 </div>
                 <br />
-                <h2>Bàn - Tầng{localStorage.getItem("tabname")} </h2>
+                <h2>Bàn {localStorage.getItem("tnum")} - Tầng{localStorage.getItem("tabname")} </h2>
                 <ul className="one_dish" id="title-orderlist">
                     <li className="name_dish pay-item">Tên món ăn</li>
                     <li className="price_dish pay-item">Giá/món</li>

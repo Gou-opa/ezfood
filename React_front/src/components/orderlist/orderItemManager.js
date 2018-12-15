@@ -10,7 +10,6 @@ class OrderItemManager extends Component {
         this.props.printquantity();
         return this.state.quantity;
     }
-
     render() {
         return (
             <div>

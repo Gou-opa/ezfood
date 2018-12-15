@@ -9,7 +9,6 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 class ManagerPage extends Component {
-    
     componentDidMount() {
         if (localStorage.getItem('infor') === null) {
             return;
@@ -50,12 +49,16 @@ class ManagerPage extends Component {
         ;
       }
 
-    handledishes = (id,num) => {
+    handledishes = (id, num) => {
+        console.log(id);
         localStorage.setItem('tid', id);
         localStorage.setItem("tnum", num);
         callApi(`manager/order/preview/${id}/${uid}`, 'GET', null).then(res => {
             // console.log(res.data.dishes)
             if (res.data === null) {
+                this.setState({
+                    dishes : []
+                })
                 alert("Khách ở bàn này chưa gọi món !")
             } else {
                 this.setState({
