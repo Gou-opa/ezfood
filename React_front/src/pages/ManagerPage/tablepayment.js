@@ -10,7 +10,7 @@ class TablePayment extends Component {
         }
     }
 
-    hadlePreview = (id) => {
+    hadlePreview = (id, num) => {
         // console.log(id)
         this.props.handledishes(id);
     }
@@ -45,7 +45,7 @@ class TablePayment extends Component {
                     <i className="fa fa-check-circle" aria-hidden="true"></i>
                     <h2>Bàn số {table.num}</h2>
                     <p className="ban_st">Bàn {table.capacity} người</p>
-                    <button className="ban_datcho " onClick = {this.hadlePreview.bind(this, table.tid)}>Xem đơn</button>
+                    <button className="ban_datcho " onClick = {this.hadlePreview.bind(this, table.tid,table.num)}>Xem đơn</button>
                     <button className="ban_datcho" onClick ={this.onDeleteTable.bind(this, table.tid)}>Xóa bàn</button>
                     <button className="ban_datcho preview" onClick = {this.handleToOrder.bind(this, table.tid)}>Gửi bếp</button>
 

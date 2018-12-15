@@ -45,13 +45,14 @@ class ManagerPage extends Component {
             const pdf = new jsPDF();
             pdf.addImage(imgData, 'JPEG', 0, 0);
             // pdf.output('dataurlnewwindow');
-            pdf.save("download.pdf");
+            pdf.save(`${JSON.parse(localStorage.getItem("infor")).username}.pdf`);
           })
         ;
       }
 
-    handledishes = (id) => {
+    handledishes = (id,num) => {
         localStorage.setItem('tid', id);
+        localStorage.setItem("tnum", num);
         callApi(`manager/order/preview/${id}/${uid}`, 'GET', null).then(res => {
             // console.log(res.data.dishes)
             if (res.data === null) {
