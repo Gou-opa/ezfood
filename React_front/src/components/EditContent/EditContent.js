@@ -6,22 +6,87 @@ class EditContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          fooddata: [],
+          data2:[],
           form: null,
-            filename: "",
-            file: "",
-            url: '',
-            name: '',
-            price: 0,
-            isAdded: false,
-            type: 1,
-            unit:'',
-            loaded: 0
+          filename: "",
+          file: "",
+          url: '',
+          name: '',
+          price: 0,
+          isAdded: false,
+          type: 1,
+          unit:'',
+          loaded: 0,
+          typeDish: "",
+          nameDish: "",
+          quality: 0,
+          foodType:1,
+          ingredientsInType: {
+            expire:"",
+            name:"",
+            price:0,
+            quantity:0,
+            received_date:"",
+            type:0,
+            __v:"",
+            _id:""
+
+          }
         };
+        this.changeFood = this.changeFood.bind(this);
+        this.changeFood2 = this.changeFood2.bind(this)
       }
-    
+      componentWillMount() {
+        callApi(`storage/all_type/${uid}`, 'GET', null).then(res => {
+          console.log(res.data)
+          this.setState({
+              fooddata: res.data.food,
+          })
+          console.log(this.state.fooddata)
+      })
+    //   callApi(`storage/ingredientsInType/${uid}`, 'GET',null).then(res => {
+    //     console.log(res.data)
+    //     this.setState({
+    //         data2: res.data.ingredientInType ,
+    //     })
+    // })
+    }
+    changeFood(e) {
+      e.preventDefault();
+      console.log(e.target.value );
+      callApi(`storage/ingredientsInTypeName/${uid}`, 'GET',{display:e.target.value}).then(res => {
+        console.log(res.data)
+        this.setState({
+          data2: res.data.ingredientInType ,
+      })
+    })
+    }
+    changeFood2(e) {
+      
+      this.state.data2.map((item, index) => {
+       if(e.target.value === item.name){
+        this.setState({
+          ingredientsInType:{
+            expire: item.expire,
+            name: item.name,
+            price: item.price,
+            quantity:item.quantity,
+            received_date: item.received_date,
+            type: item.type,
+            __v: item.__v,
+            _id: item._id
+          }
+          
+        })
+        console.log(this.state.ingredientsInType)
+       }
+      })
+      console.log(this.state.ingredientsInType)
+    }
       _handleSubmit(e) {
         e.preventDefault();
-        var{type,name,price,filename,unit} =this.state;
+        var{type,name,price,filename,unit,ingredientInType} =this.state;
         var url = '/images/dish/'+ this.state.filename;
         console.log(this.state);
         console.log(url);
@@ -32,7 +97,8 @@ class EditContent extends Component {
             price : price,
             unit: unit,
             filename: filename,  
-            url: url          
+            url: url,
+            ingredientInType: ingredientInType          
           }).then(res => {
               console.log(res);
               
@@ -88,7 +154,25 @@ class EditContent extends Component {
                 [name]: value
             });
         }
-        
+        showSelect1(colections) {
+          var result = null;
+          if (colections.length > 0) {
+              result = colections.map((food, index) => {
+                  return (<option key={index} type={food.type} onSelect ={() => {alert("1")}}>{food.display} </option>)
+              })
+          }
+          return result;
+      }
+      showSelect2(colections) {
+        var result = null;
+        console.log(colections);
+        if (colections.length > 0) {
+            result = colections.map((item, index) => {
+              return (<option key={index} type={item.type} >{item.name}</option>)
+            })
+        }
+        return result;
+    }
       render() {
         let {url} = this.state;
         let $imagePreview = null;
@@ -142,9 +226,15 @@ class EditContent extends Component {
                         onChange={this.onHandleChange.bind(this)}/>Đồ Uống
                       </div>
                     </div>
-                      {/* <input type="radio" name="typeDish" value="2" />Món chính
-                      <input type="radio" name="typeDish" value="3" />Tráng Miệng
-                      <input type="radio" name="typeDish" value="4" />Đồ Uống */}
+                      <select className="priceDishAdd" name="typeDish" onChange={this.changeFood}>                        
+                        <option>Loại nguyên liệu</option>
+                      {this.showSelect1(this.state.fooddata)}
+                      </select>
+                      <select className="priceDishAdd" name="nameDish" onChange={this.changeFood2}>
+                      <option>Tên nguyên liệu</option>
+                      {this.showSelect2(this.state.data2)}
+                      </select>
+                      <input className="priceDishAdd" type="number" name="quality" placeholder="0" onChange={(e) => {this.setState({ingredientsInType: {quality: e.target.value}})}}></input>
                 <button className="submitButton" 
                     type="submit" 
                     onClick={(e)=>this._handleSubmit(e)}>Thêm món</button>
