@@ -46,10 +46,12 @@ class Loggin extends Component {
 
     render() {
         var { txtUsername, txtPassword } = this.state;
-        if(this.state.isLogin === true && JSON.parse(localStorage.getItem("infor")).role === 1) {
+        if(this.state.isLogin === true && JSON.parse(localStorage.getItem("infor")).role === 1 && JSON.parse(localStorage.getItem("infor")).order === '') {
             return <Redirect to= '/picktable'/>
         } else if (this.state.isLogin === true && JSON.parse(localStorage.getItem("infor")).role === 2) {
             return <Redirect to= '/manager'/>
+        } else if (this.state.isLogin === true && JSON.parse(localStorage.getItem("infor")).role === 1 && JSON.parse(localStorage.getItem("infor")).order !== '') {
+            return <Redirect to= '/menu'/>
         }
         return (
             <div className="login_page_ta">

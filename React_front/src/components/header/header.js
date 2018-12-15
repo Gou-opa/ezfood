@@ -150,6 +150,13 @@ class Header extends Component {
     
         reader.readAsDataURL(file)
       }
+
+      logOut =() => {
+          if(JSON.parse(localStorage.getItem("infor")).order === '') {
+            localStorage.clear();
+          }
+      }
+
     render() {
         let {url} = this.state;
         let $imagePreview = null;
@@ -178,7 +185,7 @@ class Header extends Component {
                             <ul className={avatarActive}>
                                 <p className="dropdown-title"><b>{JSON.parse(localStorage.getItem("infor")).name}</b></p>
                                 <li className="dropdown-content" onClick ={() => {this.setState({stateClass: "AddAvatar"})}}>Cài đặt</li>
-                                <li className="dropdown-content"><Link to="/" onClick={() => { localStorage.clear() }}>Đăng xuất</Link></li>
+                                <li className="dropdown-content"><Link to="/" onClick={this.logOut }>Đăng xuất</Link></li>
                             </ul>
                         </li>
                     </ul>

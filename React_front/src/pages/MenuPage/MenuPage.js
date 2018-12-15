@@ -6,17 +6,25 @@ import LeftContentMenu from '../../components/leftcontent/leftcontentMenu';
 import {Redirect} from 'react-router-dom'
 import {uid} from '../../service/auth'
 class MenuPage extends Component {
-    componentWillMount() {
-        console.log(uid)
-        if(localStorage.getItem('infor') === null) {
+
+    componentDidMount() {
+        if (localStorage.getItem('infor') === null) {
             return;
         }
-        callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
-            // console.log(res.data.menu)
-            this.setState({
-                data: res.data.menu,
+        this.interval = setInterval(() => {
+            callApi(`waiter/menu/${uid}`, 'GET', null).then(res => {
+                // console.log(res.data.menu)
+                this.setState({
+                    data: res.data.menu,
+                })
             })
-        })
+        }, 5000)
+    }
+
+    componentWillMount() {
+
+        clearInterval(this.interval);
+
     }
 
     constructor(props) {
@@ -41,41 +49,41 @@ class MenuPage extends Component {
         let dish = null;
         let { data } = this.state;
         let dishpicked = (localStorage.getItem('dishes') !== 'undefined' && localStorage.getItem('dishes') !== null) ? JSON.parse(localStorage.getItem('dishes')) : this.state.dishpicked
-        data.map((list, index) => {
-            if (list.type === type) {
-                list.dishes.map((dishreal, index) => {
-                    if (dishreal._id === id) {
-                        dish = dishreal;
+                data.map((list, index) => {
+                    if (list.type === type) {
+                        list.dishes.map((dishreal, index) => {
+                            if (dishreal._id === id) {
+                                dish = dishreal;
+                            }
+                            return true;
+                        })
                     }
                     return true;
                 })
-            }
-            return true;
-        })
-        
         var _data = {
             dish: dish,
-            order_id:localStorage.getItem('orderid')
+            order_id:JSON.parse(localStorage.getItem('infor'.order))
         }
-        
         callApi(`waiter/order/add/${uid}`, 'POST', _data).then(res => {
             if(res.status === 220) {
                 alert("Rất xin lỗi quý khách , Nguyên liệu cho món này không đủ !")
             } else if(res.status === 200) {
-                
+               
+
+                dishpicked.push(dish);
+                let totalMoney = this.countTotalMoney(dishpicked)
+                localStorage.setItem('totalMoney', totalMoney);
+                localStorage.setItem('dishes', JSON.stringify(dishpicked));
+                this.setState({
+                    datapicked: dishpicked,
+                    totalMoney: totalMoney
+                })
+        
             }
             console.log(res)
         })
 
-        dishpicked.push(dish);
-        let totalMoney = this.countTotalMoney(dishpicked)
-        localStorage.setItem('totalMoney', totalMoney);
-        localStorage.setItem('dishes', JSON.stringify(dishpicked));
-        this.setState({
-            datapicked: dishpicked,
-            totalMoney: totalMoney
-        })
-
+       
         // console.log(dishpicked);
     }
 

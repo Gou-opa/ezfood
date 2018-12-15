@@ -58,7 +58,7 @@ class OrderListManager extends Component {
             totalMoney = totalMoney + this.props.dishes[i].dish.price*this.props.dishes[i].quantity;
         }
         return (
-            <div className="tab_right">
+            <div className="tab_right " id = "divToPrint" >
                 <div className="thanh-t">
                     <label id="total-money"><b>Tổng Tiền :{this.commaSeparateNumber(totalMoney)}đ</b> </label>
                     <button id="payment" onClick={this.sendPayment.bind(this,localStorage.getItem("tid"))}><i className="fa fa-credit-card-alt" aria-hidden="true">Thanh toán</i></button>

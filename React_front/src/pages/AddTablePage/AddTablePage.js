@@ -5,7 +5,7 @@ import AddTableContent from '../../components/AddTable/addTableContent';
 
 class AddTablePage extends Component {
     render() {
-        if (localStorage.getItem('infor') === null) {
+        if (JSON.parse(localStorage.getItem("infor")) === null) {
             return <Redirect to='/login' />
         } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
             return <Redirect to='/khongdu' />

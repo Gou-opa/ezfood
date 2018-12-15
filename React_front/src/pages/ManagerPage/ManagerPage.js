@@ -7,6 +7,7 @@ import LeftContentManager from './LeftContentManager';
 import { uid } from '../../service/auth'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 class ManagerPage extends Component {
     
     componentDidMount() {
@@ -40,7 +41,7 @@ class ManagerPage extends Component {
         const input = document.getElementById('divToPrint');
         html2canvas(input)
           .then((canvas) => {
-            var imgData = canvas.toDataURL("image/png");
+            const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF();
             pdf.addImage(imgData, 'JPEG', 0, 0);
             // pdf.output('dataurlnewwindow');
@@ -109,7 +110,7 @@ class ManagerPage extends Component {
         localStorage.removeItem("picked")
         var dishes = this.filterDishes(this.state.dishes);
         // console.log(dishes);
-        if (localStorage.getItem('infor') === null) {
+        if ( JSON.parse(localStorage.getItem("infor"))=== null) {
             return <Redirect to='/login' />
         } else if (JSON.parse(localStorage.getItem("infor")).role !== 2) {
             return <Redirect to='/khongdu'/>
@@ -120,7 +121,7 @@ class ManagerPage extends Component {
                 <Header />
                 <div id="wrap">
                     <LeftContentManager data={data} tablePicked={tablePicked} handledishes={this.handledishes} printDocument = {this.printDocument.bind(this)}/>
-                    <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment.bind(this)} id = "divToPrint"/>
+                    <OrderListManager dishes={dishes} completePayment={this.handleCompletePayment} />
                 </div>
             </div>
 

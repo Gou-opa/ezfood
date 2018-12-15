@@ -21,7 +21,9 @@ class Table extends Component {
         }).then(res => {
             // console.log(res.data);
             if(res.status === 200 ) {
-                localStorage.setItem('orderid', res.data._id);
+                var x = JSON.parse(localStorage.getItem("infor"));
+                x.order = res.data._id;
+                localStorage.setItem('infor', JSON.stringify(x));
             } else   {
                 alert('tai khoan khong chinh xac !')
             }
