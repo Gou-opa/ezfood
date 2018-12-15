@@ -9,7 +9,8 @@
 </p>
 
 # [ Demo](http://chitbi.ddns.net:5000/)  [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://chitbi.ddns.net:5000/) 
-
+# admin account : xuan password: 1
+# waiter/user account: register new account
   
 Restaurant management system
 ### [Documentation](https://docs.google.com/document/d/1n3-VIzdjiQkjYaNPRA3-Pe50zXvZwsuXCLKxOHHFIL4/edit?usp=sharing)
