@@ -202,7 +202,7 @@ class Header extends Component {
                             id="avatar"
                             onChange={(e)=>this._handleImageChange(e)} 
                             />
-                        <div><label htmlFor="avatar" className="label-avatar">Choose a file</label></div>    
+                        <div><label htmlFor="avatar" className="label-avatar">Chọn ảnh</label></div>    
                         <button className="submitButton" 
                             type="submit" 
                             onClick={(e)=>this._handleSubmit(e)}>Thêm ảnh đại diện</button>
