@@ -1,0 +1,37 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  install:
+    commands:
+        - echo "getting environment for nodejs"
+        - cd React_front
+        - npm install
+        - echo "end install dependancies "
+  pre_build:
+    commands:
+        - echo "start building" 
+  build:
+    commands:
+        - npm run build
+  post_build:
+    commands:
+        - echo "end build artifact"
+      # - command
+artifacts:
+  #files:
+    # - location
+    # - location
+  name: $(date +%Y-%m-%d)
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - paths
